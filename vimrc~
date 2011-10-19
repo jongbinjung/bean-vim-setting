@@ -1,6 +1,22 @@
 "------------------------------------------------------------------------------
+" Pathogen for Bundling Plugins
+"------------------------------------------------------------------------------
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+"------------------------------------------------------------------------------
 " Global Settings
 "------------------------------------------------------------------------------
+
+" ReMappings
+"   the EndOfLine command
+map - $
+vmap - $
+cmap - $
+
+" set encoding options
+set fencs=utf-8,euc-kr
+set encoding=utf-8
 
 " Set filetype stuff to on
 filetype on
@@ -21,12 +37,16 @@ set wrapscan
 " thing but it just wasn't working out for me
 set noignorecase
 
+:setlocal spell spelllang=en_us
+
 " set the forward slash to be the slash of note.  Backslashes suck
 set shellslash
+
 if has("unix")
     set shell=bash
 else
-    set shell=ksh.exe
+    set shell=cmd.exe
+    " set shell=ksh.exe
 endif
 
 " Make command line two lines high
@@ -107,7 +127,9 @@ set key=
 set wildmenu
 
 " Make it easier to complete buffers, open files, etc...
-" set wildignorecase
+if has("unix")
+    set wildignorecase
+endif
 
 " Same as default except that I remove the 'u' option
 set complete=.,w,b,t
@@ -116,7 +138,7 @@ set complete=.,w,b,t
 set showfulltag
 
 " Set the textwidth to be 80 chars
-set textwidth=80
+" set textwidth=80
 
 " get rid of the silly characters in separators
 set fillchars = ""
@@ -135,3 +157,18 @@ set clipboard+=unnamed
 
 " Automatically read a file that has changed on disk
 set autoread
+
+"------------------------------------------------------------------------------
+" Vim-Latex Options
+"------------------------------------------------------------------------------
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+set iskeyword+=:

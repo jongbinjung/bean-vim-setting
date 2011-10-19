@@ -8,6 +8,28 @@ call pathogen#helptags()
 " Global Settings
 "------------------------------------------------------------------------------
 
+" ReMappings
+"   the EndOfLine command
+map - $
+vmap - $
+" cmap - $
+
+"   Window split switching
+map , <C-w>
+
+"   Mapping the Apple (Command Key) to Ctrl for Mac
+if has("mac")
+    map <D-d> <C-d>
+    map <D-u> <C-u>
+endif
+
+" set encoding/font options
+set fencs=utf-8,euc-kr
+set encoding=utf-8
+
+" (don't forget to install BeanCode from ~/Drobbox/Dev)
+set gfn=BeanCode:h10:cDEFAULT
+
 " Set filetype stuff to on
 filetype on
 filetype plugin on
@@ -27,7 +49,8 @@ set wrapscan
 " thing but it just wasn't working out for me
 set noignorecase
 
- :setlocal spell spelllang=en_us
+" Spell check ... need to be file-type specific, and support Korean ?
+" :setlocal spell spelllang=en_us
 
 " set the forward slash to be the slash of note.  Backslashes suck
 set shellslash
@@ -35,7 +58,8 @@ set shellslash
 if has("unix")
     set shell=bash
 else
-    set shell=ksh.exe
+    set shell=cmd.exe
+    " set shell=ksh.exe
 endif
 
 " Make command line two lines high
@@ -125,7 +149,7 @@ set complete=.,w,b,t
 set showfulltag
 
 " Set the textwidth to be 80 chars
-set textwidth=80
+" set textwidth=80
 
 " get rid of the silly characters in separators
 set fillchars = ""
