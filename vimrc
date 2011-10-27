@@ -12,7 +12,15 @@ call pathogen#helptags()
 "   the EndOfLine command
 map - $
 vmap - $
-" cmap - $
+
+"   Map TagList Toggle
+map P :TlistToggle<CR>
+
+"   Map Omni Completion
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' : \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' : \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 "   Window split switching
 map , <C-w>
@@ -183,3 +191,13 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 set iskeyword+=:
+
+" Settings for minibufexpl
+"   Move windows with C-{hjkl}
+let g:miniBufExplMapWindowNavVim = 1
+"   C-Tab C-S-Tab for Switching Buffers within the Selected window
+let g:miniBufExplMapCTabSwitchBufs = 1
+
+" Python (Omni Complete, etc)
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+map <unique> <Leader>rp :!python %<CR>
