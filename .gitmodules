@@ -7,3 +7,6 @@
 [submodule "bundle/minibufexpl"]
 	path = bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "bundle/cvim-pathogen"]
+	path = bundle/cvim-pathogen
+	url = https://github.com/HenningM/cvim-pathogen.git

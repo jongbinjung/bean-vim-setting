@@ -1,8 +1,17 @@
+" Set the appropriate runtimepath
+set runtimepath=~/Dropbox/vim,$VIMRUNTIME
 "------------------------------------------------------------------------------
 " Pathogen for Bundling Plugins
 "------------------------------------------------------------------------------
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+
+"------------------------------------------------------------------------------
+" Language settings default to English (for some other disturbing systems)
+"------------------------------------------------------------------------------
+set langmenu=en_US.UTF-8    " sets the language of the menu
+language C
 
 "------------------------------------------------------------------------------
 " Global Settings
@@ -12,11 +21,31 @@ call pathogen#helptags()
 "   the EndOfLine command
 map - $
 vmap - $
-cmap - $
 
-" set encoding options
+"   Map TagList Toggle
+map P :TlistToggle<CR>
+
+"   Map Omni Completion
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' : \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' : \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+"   Window split switching
+map , <C-w>
+
+"   Mapping the Apple (Command Key) to Ctrl for Mac
+if has("mac")
+    map <D-d> <C-d>
+    map <D-u> <C-u>
+endif
+
+" set encoding/font options
 set fencs=utf-8,euc-kr
 set encoding=utf-8
+
+" (don't forget to install BeanCode from ~/Drobbox/Dev)
+set gfn=BeanCode:h10:cDEFAULT
 
 " Set filetype stuff to on
 filetype on
@@ -37,7 +66,8 @@ set wrapscan
 " thing but it just wasn't working out for me
 set noignorecase
 
-:setlocal spell spelllang=en_us
+" Spell check ... need to be file-type specific, and support Korean ?
+" :setlocal spell spelllang=en_us
 
 " set the forward slash to be the slash of note.  Backslashes suck
 set shellslash
@@ -113,6 +143,10 @@ set history=100
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 
+" Folds for xml
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
 set scrolloff=8
@@ -127,9 +161,7 @@ set key=
 set wildmenu
 
 " Make it easier to complete buffers, open files, etc...
-if has("unix")
-    set wildignorecase
-endif
+" set wildignorecase
 
 " Same as default except that I remove the 'u' option
 set complete=.,w,b,t
@@ -138,7 +170,7 @@ set complete=.,w,b,t
 set showfulltag
 
 " Set the textwidth to be 80 chars
-" set textwidth=80
+set textwidth=80
 
 " get rid of the silly characters in separators
 set fillchars = ""
@@ -172,3 +204,13 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 set iskeyword+=:
+
+" Settings for minibufexpl
+"   Move windows with C-{hjkl}
+let g:miniBufExplMapWindowNavVim = 1
+"   C-Tab C-S-Tab for Switching Buffers within the Selected window
+let g:miniBufExplMapCTabSwitchBufs = 1
+
+" Python (Omni Complete, etc)
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+map <unique> <Leader>rp :!python %<CR>

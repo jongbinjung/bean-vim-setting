@@ -1,8 +1,17 @@
+" Set the appropriate runtimepath
+set runtimepath=~/Dropbox/vim,$VIMRUNTIME
 "------------------------------------------------------------------------------
 " Pathogen for Bundling Plugins
 "------------------------------------------------------------------------------
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+
+"------------------------------------------------------------------------------
+" Language settings default to English (for some other disturbing systems)
+"------------------------------------------------------------------------------
+set langmenu=en_US.UTF-8    " sets the language of the menu
+language C
 
 "------------------------------------------------------------------------------
 " Global Settings
@@ -88,7 +97,7 @@ set hidden
 set cpoptions=ces$
 
 " Set the status line the way i like it
-" set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
@@ -134,6 +143,10 @@ set history=100
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 
+" Folds for xml
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
 set scrolloff=8
@@ -157,7 +170,7 @@ set complete=.,w,b,t
 set showfulltag
 
 " Set the textwidth to be 80 chars
-" set textwidth=80
+set textwidth=80
 
 " get rid of the silly characters in separators
 set fillchars = ""
