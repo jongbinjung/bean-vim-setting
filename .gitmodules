@@ -10,3 +10,12 @@
 [submodule "bundle/cvim-pathogen"]
 	path = bundle/cvim-pathogen
 	url = https://github.com/HenningM/cvim-pathogen.git
+[submodule "bundle/vim-autoclose"]
+	path = bundle/vim-autoclose
+	url = https://github.com/andrewle/vim-autoclose.git
+[submodule "bundle/pep8"]
+	path = bundle/pep8
+	url = https://github.com/cburroughs/pep8.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
