@@ -105,7 +105,7 @@ set laststatus=2
 " Don't update the display while executing macros
 set lazyredraw
 
-" Don't show the current command int he lower right corner.  In OSX, if this is
+" Don't show the current command in the lower right corner.  In OSX, if this is
 " set and lazyredraw is set then it's slow as molasses, so we unset this
 set showcmd
 
@@ -122,10 +122,10 @@ set mousehide
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " set the gui options the way I like
-set guioptions=acg
+set guioptions=acmg
 
-" Setting this below makes it sow that error messages don't disappear after one second on startup.
-"set debug=msg
+" Setting this below makes it so that error messages don't disappear after one second on startup.
+" set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
@@ -213,4 +213,5 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 
 " Python (Omni Complete, etc)
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
 map <unique> <Leader>rp :!python %<CR>
