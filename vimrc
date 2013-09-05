@@ -4,8 +4,8 @@ set runtimepath=~/Dropbox/vim,$VIMRUNTIME
 " Pathogen for Bundling Plugins
 "------------------------------------------------------------------------------
 call pathogen#infect()
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 
 "------------------------------------------------------------------------------
 " Language settings default to English (for some other disturbing systems)
@@ -21,6 +21,16 @@ language C
 "   the EndOfLine command
 map - $
 vmap - $
+
+" map command :cls
+" used to clear the search highlighting
+command C let @/=""
+
+" show line numbers
+set nu
+
+" Colorscheme to mustang !!!
+colorscheme mustang
 
 "   Map TagList Toggle
 map P :TlistToggle<CR>
@@ -97,7 +107,8 @@ set hidden
 set cpoptions=ces$
 
 " Set the status line the way i like it
-set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+" set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]\ [%{strlen(&fenc)?&fenc:'none'}]
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
