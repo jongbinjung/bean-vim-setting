@@ -3,7 +3,7 @@
 - Uses Vundle.vim to manage plugins
 - For *Unix*:
 
-``` 
+ ``` 
 git clone https://github.com/olorin86/bean-vim-setting.git ~/.vim
 
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
