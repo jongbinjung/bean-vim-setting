@@ -17,5 +17,5 @@ git clone https://github.com/olorin86/bean-vim-setting.git ~/_vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/_vim/bundle/Vundle.vim
 ```
 
-- Run :PluginInstall once after initial sync to download all plugins.
+- Run ```:PluginInstall``` once after initial sync to download all plugins.
 
