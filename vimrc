@@ -2,14 +2,14 @@ set nocompatible " be iMproved
 filetype off " required! 
 
 if has("unix")
-    let path='~/.vim/bundle/'
-else
-    let path='~/Dropbox/vim/bundle/'
+    let path=$HOME. '.vim/bundle/'
+elseif has("win32")
+    let path=$HOME . '_vim/bundle/'
 endif
 
 " Set the appropriate runtimepath
-let $path=path . 'Vundle.vim'
-let &runtimepath=&runtimepath . ',' . $path
+let rtp_path=path . 'Vundle.vim'
+let &runtimepath=&runtimepath . ',' . rtp_path
 
 """ Vundle settings {{{
 
@@ -92,7 +92,7 @@ set encoding=utf-8
 " set gfn=BeanCode:h10:cDEFAULT
 if has("unix")
     set gfn=Inconsolata-dz\ for\ Powerline:h10
-else
+elseif has("win32")
     set gfn=Inconsolata-dz_for_Powerline:h10:cDEFAULT
 endif
 
@@ -191,9 +191,9 @@ set shellslash
 
 if has("unix")
     set shell=bash
-else
-    set shell=bash.exe
-    " set shell=cmd.exe
+elseif has("win32")
+    " set shell=bash.exe
+    set shell=cmd.exe
     " set shell=ksh.exe
 endif
 
