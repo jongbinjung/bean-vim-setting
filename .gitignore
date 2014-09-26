@@ -165,3 +165,6 @@ pip-log.txt
 
 # Don't include the bundle folder! This should be managed through Vundle on each machine!!!
 bundle/*
+
+# Keep vim swap files out
+*~
