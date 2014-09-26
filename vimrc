@@ -1,12 +1,18 @@
 set nocompatible " be iMproved
 filetype off " required! 
 
+if has("unix")
+    let path='~/.vim/bundle/'
+else
+    let path='~/Dropbox/vim/bundle/'
+endif
+
 " Set the appropriate runtimepath
-set rtp+=~/Dropbox/vim/bundle/Vundle.vim/
+let $path=path . 'Vundle.vim'
+let &runtimepath=&runtimepath . ',' . $path
 
 """ Vundle settings {{{
 
-let path='~/Dropbox/vim/bundle/'
 call vundle#begin(path)
 
 " let Vundle manage Vundle, required
