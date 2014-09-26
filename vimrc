@@ -2,7 +2,7 @@ set nocompatible " be iMproved
 filetype off " required! 
 
 if has("unix")
-    let path=$HOME. '.vim/bundle/'
+    let path=$HOME. '/.vim/bundle/'
 elseif has("win32")
     let path=$HOME . '_vim/bundle/'
 endif
