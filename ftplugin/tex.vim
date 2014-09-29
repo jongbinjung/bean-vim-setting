@@ -3,3 +3,10 @@ let g:Tex_FoldedEnvironments = "verbatim,comment,eq,gather,align,figure,table,th
 
 let g:Tex_FoldedMisc = "<<<"
 " let g:Tex_FoldedCommands = "newcommand,"
+
+let g:Tex_MultipleCompileFormats = "pdf, aux"
+" Hard-wrap lines in TeX files
+set formatoptions=t1
+
+" map \tt to texcount
+map <Leader>tt :!texcount %<CR>
