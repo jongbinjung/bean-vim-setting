@@ -4,6 +4,8 @@ let g:Tex_FoldedEnvironments = "verbatim,comment,eq,gather,align,figure,table,th
 let g:Tex_FoldedMisc = "<<<"
 " let g:Tex_FoldedCommands = "newcommand,"
 
+let g:Tex_Flavor="pdflatex"
+let g:Tex_DefaultTargetFormat = "pdf"
 let g:Tex_MultipleCompileFormats = "pdf, aux"
 
 " Hard-wrap lines in TeX files
