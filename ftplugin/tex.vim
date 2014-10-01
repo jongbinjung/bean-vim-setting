@@ -5,6 +5,7 @@ let g:Tex_FoldedMisc = "<<<"
 " let g:Tex_FoldedCommands = "newcommand,"
 
 let g:Tex_MultipleCompileFormats = "pdf, aux"
+
 " Hard-wrap lines in TeX files
 set formatoptions=t1
 

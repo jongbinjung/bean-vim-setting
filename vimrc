@@ -137,6 +137,11 @@ set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ve
 " set the gui options the way I like
 set guioptions=acmg
 
+" set vim window size for when gui is running
+if has("gui_running")
+    set lines=40 columns=90
+endif
+
 "}}}
 
 """ Key ReMappings {{{
