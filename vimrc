@@ -5,6 +5,7 @@ if has("unix")
     let path=$HOME. '/.vim/bundle/'
 elseif has("win32")
     let path=$HOME . '_vim/bundle/'
+    let &runtimepath=&runtimepath . ',' . $HOME . '_vim'
 endif
 
 " Set the appropriate runtimepath
@@ -296,9 +297,14 @@ set autoread
 " set nowritebackup
  
 " ...But when I do make backups, make sure that they don't get in the way :D
-set backupdir=~/Dropbox/vim/tmp,.
-set directory=~/Dropbox/vim/tmp,.
 
+if has("unix")
+    set backupdir=~/.vim/tmp,.
+    set directory=~/.vim/tmp,.
+elseif has("win32")
+    set backupdir=~/_vim/tmp,.
+    set directory=~/_vim/tmp,.
+endif
 " }}}
 
 """ Vim-Latex Options {{{
