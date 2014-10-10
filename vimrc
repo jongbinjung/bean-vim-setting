@@ -271,7 +271,7 @@ set showfulltag
 " Set the textwidth to be 80 chars, but don't wrap
 set textwidth=80
 set colorcolumn=80
-set winminwidth=79
+" set winminwidth=79
 
 " get rid of the silly characters in separators
 set fillchars = ""
