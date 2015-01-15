@@ -166,6 +166,7 @@ map , <C-w>
 if has("mac")
     map <D-d> <C-d>
     map <D-u> <C-u>
+    map <D-j> <C-j>
 endif
 
 "}}}
