@@ -167,6 +167,7 @@ if has("mac")
     map <D-d> <C-d>
     map <D-u> <C-u>
     map <D-j> <C-j>
+    map! <D-j> <C-j>
 endif
 
 "}}}
@@ -314,6 +315,12 @@ set directory=~/Dropbox/vim/tmp,.
 " let g:tex_flavor='latex'
 
 " set iskeyword+=:
+"
+" OPTIONAL: Make Vim open the compiled pdf (if it exists) when opening a 
+" tex filetype
+if has("gui_macvim")
+    autocmd FileType tex :exe "!open -a Skim " . shellescape(expand("%:r")) . ".pdf"<CR>
+endif
 
 " Python (Omni Complete, etc)
 autocmd FileType python set omnifunc=pythoncomplete#Complete
