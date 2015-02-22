@@ -140,7 +140,7 @@ set guioptions=acmg
 
 " set vim window size for when gui is running
 if has("gui_running")
-    set lines=40 columns=90
+    set lines=60 columns=90
 endif
 
 "}}}
@@ -325,7 +325,7 @@ endif
 " OPTIONAL: Make Vim open the compiled pdf (if it exists) when opening a 
 " tex filetype
 if has("gui_macvim")
-    autocmd FileType tex :exe "!open -a Skim " . shellescape(expand("%:r")) . ".pdf"<CR>
+    autocmd FileType tex :exe "silent !open -a Skim " . shellescape(expand("%:r")) . ".pdf"
 endif
 
 " Python (Omni Complete, etc)
