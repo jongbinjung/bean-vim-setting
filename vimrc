@@ -36,6 +36,23 @@ let g:airline_powerline_fonts = 1
     Plugin 'davidhalter/jedi-vim'
 "}}}
 
+" Plugin: Auto Pairs (Pair parentheses) {{{
+    Plugin 'jiangmiao/auto-pairs'
+" }}}
+
+" Plugin: Snipmate and dependencies (for code snippets) {{{
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
+
+   " Optional:
+    Plugin 'honza/vim-snippets' 
+" }}}
+
+" Plugin: nerdcommenter {{{
+    Plugin 'scrooloose/nerdcommenter'
+" }}}
+
 " Plugin: vim-gitgutter (visualize git diffs in the gutter) {{{
     Plugin 'airblade/vim-gitgutter'
 "}}}
@@ -51,6 +68,11 @@ let g:airline_powerline_fonts = 1
     
 " Plugin: NERDtree {{{{
     Plugin 'scrooloose/nerdtree'
+    Plugin 'jistr/vim-nerdtree-tabs'
+"}}}
+
+" Plugin: easymotion (because I'm not good with <count>)
+    Plugin 'Lokaltog/vim-easymotion'
 "}}}
 
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
