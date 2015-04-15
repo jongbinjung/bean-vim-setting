@@ -17,15 +17,15 @@ let &runtimepath=&runtimepath . ',' . rtp_path
 call vundle#begin(path)
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+    Plugin 'gmarik/Vundle.vim'
 
 " Plugin: Fugitive {{{
-Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-fugitive'
 " }}}
 
 " Plugin: Airline (for fancy status bar) {{{
-Plugin 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
+    Plugin 'bling/vim-airline'
+    let g:airline_powerline_fonts = 1
 "}}}
 
 " Plugin: syntastic (syntax checker) {{{
@@ -69,6 +69,10 @@ let g:airline_powerline_fonts = 1
 " Plugin: NERDtree {{{{
     Plugin 'scrooloose/nerdtree'
     Plugin 'jistr/vim-nerdtree-tabs'
+    " set <C-n> to toggle
+    map <C-n> :NERDTreeToggle<CR>
+    " use arrows to look prettier
+    let g:NERDTreeDirArrows=1
 "}}}
 
 " Plugin: easymotion (because I'm not good with <count>)
