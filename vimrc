@@ -29,42 +29,44 @@ let g:airline_powerline_fonts = 1
 "}}}
 
 " Plugin: syntastic (syntax checker) {{{
-Plugin 'scrooloose/syntastic'
+    Plugin 'scrooloose/syntastic'
+"}}}
+
+" Plugin: jedi-vim (Python autocomplete) {{{
+    Plugin 'davidhalter/jedi-vim'
 "}}}
 
 " Plugin: vim-gitgutter (visualize git diffs in the gutter) {{{
-Plugin 'airblade/vim-gitgutter'
+    Plugin 'airblade/vim-gitgutter'
 "}}}
 
 " Plugin: minibufexpl (tabbed buffer explorer) {{{
-Plugin 'techlivezheng/vim-plugin-minibufexpl'
+    Plugin 'techlivezheng/vim-plugin-minibufexpl'
 " Settings for minibufexpl
 "   Move windows with C-{hjkl}
-let g:miniBufExplMapWindowNavVim = 1
+    let g:miniBufExplMapWindowNavVim = 1
 "   C-Tab C-S-Tab for Switching Buffers within the Selected window
-let g:miniBufExplMapCTabSwitchBufs = 1
-
+    let g:miniBufExplMapCTabSwitchBufs = 1
 "}}}
-
+    
 " Plugin: NERDtree {{{{
-Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/nerdtree'
 "}}}
 
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
-Plugin 'kien/ctrlp.vim'
+    Plugin 'kien/ctrlp.vim'
 "}}}
 
 " Plugin: solarized (color scheme) {{{
-Plugin 'altercation/vim-colors-solarized'
+    Plugin 'altercation/vim-colors-solarized'
 "}}}
 
 " Plugin: vim-flake8 (Python PEP8 syntax checker) {{{
-Plugin 'nvie/vim-flake8'
+    Plugin 'nvie/vim-flake8'
 " }}}
 
 " Plugin: vimlatex {{{
-" Plugin 'vimlatex'
-Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
 
 call vundle#end()            " required
@@ -326,6 +328,8 @@ endif
 " tex filetype
 if has("gui_macvim")
     autocmd FileType tex :exe "!open -a Skim " . shellescape(expand("%:r")) . ".pdf"<CR>
+elseif has("win32")
+    autocmd FileType tex :TTarget pdf
 endif
 
 " Python (Omni Complete, etc)
