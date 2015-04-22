@@ -37,7 +37,10 @@ call vundle#begin(path)
 "}}}
 
 " Plugin: Auto Pairs (Pair parentheses) {{{
-"    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'jiangmiao/auto-pairs'
+    if has("unix")
+        let g:AutoPairsMapCR = 1
+    endif
 " }}}
 
 " Plugin: Snipmate and dependencies (for code snippets) {{{
@@ -182,16 +185,12 @@ endif
 
 """ Key ReMappings {{{
 
-"   the EndOfLine command
-map - $
-vmap - $
-
 " map command :C to clear search highlighting
 command C let @/=""
 
 "   Map Omni Completion
 set completeopt=longest,menuone
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' : \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' : \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
