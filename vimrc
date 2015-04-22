@@ -38,9 +38,6 @@ call vundle#begin(path)
 
 " Plugin: Auto Pairs (Pair parentheses) {{{
     Plugin 'jiangmiao/auto-pairs'
-    if has("unix")
-        let g:AutoPairsMapCR = 1
-    endif
 " }}}
 
 " Plugin: Snipmate and dependencies (for code snippets) {{{
