@@ -75,7 +75,7 @@ call vundle#begin(path)
     let g:NERDTreeDirArrows=1
 "}}}
 
-" Plugin: easymotion (because I'm not good with <count>)
+" Plugin: easymotion (because I'm not good with <count>) {{{
     Plugin 'Lokaltog/vim-easymotion'
 "}}}
 
@@ -93,6 +93,11 @@ call vundle#begin(path)
 
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+" }}}
+
+" Plugin: Matlab stuff {{{ 
+    Plugin 'sgeb/vim-matlab'
+    Plugin 'elmanuelito/vim-matlab-behave'
 " }}}
 
 call vundle#end()            " required
@@ -117,9 +122,11 @@ language C
 set fencs=utf-8,euc-kr
 set encoding=utf-8
 
-" (don't forget to install fonts from ~/Drobbox/src/fonts)
+" (don't forget to install fonts from ~/OneDrive/src/fonts)
 " set gfn=BeanCode:h10:cDEFAULT
 if has("unix")
+    set gfn=Inconsolata-dz\ for\ Powerline
+elseif has("mac")
     set gfn=Inconsolata-dz\ for\ Powerline:h10
 elseif has("win32")
     set gfn=Inconsolata-dz_for_Powerline:h10:cDEFAULT
