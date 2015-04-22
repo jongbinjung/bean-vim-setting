@@ -37,7 +37,7 @@ call vundle#begin(path)
 "}}}
 
 " Plugin: Auto Pairs (Pair parentheses) {{{
-    Plugin 'jiangmiao/auto-pairs'
+"    Plugin 'jiangmiao/auto-pairs'
 " }}}
 
 " Plugin: Snipmate and dependencies (for code snippets) {{{
