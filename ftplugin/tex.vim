@@ -12,3 +12,8 @@ set formatoptions=t1
 
 " map \tt to texcount
 map <Leader>tt :!texcount %<CR>
+
+" auto pairs in tex env.
+if exists('g:AutoPairs')
+  let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', "'":"'"}
+end
