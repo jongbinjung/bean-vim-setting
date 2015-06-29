@@ -100,6 +100,24 @@ call vundle#begin(path)
     Plugin 'elmanuelito/vim-matlab-behave'
 " }}}
 
+" Plugin: Vim-R-plugin {{{
+    Plugin 'vim-scripts/Vim-R-plugin'
+    " R script settings
+    let maplocalleader = "`"
+    vmap <Space> <Plug>RDSendSelection
+    nmap <Space> <Plug>RDSendLine
+    " For integration of r-plugin with screen.vim
+    let g:vimrplugin_screenplugin = 1
+    let vimrplugin_applescript=0
+    let vimrplugin_screenvsplit = 1 " For vertical tmux split
+    " see R documentation in a Vim buffer
+    let vimrplugin_vimpager = "no"
+    " Don't use conque shell if installed
+    let vimrplugin_conqueplugin = 0
+    " instruct to use your own .screenrc file
+    let g:vimrplugin_noscreenrc = 1
+" }}}
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 "
