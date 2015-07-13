@@ -106,16 +106,11 @@ call vundle#begin(path)
     let maplocalleader = "`"
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
-    " For integration of r-plugin with screen.vim
-    let g:vimrplugin_screenplugin = 1
-    let vimrplugin_applescript=0
+
     let vimrplugin_screenvsplit = 1 " For vertical tmux split
-    " see R documentation in a Vim buffer
-    let vimrplugin_vimpager = "no"
-    " Don't use conque shell if installed
-    let vimrplugin_conqueplugin = 0
-    " instruct to use your own .screenrc file
-    let g:vimrplugin_noscreenrc = 1
+    let vimrplugin_vimpager = "no" " see R documentation in a Vim buffer
+    let vimrplugin_conqueplugin = 0 " Don't use conque shell
+    let vimrplugin_ca_ck = 1
 " }}}
 
 call vundle#end()            " required
