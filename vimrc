@@ -181,6 +181,10 @@ call vundle#begin(path)
     " Vim runtimes for Vim-R-plugin
     Plugin 'jalvesaq/R-Vim-runtime'
 " }}}
+"
+" Plugin: vim-tsv {{{
+    Plugin 'pdurbin/vim-tsv'
+" }}}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
