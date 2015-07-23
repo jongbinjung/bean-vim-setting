@@ -12,35 +12,101 @@ endif
 let rtp_path=path . 'Vundle.vim'
 let &runtimepath=&runtimepath . ',' . rtp_path
 
-""" Vundle settings {{{
+""" Vundle settings                                                          {{{
 
 call vundle#begin(path)
 
 " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
 
-" Plugin: Fugitive {{{
+" Plugin: Fugitive                                                           {{{
     Plugin 'tpope/vim-fugitive'
 " }}}
 
-" Plugin: Airline (for fancy status bar) {{{
+" Plugin: TaskList                                                           {{{
+"   Create a list of TODO/FIXME 
+    Plugin 'vim-scripts/TaskList.vim'
+    map <leader>td <Plug>TaskList
+" }}}
+
+" Plugin: Airline (for fancy status bar)                                     {{{
     Plugin 'bling/vim-airline'
     let g:airline_powerline_fonts = 1
 "}}}
 
-" Plugin: syntastic (syntax checker) {{{
+" Plugin: syntastic (syntax checker)                                         {{{
     Plugin 'scrooloose/syntastic'
 "}}}
 
-" Plugin: jedi-vim (Python autocomplete) {{{
-    Plugin 'davidhalter/jedi-vim'
+" Plugin: Python-mode                                                        {{{
+    Plugin 'klen/python-mode'
+    " Python-mode
+     " Activate rope
+     " Keys:
+     " K             Show python docs
+     " <Ctrl-Space>  Rope autocomplete
+     " <Ctrl-c>g     Rope goto definition
+     " <Ctrl-c>d     Rope show documentation
+     " <Ctrl-c>f     Rope find occurrences
+     " <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+     " [[            Jump on previous class or function (normal, visual, operator modes)
+     " ]]            Jump on next class or function (normal, visual, operator modes)
+     " [M            Jump on previous class or method (normal, visual, operator modes)
+     " ]M            Jump on next class or method (normal, visual, operator modes)
+    let g:pymode_rope = 0 " use jedi-vim
+    
+    " Documentation
+    let g:pymode_doc = 1
+    let g:pymode_doc_key = 'K'
+    
+    " Linting
+    let g:pymode_lint = 1
+    let g:pymode_lint_checker = "pyflakes,pep8"
+
+    " Auto check on save
+    let g:pymode_lint_write = 1
+    let g:pymode_lint_on_fly = 1
+    
+    " Enable breakpoints plugin
+    let g:pymode_breakpoint = 1
+    let g:pymode_breakpoint_bind = '<leader>b'
+    
+    " syntax highlighting
+    let g:pymode_syntax = 1
+    let g:pymode_syntax_all = 1
+    let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+    let g:pymode_syntax_space_errors = g:pymode_syntax_all
+    
+    " autofold code
+     let g:pymode_folding = 1
 "}}}
 
-" Plugin: Auto Pairs (Pair parentheses) {{{
+" Plugin: jedi-vim (Python autocomplete)                                     {{{
+    Plugin 'davidhalter/jedi-vim'
+
+    let g:jedi#completions_command = "<Ctrl-Space>"
+"}}}
+"
+" Plugin: Supertab (for completion with Tab)                                 {{{
+    Plugin 'ervandew/supertab'
+
+" }}}
+
+" Plugin: vim-tmux-runner                                                    {{{
+    " send commands to a tmux pane
+    Plugin 'christoomey/vim-tmux-runner'
+
+    " Options for retaining whitespaces when used with python
+    let g:VtrStripLeadingWhitespace = 0
+    let g:VtrClearEmptyLines = 0
+    let g:VtrAppendNewline = 1
+"}}}
+
+" Plugin: Auto Pairs (Pair parentheses)                                      {{{
     Plugin 'jiangmiao/auto-pairs'
 " }}}
 
-" Plugin: Snipmate and dependencies (for code snippets) {{{
+" Plugin: Snipmate and dependencies (for code snippets)                      {{{
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
@@ -49,20 +115,20 @@ call vundle#begin(path)
     Plugin 'honza/vim-snippets' 
 " }}}
 
-" Plugin: nerdcommenter {{{
+" Plugin: nerdcommenter                                                      {{{
     Plugin 'scrooloose/nerdcommenter'
 " }}}
 
-" Plugin: vim-gitgutter (visualize git diffs in the gutter) {{{
+" Plugin: vim-gitgutter (visualize git diffs in the gutter)                  {{{
     Plugin 'airblade/vim-gitgutter'
 "}}}
 
-" Plugin: minibufexpl (tabbed buffer explorer) {{{
+" Plugin: minibufexpl (tabbed buffer explorer)                               {{{
     Plugin 'techlivezheng/vim-plugin-minibufexpl'
-" Settings for minibufexpl
-"   Move windows with C-{hjkl}
+    " Settings for minibufexpl
+    "   Move windows with C-{hjkl}
     let g:miniBufExplMapWindowNavVim = 1
-"   C-Tab C-S-Tab for Switching Buffers within the Selected window
+    "   C-Tab C-S-Tab for Switching Buffers within the Selected window
     let g:miniBufExplMapCTabSwitchBufs = 1
 "}}}
     
@@ -75,29 +141,45 @@ call vundle#begin(path)
     let g:NERDTreeDirArrows=1
 "}}}
 
-" Plugin: easymotion (because I'm not good with <count>) {{{
+" Plugin: easymotion (because I'm not good with <count>)                     {{{
     Plugin 'Lokaltog/vim-easymotion'
 "}}}
 
-" Plugin: CtrlP (fuzzy file/directory search matching) {{{
+" Plugin: CtrlP (fuzzy file/directory search matching)                       {{{
     Plugin 'kien/ctrlp.vim'
 "}}}
 
-" Plugin: solarized (color scheme) {{{
+" Plugin: solarized (color scheme)                                           {{{
     Plugin 'altercation/vim-colors-solarized'
 "}}}
 
-" Plugin: vim-flake8 (Python PEP8 syntax checker) {{{
-    Plugin 'nvie/vim-flake8'
-" }}}
-
-" Plugin: vimlatex {{{
+" Plugin: vimlatex                                                           {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
 
-" Plugin: Matlab stuff {{{ 
+" Plugin: Matlab stuff                                                       {{{
     Plugin 'sgeb/vim-matlab'
     Plugin 'elmanuelito/vim-matlab-behave'
+" }}}
+
+" Plugin: Vim-R-plugin                                                       {{{
+    Plugin 'vim-scripts/Vim-R-plugin'
+    " R script settings
+    let maplocalleader = "`"
+
+    let vimrplugin_screenvsplit = 1 " For vertical tmux split
+    let vimrplugin_vimpager = "no" " see R documentation in a Vim buffer
+    let vimrplugin_conqueplugin = 0 " Don't use conque shell
+    let vimrplugin_ca_ck = 1
+    
+    " Vim-R plugin mappings
+    vmap <Space> <Plug>RDSendSelection
+    nmap <Space> <Plug>RDSendLine
+" }}}
+
+" Plugin: Vim-R-runtime                                                      {{{
+    " Vim runtimes for Vim-R-plugin
+    Plugin 'jalvesaq/R-Vim-runtime'
 " }}}
 
 call vundle#end()            " required
@@ -113,7 +195,7 @@ filetype plugin indent on    " required
 "                     append `!` to auto-approve removal
 "}}}
 
-""" Language/font settings (default to English) {{{
+""" Language/font settings (default to English)                              {{{
 
 set langmenu=en_US.UTF-8    " sets the language of the menu
 language C
@@ -134,7 +216,7 @@ endif
 
 "}}}
 
-""" Gui settings {{{
+""" Gui settings                                                             {{{
 
 " solarized color scheme
 set background=dark
@@ -180,7 +262,7 @@ endif
 
 "}}}
 
-""" Key ReMappings {{{
+""" Key ReMappings                                                           {{{
 
 " map command :C to clear search highlighting
 command C let @/=""
@@ -202,9 +284,13 @@ if has("mac")
     map! <D-j> <C-j>
 endif
 
+" Vim-tmux-runner Mappings
+vmap <leader><Space> :VtrSendSelectedToRunner<cr>
+nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
+nmap <leader>or :VtrOpenRunner<cr>
 "}}}
 
-""" Functional stuff {{{
+""" Functional stuff                                                         {{{
 
 " Set filetype stuff to on
 filetype on
@@ -272,6 +358,7 @@ set history=100
 
 " Set the foldmethod to auto fold 
 set foldmethod=marker
+let g:vimsyn_folding='afPt'
 
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
@@ -340,7 +427,7 @@ elseif has("win32")
 endif
 " }}}
 
-""" Vim-Latex Options {{{
+""" Vim-Latex Options                                                        {{{
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
@@ -361,8 +448,4 @@ elseif has("win32")
     autocmd FileType tex :TTarget pdf
 endif
 
-" Python (Omni Complete, etc)
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-map <unique> <Leader>rp :!python %<CR>
 " }}}

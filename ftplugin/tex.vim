@@ -10,6 +10,9 @@ let g:Tex_MultipleCompileFormats="pdf, aux"
 " Hard-wrap lines in TeX files
 set formatoptions=t1
 
+" don't pair `
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+
 " map \tt to texcount
 map <Leader>tt :!texcount %<CR>
 
