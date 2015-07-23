@@ -1,7 +1,7 @@
 " add keyword and abstract to the end of Tex_FoldedEnvironments
-let g:Tex_FoldedEnvironments = "verbatim,comment,eq,gather,align,figure,table,thebibliography,keyword,abstract,titlepage,front"
+" let g:Tex_FoldedEnvironments = ",keyword,abstract"
 
-let g:Tex_FoldedMisc = "<<<"
+" let g:Tex_FoldedMisc = "<<<,preamble"
 " let g:Tex_FoldedCommands = "newcommand,"
 
 let g:Tex_DefaultTargetFormat="pdf"
@@ -15,5 +15,5 @@ map <Leader>tt :!texcount %<CR>
 
 " auto pairs in tex env.
 if exists('g:AutoPairs')
-  let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
+  let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'"}
 end
