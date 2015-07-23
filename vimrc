@@ -181,9 +181,9 @@ call vundle#begin(path)
     " Vim runtimes for Vim-R-plugin
     Plugin 'jalvesaq/R-Vim-runtime'
 " }}}
-"
-" Plugin: vim-tsv {{{
-    Plugin 'pdurbin/vim-tsv'
+
+" Plugin: csv.vim {{{
+    Plugin 'chrisbra/csv.vim'
 " }}}
 
 call vundle#end()            " required
