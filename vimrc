@@ -1,5 +1,5 @@
 set nocompatible " be iMproved
-filetype off " required! 
+filetype off " required!
 
 if has("unix")
     let path=$HOME. '/.vim/bundle/'
@@ -18,26 +18,35 @@ call vundle#begin(path)
 
 " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
-
+" Plugin: vim-surround                                                           {{{
+    Plugin 'tpope/vim-surround'
+    " cs: change surround
+    " ds: delete surround
+    " yss: create surround (whole line)
+    " ysiw: create surround (text object)
+" }}}
+" Plugin: vim-repeat                                                           {{{
+    Plugin 'tpope/vim-repeat'
+    " repeat plugins with . (e.g., vim-surround)
+" }}}
 " Plugin: Fugitive                                                           {{{
     Plugin 'tpope/vim-fugitive'
 " }}}
-
 " Plugin: TaskList                                                           {{{
-"   Create a list of TODO/FIXME 
+"   Create a list of TODO/FIXME
     Plugin 'vim-scripts/TaskList.vim'
     map <leader>td <Plug>TaskList
 " }}}
-
-" Plugin: Airline (for fancy status bar)                                     {{{
+" Plugin: Airline (for fancy status bar) {{{
     Plugin 'bling/vim-airline'
     let g:airline_powerline_fonts = 1
-"}}}
 
+    " set tabs with Airline
+    let g:airline_theme='solarized'
+"}}}
 " Plugin: syntastic (syntax checker)                                         {{{
     Plugin 'scrooloose/syntastic'
 "}}}
-
 " Plugin: Python-mode                                                        {{{
     Plugin 'klen/python-mode'
     " Python-mode
@@ -54,11 +63,11 @@ call vundle#begin(path)
      " [M            Jump on previous class or method (normal, visual, operator modes)
      " ]M            Jump on next class or method (normal, visual, operator modes)
     let g:pymode_rope = 0 " use jedi-vim
-    
+
     " Documentation
     let g:pymode_doc = 1
     let g:pymode_doc_key = 'K'
-    
+
     " Linting
     let g:pymode_lint = 1
     let g:pymode_lint_checker = "pyflakes,pep8"
@@ -66,32 +75,29 @@ call vundle#begin(path)
     " Auto check on save
     let g:pymode_lint_write = 1
     let g:pymode_lint_on_fly = 1
-    
+
     " Enable breakpoints plugin
     let g:pymode_breakpoint = 1
     let g:pymode_breakpoint_bind = '<leader>b'
-    
+
     " syntax highlighting
     let g:pymode_syntax = 1
     let g:pymode_syntax_all = 1
     let g:pymode_syntax_indent_errors = g:pymode_syntax_all
     let g:pymode_syntax_space_errors = g:pymode_syntax_all
-    
+
     " autofold code
      let g:pymode_folding = 1
 "}}}
-
 " Plugin: jedi-vim (Python autocomplete)                                     {{{
     Plugin 'davidhalter/jedi-vim'
 
     let g:jedi#completions_command = "<Ctrl-Space>"
 "}}}
-"
 " Plugin: Supertab (for completion with Tab)                                 {{{
     Plugin 'ervandew/supertab'
 
 " }}}
-
 " Plugin: vim-tmux-runner                                                    {{{
     " send commands to a tmux pane
     Plugin 'christoomey/vim-tmux-runner'
@@ -101,37 +107,31 @@ call vundle#begin(path)
     let g:VtrClearEmptyLines = 0
     let g:VtrAppendNewline = 1
 "}}}
-
 " Plugin: Auto Pairs (Pair parentheses)                                      {{{
     Plugin 'jiangmiao/auto-pairs'
 " }}}
-
 " Plugin: Snipmate and dependencies (for code snippets)                      {{{
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
 
    " Optional:
-    Plugin 'honza/vim-snippets' 
+    Plugin 'honza/vim-snippets'
 " }}}
-
 " Plugin: nerdcommenter                                                      {{{
     Plugin 'scrooloose/nerdcommenter'
 " }}}
-
 " Plugin: vim-gitgutter (visualize git diffs in the gutter)                  {{{
     Plugin 'airblade/vim-gitgutter'
 "}}}
-
 " Plugin: minibufexpl (tabbed buffer explorer)                               {{{
-    Plugin 'techlivezheng/vim-plugin-minibufexpl'
+    Plugin 'weynhamz/vim-plugin-minibufexpl'
     " Settings for minibufexpl
     "   Move windows with C-{hjkl}
     let g:miniBufExplMapWindowNavVim = 1
     "   C-Tab C-S-Tab for Switching Buffers within the Selected window
     let g:miniBufExplMapCTabSwitchBufs = 1
 "}}}
-    
 " Plugin: NERDtree {{{{
     Plugin 'scrooloose/nerdtree'
     Plugin 'jistr/vim-nerdtree-tabs'
@@ -140,28 +140,22 @@ call vundle#begin(path)
     " use arrows to look prettier
     let g:NERDTreeDirArrows=1
 "}}}
-
 " Plugin: easymotion (because I'm not good with <count>)                     {{{
     Plugin 'Lokaltog/vim-easymotion'
 "}}}
-
 " Plugin: CtrlP (fuzzy file/directory search matching)                       {{{
     Plugin 'kien/ctrlp.vim'
 "}}}
-
 " Plugin: solarized (color scheme)                                           {{{
     Plugin 'altercation/vim-colors-solarized'
 "}}}
-
 " Plugin: vimlatex                                                           {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
-
 " Plugin: Matlab stuff                                                       {{{
     Plugin 'sgeb/vim-matlab'
     Plugin 'elmanuelito/vim-matlab-behave'
 " }}}
-
 " Plugin: Vim-R-plugin                                                       {{{
     Plugin 'vim-scripts/Vim-R-plugin'
     " R script settings
@@ -171,17 +165,15 @@ call vundle#begin(path)
     let vimrplugin_vimpager = "no" " see R documentation in a Vim buffer
     let vimrplugin_conqueplugin = 0 " Don't use conque shell
     let vimrplugin_ca_ck = 1
-    
+
     " Vim-R plugin mappings
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
 " }}}
-
 " Plugin: Vim-R-runtime                                                      {{{
     " Vim runtimes for Vim-R-plugin
     Plugin 'jalvesaq/R-Vim-runtime'
 " }}}
-
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
 " }}}
@@ -191,15 +183,14 @@ filetype plugin indent on    " required
 "
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; 
+" :PluginInstall    - installs plugins;
 "                     append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; 
+" :PluginSearch foo - searches for foo;
 "                     append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; 
+" :PluginClean      - confirms removal of unused plugins;
 "                     append `!` to auto-approve removal
 "}}}
-
-""" Language/font settings (default to English)                              {{{
+""" Language/font settings (default to English) {{{
 
 set langmenu=en_US.UTF-8    " sets the language of the menu
 language C
@@ -219,9 +210,15 @@ elseif has("win32")
 endif
 
 "}}}
-
-""" Gui settings                                                             {{{
-
+""" Custom functions {{{
+function! <SID>StripTrailingWhiteSpaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+""" }}}
+""" Gui settings {{{
 " solarized color scheme
 set background=dark
 colorscheme solarized
@@ -238,8 +235,8 @@ set vb
 " Allow backspacing over indent, eol, and the start of an insert
 set backspace=2
 
-" Set the status line the way i like it
-set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+" Status-line settings have been moved to Vundle > Airline plugin settings
+" set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
@@ -265,36 +262,22 @@ if has("gui_running")
 endif
 
 "}}}
-
 """ Key ReMappings                                                           {{{
-
 " map command :C to clear search highlighting
 command C let @/=""
-
-"   Map Omni Completion
-set completeopt=longest,menuone
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' : \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' : \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 "   Window split switching
 map , <C-w>
 
-"   Mapping the Apple (Command Key) to Ctrl for Mac
-if has("mac")
-    map <D-d> <C-d>
-    map <D-u> <C-u>
-    map <D-j> <C-j>
-    map! <D-j> <C-j>
-endif
-
 " Vim-tmux-runner Mappings
-vmap <leader><Space> :VtrSendSelectedToRunner<cr>
+vmap <leader><Space> :VtrSendLinesToRunner<cr>
 nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
 nmap <leader>or :VtrOpenRunner<cr>
 "}}}
+""" Functional stuff {{{
 
-""" Functional stuff                                                         {{{
+" Remove trailing white spaces on save
+autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
 " Set filetype stuff to on
 filetype on
@@ -327,7 +310,7 @@ elseif has("win32")
 endif
 
 
-" Make sure that unsaved buffers that are to be put in the background are 
+" Make sure that unsaved buffers that are to be put in the background are
 " allowed to go in there (ie. the "must save first" error doesn't come up)
 set hidden
 
@@ -343,9 +326,9 @@ set lazyredraw
 set showcmd
 
 
-" Setting this below makes it so that error messages don't disappear after 
+" Setting this below makes it so that error messages don't disappear after
 " one second on startup.
-" set debug=msg
+set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
@@ -360,7 +343,7 @@ set timeoutlen=500
 " Keep some stuff in the history
 set history=100
 
-" Set the foldmethod to auto fold 
+" Set the foldmethod to auto fold
 set foldmethod=marker
 let g:vimsyn_folding='afPt'
 
@@ -385,7 +368,7 @@ set key=
 set wildmenu
 
 " Make it easier to complete buffers, open files, etc...
-" set wildignorecase
+set wildignorecase
 
 " Same as default except that I remove the 'u' option
 set complete=.,w,b,t
@@ -417,9 +400,9 @@ set clipboard+=unnamed
 set autoread
 
 " Don't make backups. Because I enjoy the thrill ...
- set nobackup
-" set nowritebackup
- 
+set nobackup
+set nowritebackup
+
 " ...But when I do make backups, make sure that they don't get in the way :D
 
 if has("unix")
@@ -430,7 +413,6 @@ elseif has("win32")
     set directory=~/_vim/tmp,.
 endif
 " }}}
-
 """ Vim-Latex Options                                                        {{{
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
@@ -444,7 +426,7 @@ endif
 
 " set iskeyword+=:
 "
-" OPTIONAL: Make Vim open the compiled pdf (if it exists) when opening a 
+" OPTIONAL: Make Vim open the compiled pdf (if it exists) when opening a
 " tex filetype
 if has("gui_macvim")
     autocmd FileType tex :exe "silent !open -a Skim " . shellescape(expand("%:r")) . ".pdf"
