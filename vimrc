@@ -132,7 +132,7 @@ call vundle#begin(path)
     "   C-Tab C-S-Tab for Switching Buffers within the Selected window
     let g:miniBufExplMapCTabSwitchBufs = 1
 "}}}
-" Plugin: NERDtree {{{{
+" Plugin: NERDtree {{{
     Plugin 'scrooloose/nerdtree'
     Plugin 'jistr/vim-nerdtree-tabs'
     " set <C-n> to toggle
@@ -328,7 +328,7 @@ set showcmd
 
 " Setting this below makes it so that error messages don't disappear after
 " one second on startup.
-set debug=msg
+" set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
@@ -400,8 +400,8 @@ set clipboard+=unnamed
 set autoread
 
 " Don't make backups. Because I enjoy the thrill ...
-set nobackup
-set nowritebackup
+"set nobackup
+"set nowritebackup
 
 " ...But when I do make backups, make sure that they don't get in the way :D
 
