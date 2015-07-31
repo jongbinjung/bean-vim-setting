@@ -18,21 +18,34 @@ call vundle#begin(path)
 
 " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
-" Plugin: vim-surround                                                           {{{
+
+" Plugin: vim-surround  {{{
     Plugin 'tpope/vim-surround'
     " cs: change surround
     " ds: delete surround
     " yss: create surround (whole line)
     " ysiw: create surround (text object)
 " }}}
-" Plugin: vim-repeat                                                           {{{
+" Plugin: vim-repeat {{{
     Plugin 'tpope/vim-repeat'
     " repeat plugins with . (e.g., vim-surround)
 " }}}
-" Plugin: Fugitive                                                           {{{
+" Plugin: Fugitive {{{
     Plugin 'tpope/vim-fugitive'
 " }}}
-" Plugin: TaskList                                                           {{{
+" Plugin: signify (visualize diffs in the gutter) {{{
+    Plugin 'mhinz/vim-signify'
+    let g:signify_line_highlight = 1
+    let g:signify_vcs_list = [ 'git', 'hg' ]
+    let g:signify_sign_change = '~'
+    let g:signify_sign_changedelete = '/'
+
+    let g:signify_cursorhold_insert     = 1
+    let g:signify_cursorhold_normal     = 1
+    let g:signify_update_on_bufenter    = 0
+    let g:signify_update_on_focusgained = 1
+"}}}
+" Plugin: TaskList {{{
 "   Create a list of TODO/FIXME
     Plugin 'vim-scripts/TaskList.vim'
     map <leader>td <Plug>TaskList
@@ -44,10 +57,10 @@ call vundle#begin(path)
     " set tabs with Airline
     let g:airline_theme='solarized'
 "}}}
-" Plugin: syntastic (syntax checker)                                         {{{
+" Plugin: syntastic (syntax checker) {{{
     Plugin 'scrooloose/syntastic'
 "}}}
-" Plugin: Python-mode                                                        {{{
+" Plugin: Python-mode {{{
     Plugin 'klen/python-mode'
     " Python-mode
      " Activate rope
@@ -89,16 +102,16 @@ call vundle#begin(path)
     " autofold code
      let g:pymode_folding = 1
 "}}}
-" Plugin: jedi-vim (Python autocomplete)                                     {{{
+" Plugin: jedi-vim (Python autocomplete) {{{
     Plugin 'davidhalter/jedi-vim'
 
     let g:jedi#completions_command = "<Ctrl-Space>"
 "}}}
-" Plugin: Supertab (for completion with Tab)                                 {{{
+" Plugin: Supertab (for completion with Tab) {{{
     Plugin 'ervandew/supertab'
 
 " }}}
-" Plugin: vim-tmux-runner                                                    {{{
+" Plugin: vim-tmux-runner {{{
     " send commands to a tmux pane
     Plugin 'christoomey/vim-tmux-runner'
 
@@ -107,10 +120,10 @@ call vundle#begin(path)
     let g:VtrClearEmptyLines = 0
     let g:VtrAppendNewline = 1
 "}}}
-" Plugin: Auto Pairs (Pair parentheses)                                      {{{
+" Plugin: Auto Pairs (Pair parentheses) {{{
     Plugin 'jiangmiao/auto-pairs'
 " }}}
-" Plugin: Snipmate and dependencies (for code snippets)                      {{{
+" Plugin: Snipmate and dependencies (for code snippets) {{{
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
@@ -118,13 +131,10 @@ call vundle#begin(path)
    " Optional:
     Plugin 'honza/vim-snippets'
 " }}}
-" Plugin: nerdcommenter                                                      {{{
+" Plugin: nerdcommenter {{{
     Plugin 'scrooloose/nerdcommenter'
 " }}}
-" Plugin: vim-gitgutter (visualize git diffs in the gutter)                  {{{
-    Plugin 'airblade/vim-gitgutter'
-"}}}
-" Plugin: minibufexpl (tabbed buffer explorer)                               {{{
+" Plugin: minibufexpl (tabbed buffer explorer) {{{
     Plugin 'weynhamz/vim-plugin-minibufexpl'
     " Settings for minibufexpl
     "   Move windows with C-{hjkl}
@@ -140,23 +150,23 @@ call vundle#begin(path)
     " use arrows to look prettier
     let g:NERDTreeDirArrows=1
 "}}}
-" Plugin: easymotion (because I'm not good with <count>)                     {{{
+" Plugin: easymotion (because I'm not good with <count>) {{{
     Plugin 'Lokaltog/vim-easymotion'
 "}}}
-" Plugin: CtrlP (fuzzy file/directory search matching)                       {{{
+" Plugin: CtrlP (fuzzy file/directory search matching) {{{
     Plugin 'kien/ctrlp.vim'
 "}}}
-" Plugin: solarized (color scheme)                                           {{{
+" Plugin: solarized (color scheme) {{{
     Plugin 'altercation/vim-colors-solarized'
 "}}}
-" Plugin: vimlatex                                                           {{{
+" Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
-" Plugin: Matlab stuff                                                       {{{
+" Plugin: Matlab stuff {{{
     Plugin 'sgeb/vim-matlab'
     Plugin 'elmanuelito/vim-matlab-behave'
 " }}}
-" Plugin: Vim-R-plugin                                                       {{{
+" Plugin: Vim-R-plugin {{{
     Plugin 'vim-scripts/Vim-R-plugin'
     " R script settings
     let maplocalleader = "`"
@@ -170,12 +180,17 @@ call vundle#begin(path)
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
 " }}}
-" Plugin: Vim-R-runtime                                                      {{{
+" Plugin: Vim-R-runtime {{{
     " Vim runtimes for Vim-R-plugin
     Plugin 'jalvesaq/R-Vim-runtime'
 " }}}
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
+" }}}
+" Plugin: absolute/relative line number toggle {{{
+    Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+    let g:NumberToggleTrigger="<F2>"
+    set nu
 " }}}
 
 call vundle#end()            " required
@@ -223,8 +238,9 @@ endfun
 set background=dark
 colorscheme solarized
 
-" show line numbers
-set nu
+" Line numbers galore! {{{
+" relative numbers when focused, absolute when lose focus
+" }}}
 
 " Make command line one line high
 set ch=1
