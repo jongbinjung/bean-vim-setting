@@ -35,7 +35,7 @@ call vundle#begin(path)
 " }}}
 " Plugin: signify (visualize diffs in the gutter) {{{
     Plugin 'mhinz/vim-signify'
-    let g:signify_line_highlight = 1
+    let g:signify_line_highlight = 0
     let g:signify_vcs_list = [ 'git', 'hg' ]
     let g:signify_sign_change = '~'
     let g:signify_sign_changedelete = '/'
@@ -117,7 +117,7 @@ call vundle#begin(path)
 
     " Options for retaining whitespaces when used with python
     let g:VtrStripLeadingWhitespace = 0
-    let g:VtrClearEmptyLines = 0
+    let g:VtrClearEmptyLines = 1
     let g:VtrAppendNewline = 1
 "}}}
 " Plugin: Auto Pairs (Pair parentheses) {{{
@@ -179,6 +179,9 @@ call vundle#begin(path)
     " Vim-R plugin mappings
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
+
+    " map <M--> to <- in R
+    let vimrplugin_assign_map = "<M-->"
 " }}}
 " Plugin: Vim-R-runtime {{{
     " Vim runtimes for Vim-R-plugin
