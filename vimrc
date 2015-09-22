@@ -196,6 +196,9 @@ call vundle#begin(path)
     let g:NumberToggleTrigger="<F2>"
     set nu
 " }}}
+" Plugin: vim-julia {{{
+    Plugin 'JuliaLang/julia-vim'
+" }}}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
