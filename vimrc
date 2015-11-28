@@ -146,9 +146,10 @@ call vundle#begin(path)
     Plugin 'scrooloose/nerdtree'
     Plugin 'jistr/vim-nerdtree-tabs'
     " set <C-n> to toggle
-    map <C-n> :NERDTreeToggle<CR>
+    map <C-n> :NERDTreeMirrorToggle<CR>
     " use arrows to look prettier
     let g:NERDTreeDirArrows=1
+    let g:nerdtree_tabs_open_on_gui_startup = 0
 "}}}
 " Plugin: easymotion (because I'm not good with <count>) {{{
     Plugin 'Lokaltog/vim-easymotion'
@@ -194,6 +195,9 @@ call vundle#begin(path)
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'
     let g:NumberToggleTrigger="<F2>"
     set nu
+" }}}
+" Plugin: vim-julia {{{
+    Plugin 'JuliaLang/julia-vim'
 " }}}
 
 call vundle#end()            " required
