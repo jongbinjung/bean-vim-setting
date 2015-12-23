@@ -90,7 +90,7 @@ call vundle#begin(path)
 
     " Auto check on save
     let g:pymode_lint_write = 1
-    let g:pymode_lint_on_fly = 1
+    let g:pymode_lint_on_fly = 0
 
     " Enable breakpoints plugin
     let g:pymode_breakpoint = 1
