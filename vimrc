@@ -8,6 +8,7 @@ elseif has("win32")
     let &runtimepath=&runtimepath . ',' . $HOME . '_vim'
 endif
 
+
 " Set the appropriate runtimepath
 let rtp_path=path . 'Vundle.vim'
 let &runtimepath=&runtimepath . ',' . rtp_path
@@ -56,6 +57,8 @@ call vundle#begin(path)
 
     " set tabs with Airline
     let g:airline_theme='solarized'
+    " set terminal colors to 256 for solarized theme
+    set t_Co=256
 "}}}
 " Plugin: syntastic (syntax checker) {{{
     Plugin 'scrooloose/syntastic'
