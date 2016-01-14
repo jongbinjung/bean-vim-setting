@@ -15,8 +15,8 @@ if has('unix')
     let g:Tex_ViewRule_pdf = 'zathura'
 
     " Trying to add same for pdfs, hoping that package SynTex is installed
-    let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
-    " let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
+    "let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
+     let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
 
     " Get the correct servername, which should be the filename of the tex file,
     " without the extension.
