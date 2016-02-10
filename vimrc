@@ -202,6 +202,19 @@ call vundle#begin(path)
 " Plugin: vim-julia {{{
     Plugin 'JuliaLang/julia-vim'
 " }}}
+" Distraction-free writing {{{
+" Plugin: limelight {{{
+    Plugin 'junegunn/limelight.vim'
+
+    let g:limelight_conceal_ctermfg = 'darkgray'
+" }}}
+" Plugin: Goyo {{{
+    Plugin 'junegunn/goyo.vim'
+
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+" }}}
+" }}}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
