@@ -160,8 +160,9 @@ call vundle#begin(path)
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
     Plugin 'kien/ctrlp.vim'
 "}}}
-" Plugin: solarized (color scheme) {{{
+" Plugin: color schemes {{{
     Plugin 'altercation/vim-colors-solarized'
+    Plugin 'crusoexia/vim-monokai'
 "}}}
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
