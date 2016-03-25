@@ -22,3 +22,10 @@ minimax
 nondecreasing
 nonnegative
 affine
+optimality
+motonicity
+AUC
+FTA
+dataset
+datasets
+resampling
