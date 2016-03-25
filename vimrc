@@ -52,7 +52,8 @@ call vundle#begin(path)
     map <leader>td <Plug>TaskList
 " }}}
 " Plugin: Airline (for fancy status bar) {{{
-    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'vim-airline/vim-airline'
     let g:airline_powerline_fonts = 1
 
     " set tabs with Airline
