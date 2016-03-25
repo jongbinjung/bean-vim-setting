@@ -453,6 +453,10 @@ elseif has("win32")
     set backupdir=~/_vim/tmp,.
     set directory=~/_vim/tmp,.
 endif
+
+" Set the update to 250ms for signs and whatnot
+set updatetime=250
+
 " }}}
 """ Vim-Latex Options                                                        {{{
 " IMPORTANT: grep will sometimes skip displaying the file name if you
