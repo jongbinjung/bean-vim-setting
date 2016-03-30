@@ -171,10 +171,6 @@ call vundle#begin(path)
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
-" Plugin: Matlab stuff {{{
-    Plugin 'sgeb/vim-matlab'
-    Plugin 'elmanuelito/vim-matlab-behave'
-" }}}
 " Plugin: Vim-R-plugin {{{
     Plugin 'vim-scripts/Vim-R-plugin'
     " R script settings
