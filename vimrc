@@ -31,6 +31,9 @@ call vundle#begin(path)
     Plugin 'tpope/vim-repeat'
     " repeat plugins with . (e.g., vim-surround)
 " }}}
+" Plugin: YouCompleteMe {{{
+    Plugin 'Valloric/YouCompleteMe'
+" }}}
 " Plugin: Fugitive {{{
     Plugin 'tpope/vim-fugitive'
 " }}}
@@ -107,9 +110,9 @@ call vundle#begin(path)
      let g:pymode_folding = 1
 "}}}
 " Plugin: jedi-vim (Python autocomplete) {{{
-    Plugin 'davidhalter/jedi-vim'
+    "Plugin 'davidhalter/jedi-vim'
 
-    let g:jedi#completions_command = "<Ctrl-Space>"
+    "let g:jedi#completions_command = "<Ctrl-Space>"
 "}}}
 " Plugin: Supertab (for completion with Tab) {{{
     Plugin 'ervandew/supertab'
