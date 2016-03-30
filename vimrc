@@ -171,25 +171,18 @@ call vundle#begin(path)
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
-" Plugin: Vim-R-plugin {{{
-    Plugin 'vim-scripts/Vim-R-plugin'
-    " R script settings
+" Plugin: Nvim-R {{{
+    Plugin 'jalvesaq/Nvim-R'
     let maplocalleader = "`"
 
-    let vimrplugin_screenvsplit = 1 " For vertical tmux split
-    let vimrplugin_vimpager = "no" " see R documentation in a Vim buffer
-    let vimrplugin_conqueplugin = 0 " Don't use conque shell
-    let vimrplugin_ca_ck = 1
-
+    " Use tmux
+    let R_in_buffer = 0
+    let R_applescript = 0
+    let R_tmux_split = 1
+    "
     " Vim-R plugin mappings
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
-
-    " map <M--> to <- in R
-    let vimrplugin_assign_map = "<M-->"
-" }}}
-" Plugin: Nvim-R {{{
-    Plugin 'jalvesaq/Nvim-R'
 " }}}
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
