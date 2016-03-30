@@ -188,9 +188,8 @@ call vundle#begin(path)
     " map <M--> to <- in R
     let vimrplugin_assign_map = "<M-->"
 " }}}
-" Plugin: Vim-R-runtime {{{
-    " Vim runtimes for Vim-R-plugin
-    Plugin 'jalvesaq/R-Vim-runtime'
+" Plugin: Nvim-R {{{
+    Plugin 'jalvesaq/Nvim-R'
 " }}}
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
