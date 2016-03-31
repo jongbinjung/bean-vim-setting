@@ -53,12 +53,12 @@ call vundle#begin(path)
     Plugin 'crusoexia/vim-monokai'
 "}}}
 " Plugin: minibufexpl (tabbed buffer explorer) {{{
-    Plugin 'weynhamz/vim-plugin-minibufexpl'
-    " Settings for minibufexpl
-    "   Move windows with C-{hjkl}
-    let g:miniBufExplMapWindowNavVim = 1
-    "   C-Tab C-S-Tab for Switching Buffers within the Selected window
-    let g:miniBufExplMapCTabSwitchBufs = 1
+    "Plugin 'weynhamz/vim-plugin-minibufexpl'
+    "" Settings for minibufexpl
+    ""   Move windows with C-{hjkl}
+    "let g:miniBufExplMapWindowNavVim = 1
+    ""   C-Tab C-S-Tab for Switching Buffers within the Selected window
+    "let g:miniBufExplMapCTabSwitchBufs = 1
 "}}}
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
@@ -69,6 +69,12 @@ call vundle#begin(path)
     let g:airline_theme='solarized'
     " set terminal colors to 256 for solarized theme
     set t_Co=256
+
+    " Enable the list of buffers
+    let g:airline#extensions#tabline#enabled = 1
+
+    " Show just the filename
+    let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
 " Plugin: absolute/relative line number toggle {{{
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'
@@ -114,6 +120,9 @@ call vundle#begin(path)
 "}}}
 " Plugin: YouCompleteMe {{{
     Plugin 'Valloric/YouCompleteMe'
+
+    let g:ycm_python_binary_path = '/usr/bin/python'
+    let g:ycm_server_python_interpreter = '/usr/bin/python'
 " }}}
 " Plugin: syntastic (syntax checker) {{{
     Plugin 'scrooloose/syntastic'
@@ -138,7 +147,6 @@ call vundle#begin(path)
     map <leader>td <Plug>TaskList
 " }}}
 "}}} END: basic IDE capabilities
-" Python {{{
 " Plugin: Python-mode {{{
     Plugin 'klen/python-mode'
     " Python-mode
@@ -181,13 +189,6 @@ call vundle#begin(path)
     " autofold code
      let g:pymode_folding = 1
 "}}}
-" Plugin: jedi-vim (Python autocomplete) {{{
-    "Plugin 'davidhalter/jedi-vim'
-
-    "let g:jedi#completions_command = "<Ctrl-Space>"
-"}}}
-" }}} END: Python
-" R {{{
 " Plugin: Nvim-R {{{
     Plugin 'jalvesaq/Nvim-R'
     let maplocalleader = "`"
@@ -201,13 +202,9 @@ call vundle#begin(path)
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
 " }}}
-" }}} END: R
-" Julia {{{
 " Plugin: vim-julia {{{
     Plugin 'JuliaLang/julia-vim'
 " }}}
-" }}} END: Julia
-" Go {{{
 " Plugin: vim-go {{{
     Plugin 'fatih/vim-go'
 
@@ -220,13 +217,11 @@ call vundle#begin(path)
 
     " Colision prevention between syntastic and go-vim
     let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }}}}
-" }}} END: Go
-" LaTex {{{
+    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+" }}}
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " }}}
-" }}} END: LaTex
 " }}} END: IDE plugins
 " non-language filetypes {{{
 " Plugin: csv.vim {{{
@@ -385,7 +380,7 @@ set showcmd
 
 " Setting this below makes it so that error messages don't disappear after
 " one second on startup.
-" set debug=msg
+set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
