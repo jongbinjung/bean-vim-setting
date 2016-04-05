@@ -217,18 +217,18 @@ call vundle#begin(path)
     Plugin 'JuliaLang/julia-vim'
 " }}}
 " Plugin: vim-go {{{
-    "Plugin 'fatih/vim-go'
+    Plugin 'fatih/vim-go'
 
-    "let g:go_highlight_functions = 1
-    "let g:go_highlight_methods = 1
-    "let g:go_highlight_structs = 1
-    "let g:go_highlight_interfaces = 1
-    "let g:go_highlight_operators = 1
-    "let g:go_highlight_build_constraints = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_interfaces = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
 
-    "" Colision prevention between syntastic and go-vim
-    "let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-    "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+    " Colision prevention between syntastic and go-vim
+    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
@@ -336,7 +336,7 @@ endif
 " map command :C to clear search highlighting
 command C let @/=""
 
-"   Window split switching
+" Window split switching
 map , <C-w>
 "}}}
 """ Functional stuff {{{
@@ -390,7 +390,8 @@ set lazyredraw
 set showcmd
 
 " Setting this below makes it so that error messages don't disappear after
-" one second on startup.
+" one second on startup. But may result in excessive messaging in plugins such
+" as NerdTree or CtrlP
 "set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
