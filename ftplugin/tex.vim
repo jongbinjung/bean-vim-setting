@@ -25,8 +25,8 @@ if has('unix')
     let theuniqueserv = expand("%:r")
 
     " Working!!!, when we run vim appropriately
-    let g:Tex_ViewRuleComplete_pdf = 'zathura -x "vim --servername '.theuniqueserv.' --remote +\%{line} \%{input}" $*.pdf &'
-    " let g:Tex_ViewRuleComplete_pdf = 'zathura -s -x "vim --servername '.theuniqueserv.' --remote +\%{line} \%{input}" $*.pdf 2>/dev/null &'
+    let g:Tex_ViewRuleComplete_pdf = 'zathura $*.pdf &'
+    "let g:Tex_ViewRuleComplete_pdf = 'zathura -x "vim --servername '.theuniqueserv.' --remote +\%{line} \%{input}" $*.pdf &'
 
     function! Synctex()
         let execstr = 'silent! !zathura --synctex-forward '.line('.').':1:"'.expand('%').'" "'.expand("%:p:r").'".pdf'

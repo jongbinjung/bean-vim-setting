@@ -52,14 +52,6 @@ call vundle#begin(path)
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'crusoexia/vim-monokai'
 "}}}
-" Plugin: minibufexpl (tabbed buffer explorer) {{{
-    "Plugin 'weynhamz/vim-plugin-minibufexpl'
-    "" Settings for minibufexpl
-    ""   Move windows with C-{hjkl}
-    "let g:miniBufExplMapWindowNavVim = 1
-    ""   C-Tab C-S-Tab for Switching Buffers within the Selected window
-    "let g:miniBufExplMapCTabSwitchBufs = 1
-"}}}
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'vim-airline/vim-airline'
@@ -74,6 +66,19 @@ call vundle#begin(path)
     let g:airline#extensions#tabline#enabled = 1
 
     " Show just the filename
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    nmap <leader>1 <Plug>AirlineSelectTab1
+    nmap <leader>2 <Plug>AirlineSelectTab2
+    nmap <leader>3 <Plug>AirlineSelectTab3
+    nmap <leader>4 <Plug>AirlineSelectTab4
+    nmap <leader>5 <Plug>AirlineSelectTab5
+    nmap <leader>6 <Plug>AirlineSelectTab6
+    nmap <leader>7 <Plug>AirlineSelectTab7
+    nmap <leader>8 <Plug>AirlineSelectTab8
+    nmap <leader>9 <Plug>AirlineSelectTab9
+    nmap <leader>- <Plug>AirlineSelectPrevTab
+    nmap <leader>= <Plug>AirlineSelectNextTab
+
     let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
 " Plugin: absolute/relative line number toggle {{{
@@ -121,8 +126,13 @@ call vundle#begin(path)
 " Plugin: YouCompleteMe {{{
     Plugin 'Valloric/YouCompleteMe'
 
+    let g:loaded_youcompleteme = 1
+
     let g:ycm_python_binary_path = '/usr/bin/python'
     let g:ycm_server_python_interpreter = '/usr/bin/python'
+
+    " Restrict filetypes
+    let g:ycm_filetype_blacklist = { 'tex':1, 'r':1 }
 " }}}
 " Plugin: syntastic (syntax checker) {{{
     Plugin 'scrooloose/syntastic'
@@ -206,18 +216,18 @@ call vundle#begin(path)
     Plugin 'JuliaLang/julia-vim'
 " }}}
 " Plugin: vim-go {{{
-    Plugin 'fatih/vim-go'
+    "Plugin 'fatih/vim-go'
 
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_structs = 1
-    let g:go_highlight_interfaces = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_build_constraints = 1
+    "let g:go_highlight_functions = 1
+    "let g:go_highlight_methods = 1
+    "let g:go_highlight_structs = 1
+    "let g:go_highlight_interfaces = 1
+    "let g:go_highlight_operators = 1
+    "let g:go_highlight_build_constraints = 1
 
-    " Colision prevention between syntastic and go-vim
-    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+    "" Colision prevention between syntastic and go-vim
+    "let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+    "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
 " Plugin: vimlatex {{{
     Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
@@ -380,7 +390,7 @@ set showcmd
 
 " Setting this below makes it so that error messages don't disappear after
 " one second on startup.
-set debug=msg
+"set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
