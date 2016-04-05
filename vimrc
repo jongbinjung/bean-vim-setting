@@ -19,7 +19,7 @@ call vundle#begin(path)
 
 " let Vundle manage Vundle, required
     Plugin 'gmarik/Vundle.vim'
-
+" File/text navigation {{{
 " Plugin: vim-surround  {{{
     Plugin 'tpope/vim-surround'
     " cs: change surround
@@ -31,9 +31,58 @@ call vundle#begin(path)
     Plugin 'tpope/vim-repeat'
     " repeat plugins with . (e.g., vim-surround)
 " }}}
-" Plugin: YouCompleteMe {{{
-    Plugin 'Valloric/YouCompleteMe'
+" Plugin: NERDtree {{{
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'jistr/vim-nerdtree-tabs'
+    " set <C-n> to toggle
+    map <C-n> :NERDTreeMirrorToggle<CR>
+    " use arrows to look prettier
+    let g:NERDTreeDirArrows=1
+    let g:nerdtree_tabs_open_on_gui_startup = 0
+"}}}
+" Plugin: easymotion (because I'm not good with <count>) {{{
+    Plugin 'Lokaltog/vim-easymotion'
+"}}}
+" Plugin: CtrlP (fuzzy file/directory search matching) {{{
+    Plugin 'kien/ctrlp.vim'
+"}}}
+" }}} END: File/text navigation
+" Visual enhancements {{{
+" Plugin: color schemes {{{
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'crusoexia/vim-monokai'
+"}}}
+" Plugin: minibufexpl (tabbed buffer explorer) {{{
+    "Plugin 'weynhamz/vim-plugin-minibufexpl'
+    "" Settings for minibufexpl
+    ""   Move windows with C-{hjkl}
+    "let g:miniBufExplMapWindowNavVim = 1
+    ""   C-Tab C-S-Tab for Switching Buffers within the Selected window
+    "let g:miniBufExplMapCTabSwitchBufs = 1
+"}}}
+" Plugin: Airline (for fancy status bar) {{{
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'vim-airline/vim-airline'
+    let g:airline_powerline_fonts = 1
+
+    " set tabs with Airline
+    let g:airline_theme='solarized'
+    " set terminal colors to 256 for solarized theme
+    set t_Co=256
+
+    " Enable the list of buffers
+    let g:airline#extensions#tabline#enabled = 1
+
+    " Show just the filename
+    let g:airline#extensions#tabline#fnamemod = ':t'
+"}}}
+" Plugin: absolute/relative line number toggle {{{
+    Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+    let g:NumberToggleTrigger="<F2>"
+    set nu
 " }}}
+" }}} END: Visual enhancements
+" Version Control (git) {{{
 " Plugin: Fugitive {{{
     Plugin 'tpope/vim-fugitive'
 " }}}
@@ -49,24 +98,55 @@ call vundle#begin(path)
     let g:signify_update_on_bufenter    = 0
     let g:signify_update_on_focusgained = 1
 "}}}
+" }}} END: VCS (git)
+" IDE plugins {{{
+" basic IDE capabilities {{{
+" Plugin: Auto Pairs (Pair parentheses) {{{
+    Plugin 'jiangmiao/auto-pairs'
+" }}}
+" Plugin: vim-tmux-runner {{{
+    " send commands to a tmux pane
+    Plugin 'christoomey/vim-tmux-runner'
+
+    " Options for retaining whitespaces when used with python
+    let g:VtrStripLeadingWhitespace = 0
+    let g:VtrClearEmptyLines = 1
+    let g:VtrAppendNewline = 1
+
+    " Vim-tmux-runner Mappings
+    vmap <leader><Space> :VtrSendLinesToRunner<cr>
+    nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
+    nmap <leader>or :VtrOpenRunner<cr>
+"}}}
+" Plugin: YouCompleteMe {{{
+    Plugin 'Valloric/YouCompleteMe'
+
+    let g:ycm_python_binary_path = '/usr/bin/python'
+    let g:ycm_server_python_interpreter = '/usr/bin/python'
+" }}}
+" Plugin: syntastic (syntax checker) {{{
+    Plugin 'scrooloose/syntastic'
+"}}}
+" Plugin: Supertab (for completion with Tab) {{{
+    Plugin 'ervandew/supertab'
+" }}}
+" Plugin: Snipmate and dependencies (for code snippets) {{{
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'garbas/vim-snipmate'
+
+   " Optional:
+    Plugin 'honza/vim-snippets'
+" }}}
+" Plugin: nerdcommenter {{{
+    Plugin 'scrooloose/nerdcommenter'
+" }}}
 " Plugin: TaskList {{{
 "   Create a list of TODO/FIXME
     Plugin 'vim-scripts/TaskList.vim'
     map <leader>td <Plug>TaskList
 " }}}
-" Plugin: Airline (for fancy status bar) {{{
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts = 1
-
-    " set tabs with Airline
-    let g:airline_theme='solarized'
-    " set terminal colors to 256 for solarized theme
-    set t_Co=256
-"}}}
-" Plugin: syntastic (syntax checker) {{{
-    Plugin 'scrooloose/syntastic'
-"}}}
+"}}} END: basic IDE capabilities
 " Plugin: Python-mode {{{
     Plugin 'klen/python-mode'
     " Python-mode
@@ -109,68 +189,6 @@ call vundle#begin(path)
     " autofold code
      let g:pymode_folding = 1
 "}}}
-" Plugin: jedi-vim (Python autocomplete) {{{
-    "Plugin 'davidhalter/jedi-vim'
-
-    "let g:jedi#completions_command = "<Ctrl-Space>"
-"}}}
-" Plugin: Supertab (for completion with Tab) {{{
-    Plugin 'ervandew/supertab'
-
-" }}}
-" Plugin: vim-tmux-runner {{{
-    " send commands to a tmux pane
-    Plugin 'christoomey/vim-tmux-runner'
-
-    " Options for retaining whitespaces when used with python
-    let g:VtrStripLeadingWhitespace = 0
-    let g:VtrClearEmptyLines = 1
-    let g:VtrAppendNewline = 1
-"}}}
-" Plugin: Auto Pairs (Pair parentheses) {{{
-    Plugin 'jiangmiao/auto-pairs'
-" }}}
-" Plugin: Snipmate and dependencies (for code snippets) {{{
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
-
-   " Optional:
-    Plugin 'honza/vim-snippets'
-" }}}
-" Plugin: nerdcommenter {{{
-    Plugin 'scrooloose/nerdcommenter'
-" }}}
-" Plugin: minibufexpl (tabbed buffer explorer) {{{
-    Plugin 'weynhamz/vim-plugin-minibufexpl'
-    " Settings for minibufexpl
-    "   Move windows with C-{hjkl}
-    let g:miniBufExplMapWindowNavVim = 1
-    "   C-Tab C-S-Tab for Switching Buffers within the Selected window
-    let g:miniBufExplMapCTabSwitchBufs = 1
-"}}}
-" Plugin: NERDtree {{{
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'jistr/vim-nerdtree-tabs'
-    " set <C-n> to toggle
-    map <C-n> :NERDTreeMirrorToggle<CR>
-    " use arrows to look prettier
-    let g:NERDTreeDirArrows=1
-    let g:nerdtree_tabs_open_on_gui_startup = 0
-"}}}
-" Plugin: easymotion (because I'm not good with <count>) {{{
-    Plugin 'Lokaltog/vim-easymotion'
-"}}}
-" Plugin: CtrlP (fuzzy file/directory search matching) {{{
-    Plugin 'kien/ctrlp.vim'
-"}}}
-" Plugin: color schemes {{{
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'crusoexia/vim-monokai'
-"}}}
-" Plugin: vimlatex {{{
-    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-" }}}
 " Plugin: Nvim-R {{{
     Plugin 'jalvesaq/Nvim-R'
     let maplocalleader = "`"
@@ -185,17 +203,32 @@ call vundle#begin(path)
     vmap <Space> <Plug>RDSendSelection
     nmap <Space> <Plug>RDSendLine
 " }}}
-" Plugin: csv.vim {{{
-    Plugin 'chrisbra/csv.vim'
-" }}}
-" Plugin: absolute/relative line number toggle {{{
-    Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-    let g:NumberToggleTrigger="<F2>"
-    set nu
-" }}}
 " Plugin: vim-julia {{{
     Plugin 'JuliaLang/julia-vim'
 " }}}
+" Plugin: vim-go {{{
+    Plugin 'fatih/vim-go'
+
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_interfaces = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
+
+    " Colision prevention between syntastic and go-vim
+    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+" }}}
+" Plugin: vimlatex {{{
+    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+" }}}
+" }}} END: IDE plugins
+" non-language filetypes {{{
+" Plugin: csv.vim {{{
+    Plugin 'chrisbra/csv.vim'
+" }}}
+" }}} END: non-language filetypes
 " Distraction-free writing {{{
 " Plugin: limelight {{{
     Plugin 'junegunn/limelight.vim'
@@ -222,7 +255,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins;
 "                     append `!` to auto-approve removal
 "}}}
-""" Language/font settings (default to English) {{{
+" Language/font settings (default to English) {{{
 
 set langmenu=en_US.UTF-8    " sets the language of the menu
 language C
@@ -231,8 +264,6 @@ language C
 set fencs=utf-8,euc-kr
 set encoding=utf-8
 
-" (don't forget to install fonts from ~/OneDrive/src/fonts)
-" set gfn=BeanCode:h10:cDEFAULT
 if has("unix")
     set gfn=Inconsolata-dz\ for\ Powerline
 elseif has("mac")
@@ -254,10 +285,6 @@ endfun
 " solarized color scheme
 set background=dark
 colorscheme solarized
-
-" Line numbers galore! {{{
-" relative numbers when focused, absolute when lose focus
-" }}}
 
 " Make command line one line high
 set ch=1
@@ -301,11 +328,6 @@ command C let @/=""
 
 "   Window split switching
 map , <C-w>
-
-" Vim-tmux-runner Mappings
-vmap <leader><Space> :VtrSendLinesToRunner<cr>
-nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
-nmap <leader>or :VtrOpenRunner<cr>
 "}}}
 """ Functional stuff {{{
 
@@ -342,7 +364,6 @@ elseif has("win32")
     " set shell=ksh.exe
 endif
 
-
 " Make sure that unsaved buffers that are to be put in the background are
 " allowed to go in there (ie. the "must save first" error doesn't come up)
 set hidden
@@ -358,10 +379,9 @@ set lazyredraw
 " set and lazyredraw is set then it's slow as molasses, so we unset this
 set showcmd
 
-
 " Setting this below makes it so that error messages don't disappear after
 " one second on startup.
-" set debug=msg
+set debug=msg
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
@@ -448,27 +468,4 @@ endif
 
 " Set the update to 250ms for signs and whatnot
 set updatetime=250
-
-" }}}
-""" Vim-Latex Options                                                        {{{
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-" set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-" let g:tex_flavor='latex'
-
-" set iskeyword+=:
-"
-" OPTIONAL: Make Vim open the compiled pdf (if it exists) when opening a
-" tex filetype
-if has("gui_macvim")
-    autocmd FileType tex :exe "silent !open -a Skim " . shellescape(expand("%:r")) . ".pdf"
-elseif has("win32")
-    autocmd FileType tex :TTarget pdf
-endif
-
 " }}}
