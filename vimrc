@@ -445,6 +445,9 @@ set textwidth=80
 set colorcolumn=80
 " set winminwidth=79
 
+" Set the textwidth to 72 for gitcommits
+au FileType gitcommit set tw=72
+
 " get rid of the silly characters in separators
 set fillchars = ""
 
