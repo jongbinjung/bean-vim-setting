@@ -45,6 +45,8 @@ call vundle#begin(path)
 "}}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
     Plugin 'kien/ctrlp.vim'
+
+    let g:ctrlp_show_hidden = 1
 "}}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
