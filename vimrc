@@ -297,6 +297,8 @@ endfun
 " solarized color scheme
 set background=dark
 colorscheme solarized
+set cursorline
+highlight CursorLine cterm=underline
 
 " Make command line one line high
 set ch=1
