@@ -57,7 +57,7 @@ call vundle#begin(path)
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts = 1
+    let g:airline_powerline_fonts = 0
 
     " set tabs with Airline
     let g:airline_theme='solarized'
@@ -78,8 +78,8 @@ call vundle#begin(path)
     nmap <leader>7 <Plug>AirlineSelectTab7
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
-    nmap <leader>- <Plug>AirlineSelectPrevTab
-    nmap <leader>= <Plug>AirlineSelectNextTab
+    nmap <leader>[ <Plug>AirlineSelectPrevTab
+    nmap <leader>] <Plug>AirlineSelectNextTab
 
     let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
@@ -125,30 +125,8 @@ call vundle#begin(path)
     nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
     nmap <leader>or :VtrOpenRunner<cr>
 "}}}
-" Plugin: YouCompleteMe {{{
-    Plugin 'Valloric/YouCompleteMe'
-
-    let g:loaded_youcompleteme = 1
-
-    let g:ycm_python_binary_path = '/usr/bin/python'
-    let g:ycm_server_python_interpreter = '/usr/bin/python'
-
-    " Restrict filetypes
-    let g:ycm_filetype_blacklist = { 'tex':1, 'r':1 }
-" }}}
-" Plugin: syntastic (syntax checker) {{{
-    Plugin 'scrooloose/syntastic'
-"}}}
 " Plugin: Supertab (for completion with Tab) {{{
     Plugin 'ervandew/supertab'
-" }}}
-" Plugin: Snipmate and dependencies (for code snippets) {{{
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
-
-   " Optional:
-    Plugin 'honza/vim-snippets'
 " }}}
 " Plugin: nerdcommenter {{{
     Plugin 'scrooloose/nerdcommenter'
@@ -202,18 +180,18 @@ call vundle#begin(path)
      let g:pymode_folding = 1
 "}}}
 " Plugin: Nvim-R {{{
-    Plugin 'jalvesaq/Nvim-R'
-    let maplocalleader = "`"
+    "Plugin 'jalvesaq/Nvim-R'
+    "let maplocalleader = "`"
 
-    " Use tmux
-    let R_in_buffer = 0
-    let R_applescript = 0
-    let R_tmux_split = 1
-    let R_assign = 0
-    "
-    " Vim-R plugin mappings
-    vmap <Space> <Plug>RDSendSelection
-    nmap <Space> <Plug>RDSendLine
+    "" Use tmux
+    "let R_in_buffer = 0
+    "let R_applescript = 0
+    "let R_tmux_split = 1
+    "let R_assign = 0
+    ""
+    "" Vim-R plugin mappings
+    "vmap <Space> <Plug>RDSendSelection
+    "nmap <Space> <Plug>RDSendLine
 " }}}
 " Plugin: vim-julia {{{
     Plugin 'JuliaLang/julia-vim'
@@ -277,7 +255,7 @@ set fencs=utf-8,euc-kr
 set encoding=utf-8
 
 if has("unix")
-    set gfn=Inconsolata-dz\ for\ Powerline
+    set gfn=Roboto\ Mono\ for\ Powerline
 elseif has("mac")
     set gfn=Inconsolata-dz\ for\ Powerline:h10
 elseif has("win32")
@@ -296,6 +274,7 @@ endfun
 """ Gui settings {{{
 " solarized color scheme
 set background=dark
+"colorscheme solarized
 colorscheme solarized
 set cursorline
 highlight CursorLine cterm=underline
