@@ -159,8 +159,8 @@ call vundle#begin(path)
     let g:pymode_doc_key = 'K'
 
     " Linting
-    let g:pymode_lint = 1
-    let g:pymode_lint_checker = "pyflakes,pep8"
+    "let g:pymode_lint = 1
+    "let g:pymode_lint_checker = "pyflakes,pep8"
 
     " Auto check on save
     let g:pymode_lint_write = 1
@@ -179,6 +179,20 @@ call vundle#begin(path)
     " autofold code
      let g:pymode_folding = 1
 "}}}
+" Plugin: Nvim-R {{{
+    "Plugin 'jalvesaq/Nvim-R'
+    "let maplocalleader = "`"
+
+    "" Use tmux
+    "let R_in_buffer = 0
+    "let R_applescript = 0
+    "let R_tmux_split = 1
+    "let R_assign = 0
+    ""
+    "" Vim-R plugin mappings
+    "vmap <Space> <Plug>RDSendSelection
+    "nmap <Space> <Plug>RDSendLine
+" }}}
 " Plugin: Nvim-R {{{
     "Plugin 'jalvesaq/Nvim-R'
     "let maplocalleader = "`"
@@ -333,9 +347,9 @@ filetype plugin on
 filetype indent on
 
 " Tabstops are 4 spaces
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 
