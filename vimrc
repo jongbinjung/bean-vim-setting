@@ -57,7 +57,7 @@ call vundle#begin(path)
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts = 0
+    let g:airline_powerline_fonts = 1
 
     " set tabs with Airline
     let g:airline_theme='solarized'
