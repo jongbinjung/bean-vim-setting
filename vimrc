@@ -54,6 +54,14 @@ call vundle#begin(path)
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'crusoexia/vim-monokai'
 "}}}
+" Plugin: Dim inactive windows {{{
+    Plugin 'blueyed/vim-diminactive'
+    let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
+    let g:diminactive_enable_focus = 1
+"}}}
+" Plugin: Vim-tmux focus events fix{{{
+    Plugin 'tmux-plugins/vim-tmux-focus-events'
+"}}}
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'vim-airline/vim-airline'
@@ -111,6 +119,15 @@ call vundle#begin(path)
 " Plugin: Auto Pairs (Pair parentheses) {{{
     Plugin 'jiangmiao/auto-pairs'
 " }}}
+" Plugin: ultisnips {{{
+    Plugin 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger = "<c-j>"
+    let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+" }}}
+" Plugin: vim-snippets {{{
+    Plugin 'honza/vim-snippets'
+" }}}
 " Plugin: vim-tmux-runner {{{
     " send commands to a tmux pane
     Plugin 'christoomey/vim-tmux-runner'
@@ -142,14 +159,6 @@ call vundle#begin(path)
 " Plugin: Supertab (for completion with Tab) {{{
     Plugin 'ervandew/supertab'
 " }}}
-" Plugin: Snipmate and dependencies (for code snippets) {{{
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
-
-   " Optional:
-    Plugin 'honza/vim-snippets'
-" }}}
 " Plugin: nerdcommenter {{{
     Plugin 'scrooloose/nerdcommenter'
 " }}}
@@ -157,6 +166,9 @@ call vundle#begin(path)
 "   Create a list of TODO/FIXME
     Plugin 'vim-scripts/TaskList.vim'
     map <leader>td <Plug>TaskList
+" }}}
+" Plugin: syntastic {{{
+    Plugin 'scrooloose/syntastic'
 " }}}
 "}}} END: basic IDE capabilities
 " Plugin: Python-mode {{{
@@ -181,12 +193,12 @@ call vundle#begin(path)
     let g:pymode_doc_key = 'K'
 
     " Linting
-    let g:pymode_lint = 1
-    let g:pymode_lint_checker = "pyflakes,pep8"
+    "let g:pymode_lint = 1
+    "let g:pymode_lint_checker = "pyflakes,pep8"
 
     " Auto check on save
-    let g:pymode_lint_write = 1
-    let g:pymode_lint_on_fly = 0
+    "let g:pymode_lint_write = 1
+    "let g:pymode_lint_on_fly = 0
 
     " Enable breakpoints plugin
     let g:pymode_breakpoint = 1
