@@ -13,7 +13,7 @@ endif
 let rtp_path=path . 'Vundle.vim'
 let &runtimepath=&runtimepath . ',' . rtp_path
 
-""" Vundle settings                                                          {{{
+""" Vundle settings {{{
 
 call vundle#begin(path)
 
@@ -52,7 +52,16 @@ call vundle#begin(path)
 " Visual enhancements {{{
 " Plugin: color schemes {{{
     Plugin 'altercation/vim-colors-solarized'
+    "let g:solarized_termcolors=256
     Plugin 'crusoexia/vim-monokai'
+"}}}
+" Plugin: Dim inactive windows {{{
+    Plugin 'blueyed/vim-diminactive'
+    let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
+    let g:diminactive_enable_focus = 1
+"}}}
+" Plugin: Vim-tmux focus events fix{{{
+    Plugin 'tmux-plugins/vim-tmux-focus-events'
 "}}}
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
@@ -78,8 +87,8 @@ call vundle#begin(path)
     nmap <leader>7 <Plug>AirlineSelectTab7
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
-    nmap <leader>[ <Plug>AirlineSelectPrevTab
-    nmap <leader>] <Plug>AirlineSelectNextTab
+    nmap <leader>- <Plug>AirlineSelectPrevTab
+    nmap <leader>= <Plug>AirlineSelectNextTab
 
     let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
@@ -111,6 +120,15 @@ call vundle#begin(path)
 " Plugin: Auto Pairs (Pair parentheses) {{{
     Plugin 'jiangmiao/auto-pairs'
 " }}}
+" Plugin: ultisnips {{{
+    Plugin 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger = "<c-j>"
+    let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+" }}}
+" Plugin: vim-snippets {{{
+    Plugin 'honza/vim-snippets'
+" }}}
 " Plugin: vim-tmux-runner {{{
     " send commands to a tmux pane
     Plugin 'christoomey/vim-tmux-runner'
@@ -135,6 +153,9 @@ call vundle#begin(path)
 "   Create a list of TODO/FIXME
     Plugin 'vim-scripts/TaskList.vim'
     map <leader>td <Plug>TaskList
+" }}}
+" Plugin: syntastic {{{
+    Plugin 'scrooloose/syntastic'
 " }}}
 "}}} END: basic IDE capabilities
 " Plugin: Python-mode {{{
@@ -163,8 +184,8 @@ call vundle#begin(path)
     "let g:pymode_lint_checker = "pyflakes,pep8"
 
     " Auto check on save
-    let g:pymode_lint_write = 1
-    let g:pymode_lint_on_fly = 0
+    "let g:pymode_lint_write = 1
+    "let g:pymode_lint_on_fly = 0
 
     " Enable breakpoints plugin
     let g:pymode_breakpoint = 1
@@ -180,32 +201,18 @@ call vundle#begin(path)
      let g:pymode_folding = 1
 "}}}
 " Plugin: Nvim-R {{{
-    "Plugin 'jalvesaq/Nvim-R'
-    "let maplocalleader = "`"
+    Plugin 'jalvesaq/Nvim-R'
+    let maplocalleader = "`"
 
-    "" Use tmux
-    "let R_in_buffer = 0
-    "let R_applescript = 0
-    "let R_tmux_split = 1
-    "let R_assign = 0
-    ""
-    "" Vim-R plugin mappings
-    "vmap <Space> <Plug>RDSendSelection
-    "nmap <Space> <Plug>RDSendLine
-" }}}
-" Plugin: Nvim-R {{{
-    "Plugin 'jalvesaq/Nvim-R'
-    "let maplocalleader = "`"
-
-    "" Use tmux
-    "let R_in_buffer = 0
-    "let R_applescript = 0
-    "let R_tmux_split = 1
-    "let R_assign = 0
-    ""
-    "" Vim-R plugin mappings
-    "vmap <Space> <Plug>RDSendSelection
-    "nmap <Space> <Plug>RDSendLine
+    " Use tmux
+    let R_in_buffer = 0
+    let R_applescript = 0
+    let R_tmux_split = 1
+    let R_assign = 0
+    "
+    " Vim-R plugin mappings
+    vmap <Space> <Plug>RDSendSelection
+    nmap <Space> <Plug>RDSendLine
 " }}}
 " Plugin: vim-julia {{{
     Plugin 'JuliaLang/julia-vim'
@@ -224,28 +231,12 @@ call vundle#begin(path)
     let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
     let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
-" Plugin: vimlatex {{{
-    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-" }}}
 " }}} END: IDE plugins
 " non-language filetypes {{{
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
 " }}}
 " }}} END: non-language filetypes
-" Distraction-free writing {{{
-" Plugin: limelight {{{
-    Plugin 'junegunn/limelight.vim'
-
-    let g:limelight_conceal_ctermfg = 'darkgray'
-" }}}
-" Plugin: Goyo {{{
-    Plugin 'junegunn/goyo.vim'
-
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
-" }}}
-" }}}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -288,8 +279,8 @@ endfun
 """ Gui settings {{{
 " solarized color scheme
 set background=dark
-"colorscheme solarized
 colorscheme solarized
+
 set cursorline
 highlight CursorLine cterm=underline
 
