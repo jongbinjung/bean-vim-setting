@@ -16,7 +16,8 @@ if has('unix')
 
     " Trying to add same for pdfs, hoping that package SynTex is installed
     "let g:Tex_CompileRule_pdf = 'xelatex -synctex=1 -interaction=nonstopmode $*'
-     let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
+    let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode $*'
+     "let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
 
     " Get the correct servername, which should be the filename of the tex file,
     " without the extension.
@@ -25,8 +26,8 @@ if has('unix')
     let theuniqueserv = expand("%:r")
 
     " Working!!!, when we run vim appropriately
-    let g:Tex_ViewRuleComplete_pdf = 'zathura $*.pdf &'
-    "let g:Tex_ViewRuleComplete_pdf = 'zathura -x "vim --servername '.theuniqueserv.' --remote +\%{line} \%{input}" $*.pdf &'
+    "let g:Tex_ViewRuleComplete_pdf = 'zathura $*.pdf &'
+    let g:Tex_ViewRuleComplete_pdf = 'zathura -x "vim --servername '.theuniqueserv.' --remote +\%{line} \%{input}" $*.pdf &'
 
     function! Synctex()
         let execstr = 'silent! !zathura --synctex-forward '.line('.').':1:"'.expand('%').'" "'.expand("%:p:r").'".pdf'
