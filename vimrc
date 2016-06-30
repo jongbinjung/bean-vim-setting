@@ -97,6 +97,13 @@ call vundle#begin(path)
     let g:NumberToggleTrigger="<F2>"
     set nu
 " }}}
+" Plugin: Markdown folding {{{
+    Plugin 'gabrielelana/vim-markdown'
+    let g:markdown_enable_folding = 1
+" }}}
+" Plugin: Table formating {{{
+    Plugin 'godlygeek/tabular'
+" }}}
 " }}} END: Visual enhancements
 " Version Control (git) {{{
 " Plugin: Fugitive {{{
@@ -280,6 +287,9 @@ endfun
 " solarized color scheme
 set background=dark
 colorscheme solarized
+
+" Set conceal to hide stuff under the hood
+set conceallevel=2
 
 set cursorline
 highlight CursorLine cterm=underline
