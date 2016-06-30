@@ -13,7 +13,7 @@ endif
 let rtp_path=path . 'Vundle.vim'
 let &runtimepath=&runtimepath . ',' . rtp_path
 
-""" Vundle settings                                                          {{{
+""" Vundle settings {{{
 
 call vundle#begin(path)
 
@@ -52,6 +52,7 @@ call vundle#begin(path)
 " Visual enhancements {{{
 " Plugin: color schemes {{{
     Plugin 'altercation/vim-colors-solarized'
+    "let g:solarized_termcolors=256
     Plugin 'crusoexia/vim-monokai'
 "}}}
 " Plugin: Dim inactive windows {{{
@@ -95,6 +96,13 @@ call vundle#begin(path)
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'
     let g:NumberToggleTrigger="<F2>"
     set nu
+" }}}
+" Plugin: Markdown folding {{{
+    Plugin 'gabrielelana/vim-markdown'
+    let g:markdown_enable_folding = 1
+" }}}
+" Plugin: Table formating {{{
+    Plugin 'godlygeek/tabular'
 " }}}
 " }}} END: Visual enhancements
 " Version Control (git) {{{
@@ -141,20 +149,6 @@ call vundle#begin(path)
     vmap <leader><Space> :VtrSendLinesToRunner<cr>
     nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
     nmap <leader>or :VtrOpenRunner<cr>
-"}}}
-" Plugin: YouCompleteMe {{{
-    Plugin 'Valloric/YouCompleteMe'
-
-    let g:loaded_youcompleteme = 1
-
-    let g:ycm_python_binary_path = '/usr/bin/python'
-    let g:ycm_server_python_interpreter = '/usr/bin/python'
-
-    " Restrict filetypes
-    let g:ycm_filetype_blacklist = { 'tex':1, 'r':1 }
-" }}}
-" Plugin: syntastic (syntax checker) {{{
-    Plugin 'scrooloose/syntastic'
 "}}}
 " Plugin: Supertab (for completion with Tab) {{{
     Plugin 'ervandew/supertab'
@@ -244,28 +238,12 @@ call vundle#begin(path)
     let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
     let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
-" Plugin: vimlatex {{{
-    Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-" }}}
 " }}} END: IDE plugins
 " non-language filetypes {{{
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
 " }}}
 " }}} END: non-language filetypes
-" Distraction-free writing {{{
-" Plugin: limelight {{{
-    Plugin 'junegunn/limelight.vim'
-
-    let g:limelight_conceal_ctermfg = 'darkgray'
-" }}}
-" Plugin: Goyo {{{
-    Plugin 'junegunn/goyo.vim'
-
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
-" }}}
-" }}}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -289,7 +267,7 @@ set fencs=utf-8,euc-kr
 set encoding=utf-8
 
 if has("unix")
-    set gfn=Inconsolata-dz\ for\ Powerline
+    set gfn=Roboto\ Mono\ for\ Powerline
 elseif has("mac")
     set gfn=Inconsolata-dz\ for\ Powerline:h10
 elseif has("win32")
@@ -309,6 +287,10 @@ endfun
 " solarized color scheme
 set background=dark
 colorscheme solarized
+
+" Set conceal to hide stuff under the hood
+set conceallevel=2
+
 set cursorline
 highlight CursorLine cterm=underline
 
@@ -366,9 +348,9 @@ filetype plugin on
 filetype indent on
 
 " Tabstops are 4 spaces
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 
