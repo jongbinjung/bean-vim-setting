@@ -13,7 +13,7 @@ endif
 let rtp_path=path . 'Vundle.vim'
 let &runtimepath=&runtimepath . ',' . rtp_path
 
-""" Vundle settings                                                          {{{
+""" Vundle settings {{{
 
 call vundle#begin(path)
 
@@ -52,7 +52,16 @@ call vundle#begin(path)
 " Visual enhancements {{{
 " Plugin: color schemes {{{
     Plugin 'altercation/vim-colors-solarized'
+    "let g:solarized_termcolors=256
     Plugin 'crusoexia/vim-monokai'
+"}}}
+" Plugin: Dim inactive windows {{{
+    Plugin 'blueyed/vim-diminactive'
+    let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
+    let g:diminactive_enable_focus = 1
+"}}}
+" Plugin: Vim-tmux focus events fix {{{
+    Plugin 'tmux-plugins/vim-tmux-focus-events'
 "}}}
 " Plugin: Airline (for fancy status bar) {{{
     Plugin 'vim-airline/vim-airline-themes'
@@ -88,6 +97,13 @@ call vundle#begin(path)
     let g:NumberToggleTrigger="<F2>"
     set nu
 " }}}
+" Plugin: Markdown folding {{{
+    Plugin 'gabrielelana/vim-markdown'
+    let g:markdown_enable_folding = 1
+" }}}
+" Plugin: Table formating {{{
+    Plugin 'godlygeek/tabular'
+" }}}
 " }}} END: Visual enhancements
 " Version Control (git) {{{
 " Plugin: Fugitive {{{
@@ -111,6 +127,15 @@ call vundle#begin(path)
 " Plugin: Auto Pairs (Pair parentheses) {{{
     Plugin 'jiangmiao/auto-pairs'
 " }}}
+" Plugin: ultisnips {{{
+    Plugin 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger = "<c-j>"
+    let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+" }}}
+" Plugin: vim-snippets {{{
+    Plugin 'honza/vim-snippets'
+" }}}
 " Plugin: vim-tmux-runner {{{
     " send commands to a tmux pane
     Plugin 'christoomey/vim-tmux-runner'
@@ -125,30 +150,8 @@ call vundle#begin(path)
     nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
     nmap <leader>or :VtrOpenRunner<cr>
 "}}}
-" Plugin: YouCompleteMe {{{
-    Plugin 'Valloric/YouCompleteMe'
-
-    let g:loaded_youcompleteme = 1
-
-    let g:ycm_python_binary_path = '/usr/bin/python'
-    let g:ycm_server_python_interpreter = '/usr/bin/python'
-
-    " Restrict filetypes
-    let g:ycm_filetype_blacklist = { 'tex':1, 'r':1 }
-" }}}
-" Plugin: syntastic (syntax checker) {{{
-    Plugin 'scrooloose/syntastic'
-"}}}
 " Plugin: Supertab (for completion with Tab) {{{
     Plugin 'ervandew/supertab'
-" }}}
-" Plugin: Snipmate and dependencies (for code snippets) {{{
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
-
-   " Optional:
-    Plugin 'honza/vim-snippets'
 " }}}
 " Plugin: nerdcommenter {{{
     Plugin 'scrooloose/nerdcommenter'
@@ -157,6 +160,9 @@ call vundle#begin(path)
 "   Create a list of TODO/FIXME
     Plugin 'vim-scripts/TaskList.vim'
     map <leader>td <Plug>TaskList
+" }}}
+" Plugin: syntastic {{{
+    Plugin 'scrooloose/syntastic'
 " }}}
 "}}} END: basic IDE capabilities
 " Plugin: Python-mode {{{
@@ -301,8 +307,10 @@ endfun
 set background=dark
 colorscheme solarized
 
+" Set conceal to hide stuff under the hood
+set conceallevel=2
+
 set cursorline
-hi CursorLine cterm=underline
 
 " Make command line one line high
 set ch=1
@@ -358,9 +366,9 @@ filetype plugin on
 filetype indent on
 
 " Tabstops are 4 spaces
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 
