@@ -240,6 +240,9 @@ call vundle#begin(path)
 " Plugin: csv.vim {{{
     Plugin 'chrisbra/csv.vim'
 " }}}
+" Plugin: vim-toml {{{
+    Plugin 'cespare/vim-toml'
+" }}}
 " }}} END: non-language filetypes
 " Distraction-free writing {{{
 " Plugin: limelight {{{
@@ -297,8 +300,9 @@ endfun
 " solarized color scheme
 set background=dark
 colorscheme solarized
+
 set cursorline
-highlight CursorLine cterm=underline
+hi CursorLine cterm=underline
 
 " Make command line one line high
 set ch=1
@@ -412,6 +416,7 @@ set timeoutlen=500
 set history=100
 
 " Set the foldmethod to auto fold
+" TODO: this should probably be set on a local (filetype) basis?
 set foldmethod=marker
 let g:vimsyn_folding='afPt'
 
