@@ -95,6 +95,7 @@ call vundle#begin(path)
 " Plugin: absolute/relative line number toggle {{{
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'
     let g:NumberToggleTrigger="<F2>"
+    set relativenumber
     set nu
 " }}}
 " Plugin: Markdown folding {{{
