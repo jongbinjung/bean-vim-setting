@@ -35,3 +35,8 @@ UCI
 stepwise
 tradeoff
 covariates
+ignorable
+covariate
+grey
+IPW
+RoR
