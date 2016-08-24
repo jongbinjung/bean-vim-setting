@@ -1,6 +1,9 @@
 " Always use ViM (not Vi)
 set nocompatible " be iMproved
 
+" <Leader> to ,
+let mapleader=","
+
 """ Vundle settings {{{
 filetype off  " required by Vundle
 
@@ -350,8 +353,6 @@ map <silent> <C-l> :let @/=""<CR>
 " Window commands with ;
 map ; <C-w>
 
-" <Leader> to ,
-let mapleader=","
 "}}}
 """ Functional stuff {{{
 
