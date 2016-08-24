@@ -1,6 +1,9 @@
 " Always use ViM (not Vi)
 set nocompatible " be iMproved
 
+" <Leader> to ,
+let mapleader=","
+
 """ Vundle settings {{{
 filetype off  " required by Vundle
 
@@ -23,51 +26,51 @@ call vundle#begin(path)  " Start Vundle plugins {{{
 Plugin 'gmarik/Vundle.vim'
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
-  Plugin 'tpope/vim-surround'
-  " cs: change surround
-  " ds: delete surround
-  " yss: create surround (whole line)
-  " ysiw: create surround (text object)
+Plugin 'tpope/vim-surround'
+" cs: change surround
+" ds: delete surround
+" yss: create surround (whole line)
+" ysiw: create surround (text object)
 " }}}
 " Plugin: vim-repeat {{{
-  Plugin 'tpope/vim-repeat'
-  " repeat plugins with . (e.g., vim-surround)
+Plugin 'tpope/vim-repeat'
+" repeat plugins with . (e.g., vim-surround)
 " }}}
 " Plugin: NERDtree {{{
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'jistr/vim-nerdtree-tabs'
-  " set <C-n> to toggle
-  map <C-n> :NERDTreeMirrorToggle<CR>
-  " use arrows to look prettier
-  let g:NERDTreeDirArrows=1
-  let g:nerdtree_tabs_open_on_gui_startup = 0
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+" set <C-n> to toggle
+map <C-n> :NERDTreeMirrorToggle<CR>
+" use arrows to look prettier
+let g:NERDTreeDirArrows=1
+let g:nerdtree_tabs_open_on_gui_startup = 0
 "}}}
 " Plugin: easymotion (because I'm not good with <count>) {{{
-  Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 "}}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
-  Plugin 'kien/ctrlp.vim'
-  let g:ctrlp_show_hidden = 1
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_show_hidden = 1
 "}}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
 " Plugin: color schemes {{{
-  Plugin 'altercation/vim-colors-solarized'
-  "let g:solarized_termcolors=256
-  "Plugin 'crusoexia/vim-monokai'
+Plugin 'altercation/vim-colors-solarized'
+"let g:solarized_termcolors=256
+"Plugin 'crusoexia/vim-monokai'
 "}}}
 " Plugin: Dim inactive windows {{{
-  Plugin 'blueyed/vim-diminactive'
-  let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
-  let g:diminactive_enable_focus = 1
+Plugin 'blueyed/vim-diminactive'
+let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
+let g:diminactive_enable_focus = 1
 "}}}
 " Plugin: Vim-tmux focus events fix {{{
-  " TODO(jongbin): Using Ctrl to show mouse location in Gnome will mess-up
-  " Ctrl key bindings -- Ctrl-down will be captured as losing focus from vim!
-  Plugin 'tmux-plugins/vim-tmux-focus-events'
+" TODO(jongbin): Using Ctrl to show mouse location in Gnome will mess-up
+" Ctrl key bindings -- Ctrl-down will be captured as losing focus from vim!
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 "}}}
 " Plugin: Airline (for fancy status bar) {{{
-  Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline-themes'
   Plugin 'vim-airline/vim-airline'
   let g:airline_powerline_fonts = 1
 
@@ -90,8 +93,10 @@ Plugin 'gmarik/Vundle.vim'
   nmap <leader>7 <Plug>AirlineSelectTab7
   nmap <leader>8 <Plug>AirlineSelectTab8
   nmap <leader>9 <Plug>AirlineSelectTab9
-  nmap <leader>- <Plug>AirlineSelectPrevTab
-  nmap <leader>= <Plug>AirlineSelectNextTab
+  "nmap <leader>- <Plug>AirlineSelectPrevTab
+  "nmap <leader>= <Plug>AirlineSelectNextTab
+  map <leader>a :bprev<CR>
+  map <leader>s :bnext<CR>
 
   let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
@@ -330,8 +335,6 @@ map <silent> <C-l> :let @/=""<CR>
 " Window commands with ;
 map ; <C-w>
 
-" <Leader> to ,
-let mapleader=","
 "}}}
 """ Functional stuff {{{
 
