@@ -57,7 +57,6 @@ Plugin 'gmarik/Vundle.vim'
     \ --ignore .hg
     \ --ignore .DS_Store
     \ --ignore "**/*.pyc"
-    \ --ignore .git5_specs
     \ --ignore review
     \ -g ""'
 "}}}
@@ -127,6 +126,7 @@ Plugin 'gmarik/Vundle.vim'
   nnoremap <silent> gs :Gstatus<CR>
   nnoremap <silent> gk :Gpush<CR>
   nnoremap <silent> gj :Gpull<CR>
+  nnoremap <silent> gd :Gdiff<CR>
 " }}}
 " Plugin: signify (visualize diffs in the gutter) {{{
   Plugin 'mhinz/vim-signify'
