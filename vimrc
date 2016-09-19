@@ -50,6 +50,16 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
   Plugin 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
+  " Use silver_searcher (https://github.com/ggreer/the_silver_searcher) instead of ack
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ --ignore "**/*.pyc"
+    \ --ignore .git5_specs
+    \ --ignore review
+    \ -g ""'
 "}}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
