@@ -4,7 +4,7 @@ set nocompatible " be iMproved
 " <Leader> to ,
 let mapleader=","
 
-" Allow external configs for project-
+" Allow external configs for project-specific settings
 set exrc
 
 """ Vundle settings {{{
