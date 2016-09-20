@@ -4,6 +4,9 @@ set nocompatible " be iMproved
 " <Leader> to ,
 let mapleader=","
 
+" Allow external configs for project-
+set exrc
+
 """ Vundle settings {{{
 filetype off  " required by Vundle
 
