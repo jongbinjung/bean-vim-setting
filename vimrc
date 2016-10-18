@@ -151,6 +151,10 @@ Plugin 'gmarik/Vundle.vim'
   let g:AutoPairsFlyMode = 1
   let g:AutoPairsShortcutBackInsert = '<C-b>'
 " }}}
+" Plugin: Editorconfig {{{
+" see editorconfig.org for documentation
+  Plugin 'editorconfig/editorconfig'
+" }}}
 " Plugin: ultisnips {{{
   Plugin 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger = "<C-j>"
@@ -159,6 +163,10 @@ Plugin 'gmarik/Vundle.vim'
 " }}}
 " Plugin: vim-snippets {{{
   Plugin 'honza/vim-snippets'
+" }}}
+" Plugin: skeletons {{{
+  Plugin 'pgilad/vim-skeletons'
+  let skeletons#autoRegister = 1
 " }}}
 " Plugin: vim-tmux-runner {{{
   " send commands to a tmux pane
@@ -192,47 +200,12 @@ Plugin 'gmarik/Vundle.vim'
   Plugin 'Valloric/YouCompleteMe'
 " }}}
 "}}} END: basic IDE capabilities
-" Plugin: Python-mode {{{
-  Plugin 'klen/python-mode'
-  " Python-mode
-   " Activate rope
-   " Keys:
-   " K             Show python docs
-   " <Ctrl-Space>  Rope autocomplete
-   " <Ctrl-c>g     Rope goto definition
-   " <Ctrl-c>d     Rope show documentation
-   " <Ctrl-c>f     Rope find occurrences
-   " <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-   " [[            Jump on previous class or function (normal, visual, operator modes)
-   " ]]            Jump on next class or function (normal, visual, operator modes)
-   " [M            Jump on previous class or method (normal, visual, operator modes)
-   " ]M            Jump on next class or method (normal, visual, operator modes)
-  let g:pymode_rope = 0 " use jedi-vim
+" Plugin: Collection of python-specific plugins {{{
+  Plugin 'tmhedberg/SimpylFold'
+  Plugin 'vim-scripts/indentpython.vim'
+  Plugin 'nvie/vim-flake8'
 
-  " Documentation
-  let g:pymode_doc = 1
-  let g:pymode_doc_key = 'K'
-
-  " Linting
-  let g:pymode_lint = 1
-  let g:pymode_lint_checker = "pyflakes,pep8"
-
-  " Auto check on save
-  let g:pymode_lint_write = 0
-  let g:pymode_lint_on_fly = 1
-
-  " Enable breakpoints plugin
-  let g:pymode_breakpoint = 1
-  let g:pymode_breakpoint_bind = '<leader>b'
-
-  " syntax highlighting
-  let g:pymode_syntax = 1
-  let g:pymode_syntax_all = 1
-  let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-  let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-  " autofold code
-   let g:pymode_folding = 1
+  let g:flake8_show_in_gutter=1  " show"
 "}}}
 " Plugin: Nvim-R {{{
   Plugin 'jalvesaq/Nvim-R'
@@ -269,6 +242,7 @@ Plugin 'gmarik/Vundle.vim'
 " }}}
 " Plugin: vimlatex {{{
   Plugin 'lervag/vimtex'
+
 " }}}
 " }}} END: IDE plugins
 " non-language filetypes {{{
@@ -319,6 +293,9 @@ elseif has("mac")
 elseif has("win32")
     set gfn=Inconsolata-dz_for_Powerline:h10:cDEFAULT
 endif
+
+" set spelling to ignore CJK languages
+set spelllang=en_us,cjk
 "}}}
 """ Custom functions {{{
 function! <SID>StripTrailingWhiteSpaces()
@@ -372,7 +349,7 @@ map ; <C-w>
 " Remove trailing white spaces on save
 autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
-" Tabstops are 2 spaces
+" Tabstops are 2 spaces by default (different specs are defined as ftplugins)
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
