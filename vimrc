@@ -217,6 +217,7 @@ Plugin 'gmarik/Vundle.vim'
   let R_assign = 0
   let R_vsplit = 1
   let R_rconsole_width = 90
+  let R_tmpdir="~/tmp"
 
   " Vim-R plugin mappings
   vmap <Space> <Plug>RDSendSelection
