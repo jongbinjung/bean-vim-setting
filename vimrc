@@ -205,7 +205,7 @@ Plugin 'gmarik/Vundle.vim'
   Plugin 'vim-scripts/indentpython.vim'
   Plugin 'nvie/vim-flake8'
 
-  let g:flake8_show_in_gutter=1  " show"
+  let g:flake8_show_in_gutter=0  " show
 "}}}
 " Plugin: Nvim-R {{{
   Plugin 'jalvesaq/Nvim-R'
