@@ -1,4 +1,4 @@
-#!/usr/bin/r
+#!/usr/bin/env Rscript
 # Created: `date +%F`
 # Author: ${1:`id -u -n`}
 
