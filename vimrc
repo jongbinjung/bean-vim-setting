@@ -160,6 +160,8 @@ Plugin 'gmarik/Vundle.vim'
   let g:UltiSnipsExpandTrigger = "<C-j>"
   let g:UltiSnipsJumpForwardTrigger = "<C-j>"
   let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+  let g:UltiSnipsEditSplit = "context"
+  let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 " }}}
 " Plugin: vim-snippets {{{
   Plugin 'honza/vim-snippets'

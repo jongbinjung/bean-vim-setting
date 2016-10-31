@@ -1,0 +1,13 @@
+snippet docopt "Include docopt" b
+library(docopt)
+'Usage:
+   `!v expand('%:t')` ${1:-${2:opt} ${3:<desc>}} ${4:[-${5:opt} ${6:<desc>}]}
+
+Options:
+  -$2 ${7:Long description} ${8:[default: ${9:value}]}
+  -$5 ${10:Long description} ${11:[default: ${12:value}]}
+' }-> doc
+
+opt <- docopt(doc)
+$0
+endsnippet
