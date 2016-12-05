@@ -63,6 +63,9 @@ Plugin 'gmarik/Vundle.vim'
     \ --ignore review
     \ -g ""'
 "}}}
+" Plugin: vim-tmux-navigator {{{
+  Plugin 'christoomey/vim-tmux-navigator'
+" }}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
 " Plugin: color schemes {{{
