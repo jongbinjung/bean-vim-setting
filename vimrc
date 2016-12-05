@@ -2,7 +2,7 @@
 set nocompatible " be iMproved
 
 " <Leader> to ,
-let mapleader=","
+let mapleader=";"
 
 " Allow external configs for project-specific settings
 set exrc
@@ -345,11 +345,11 @@ syntax on
 set mousehide
 "}}}
 """ Key ReMappings                                                           {{{
-" <C-l> to clear search highlighting
-map <silent> <C-l> :let @/=""<CR>
+" <leader>l to clear search highlighting
+map <silent> <leader>l :let @/=""<CR>
 
-" Window commands with ;
-map ; <C-w>
+" Window commands with ,
+map , <C-w>
 
 "}}}
 """ Functional stuff {{{
