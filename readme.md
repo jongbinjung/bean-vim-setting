@@ -4,8 +4,7 @@
 
  ```
 git clone git@github.com:jongbinjung/bean-vim-setting.git ~/.vim
-
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-- Run ```:PluginInstall``` once after initial sync to download all plugins.
+- Run `:PlugUpgrade` to upgrade `vim-plug` and `:PlugInstall` to initialize
+  all plugins.

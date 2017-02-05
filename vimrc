@@ -7,40 +7,31 @@ let mapleader=";"
 " Allow external configs for project-specific settings
 set exrc
 
-""" Vundle settings {{{
-filetype off  " required by Vundle
-
+""" Plugin path settings {{{
 if has("unix")
-  let path=$HOME. '/.vim/bundle/'
+  let path=$HOME. '/.vim/plugs/'
 elseif has("win32")
-  let path=$HOME . '_vim/bundle/'
+  let path=$HOME . '_vim/plugs/'
   let &runtimepath=&runtimepath . ',' . $HOME . '_vim'
 endif
 
+call plug#begin(path)  " Start vim-plug configs and plugins {{{
 
-" Set the appropriate runtimepath
-let rtp_path=path . 'Vundle.vim'
-let &runtimepath=&runtimepath . ',' . rtp_path
-
-call vundle#begin(path)  " Start Vundle plugins {{{
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
-  Plugin 'tpope/vim-surround'
+  Plug 'tpope/vim-surround'
   " cs: change surround
   " ds: delete surround
   " yss: create surround (whole line)
   " ysiw: create surround (text object)
 " }}}
 " Plugin: vim-repeat {{{
-  Plugin 'tpope/vim-repeat'
+  Plug 'tpope/vim-repeat'
   " repeat plugins with . (e.g., vim-surround)
 " }}}
 " Plugin: NERDtree {{{
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'jistr/vim-nerdtree-tabs'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeMirrorToggle' }
+  Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeMirrorToggle' }
   " set <C-n> to toggle
   map <C-n> :NERDTreeMirrorToggle<CR>
   " use arrows to look prettier
@@ -48,10 +39,10 @@ Plugin 'gmarik/Vundle.vim'
   let g:nerdtree_tabs_open_on_gui_startup = 0
 "}}}
 " Plugin: easymotion (because I'm not good with <count>) {{{
-  Plugin 'Lokaltog/vim-easymotion'
+  Plug 'Lokaltog/vim-easymotion'
 "}}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
-  Plugin 'kien/ctrlp.vim'
+  Plug 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
   " Use silver_searcher (https://github.com/ggreer/the_silver_searcher) instead of ack
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
@@ -66,23 +57,23 @@ Plugin 'gmarik/Vundle.vim'
 " }}} END: File/text navigation
 " Visual enhancements {{{
 " Plugin: color schemes {{{
-  Plugin 'altercation/vim-colors-solarized'
+  Plug 'altercation/vim-colors-solarized'
   "let g:solarized_termcolors=256
-  "Plugin 'crusoexia/vim-monokai'
+  "Plug 'crusoexia/vim-monokai'
 "}}}
 " Plugin: Dim inactive windows {{{
-  Plugin 'blueyed/vim-diminactive'
+  Plug 'blueyed/vim-diminactive'
   let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
   let g:diminactive_enable_focus = 1
 "}}}
 " Plugin: Vim-tmux focus events fix {{{
   " TODO(jongbin): Using Ctrl to show mouse location in Gnome will mess-up
   " Ctrl key bindings -- Ctrl-down will be captured as losing focus from vim!
-  Plugin 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'tmux-plugins/vim-tmux-focus-events'
 "}}}
 " Plugin: Airline (for fancy status bar) {{{
-  Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-airline/vim-airline'
   let g:airline_powerline_fonts = 1
 
   " set tabs with Airline
@@ -110,21 +101,18 @@ Plugin 'gmarik/Vundle.vim'
   let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
 " Plugin: absolute/relative line number toggle {{{
-  Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
   let g:NumberToggleTrigger="<F2>"
   set relativenumber
 " }}}
 " Plugin: Markdown folding {{{
-  Plugin 'gabrielelana/vim-markdown'
+  Plug 'gabrielelana/vim-markdown', { 'for': ['markdown', 'rmd'] }
   let g:markdown_enable_folding = 1
-" }}}
-" Plugin: Table formating {{{
-  Plugin 'godlygeek/tabular'
 " }}}
 " }}} END: Visual enhancements
 " Version Control (git) {{{
 " Plugin: Fugitive {{{
-  Plugin 'tpope/vim-fugitive'
+  Plug 'tpope/vim-fugitive'
 
   nnoremap <silent> gs :Gstatus<CR>
   nnoremap <silent> gk :Gpush<CR>
@@ -132,7 +120,7 @@ Plugin 'gmarik/Vundle.vim'
   nnoremap <silent> gd :Gdiff<CR>
 " }}}
 " Plugin: signify (visualize diffs in the gutter) {{{
-  Plugin 'mhinz/vim-signify'
+  Plug 'mhinz/vim-signify'
   let g:signify_line_highlight = 0
   let g:signify_vcs_list = [ 'git' ]
   let g:signify_sign_change = '~'
@@ -147,16 +135,16 @@ Plugin 'gmarik/Vundle.vim'
 " IDE plugins {{{
 " basic IDE capabilities {{{
 " Plugin: Auto Pairs (Pair parentheses) {{{
-  Plugin 'jiangmiao/auto-pairs'
-  let g:AutoPairsFlyMode = 1
-  let g:AutoPairsShortcutBackInsert = '<C-b>'
+  Plug 'jiangmiao/auto-pairs'
+  let g:AutoPairsFlyMode = 0
+  "let g:AutoPairsShortcutBackInsert = '<C-b>'
 " }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
-  Plugin 'editorconfig/editorconfig'
+  Plug 'editorconfig/editorconfig'
 " }}}
 " Plugin: ultisnips {{{
-  Plugin 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger = "<C-j>"
   let g:UltiSnipsJumpForwardTrigger = "<C-j>"
   let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
@@ -164,15 +152,15 @@ Plugin 'gmarik/Vundle.vim'
   let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 " }}}
 " Plugin: vim-snippets {{{
-  Plugin 'honza/vim-snippets'
+  Plug 'honza/vim-snippets'
 " }}}
 " Plugin: skeletons {{{
-  Plugin 'pgilad/vim-skeletons'
+  Plug 'pgilad/vim-skeletons'
   let skeletons#autoRegister = 1
 " }}}
 " Plugin: vim-tmux-runner {{{
   " send commands to a tmux pane
-  Plugin 'christoomey/vim-tmux-runner'
+  Plug 'christoomey/vim-tmux-runner'
 
   " Options for retaining whitespaces when used with python
   let g:VtrStripLeadingWhitespace = 0
@@ -185,32 +173,32 @@ Plugin 'gmarik/Vundle.vim'
   nmap <leader>or :VtrOpenRunner<cr>
 "}}}
 " Plugin: Supertab (for completion with Tab) {{{
-  Plugin 'ervandew/supertab'
+  Plug 'ervandew/supertab'
 " }}}
 " Plugin: nerdcommenter {{{
-  Plugin 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/nerdcommenter'
 " }}}
 " Plugin: TaskList {{{
   " Create a list of TODO/FIXME
-  Plugin 'vim-scripts/TaskList.vim'
+  Plug 'vim-scripts/TaskList.vim'
   map <leader>td <Plug>TaskList
 " }}}
 " Plugin: syntastic {{{
-  Plugin 'scrooloose/syntastic'
+  Plug 'scrooloose/syntastic'
 " }}}
 " Plugin: YCM {{{
-  Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
 " }}}
 "}}} END: basic IDE capabilities
 " Plugin: Collection of python-specific plugins {{{
-  Plugin 'tmhedberg/SimpylFold'
-  Plugin 'vim-scripts/indentpython.vim'
-  Plugin 'nvie/vim-flake8'
+  Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+  Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+  Plug 'nvie/vim-flake8', { 'for': 'python' }
 
   let g:flake8_show_in_gutter=0  " show
 "}}}
 " Plugin: Nvim-R {{{
-  Plugin 'jalvesaq/Nvim-R'
+  Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rmd', 'rnw'] }
 
   " Use tmux
   let R_in_buffer = 0
@@ -229,10 +217,10 @@ Plugin 'gmarik/Vundle.vim'
   nmap K <Plug>RHelp
 " }}}
 " Plugin: vim-julia {{{
-  Plugin 'JuliaLang/julia-vim'
+  Plug 'JuliaLang/julia-vim'
 " }}}
 " Plugin: vim-go {{{
-  Plugin 'fatih/vim-go'
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
   let g:go_highlight_functions = 1
   let g:go_highlight_methods = 1
@@ -246,42 +234,33 @@ Plugin 'gmarik/Vundle.vim'
   let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
 " Plugin: vimlatex {{{
-  Plugin 'lervag/vimtex'
-
+  Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 " }}}
 " }}} END: IDE plugins
 " non-language filetypes {{{
 " Plugin: csv.vim {{{
-  Plugin 'chrisbra/csv.vim'
+  Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " }}}
 " Plugin: vim-toml {{{
-  Plugin 'cespare/vim-toml'
+  Plug 'cespare/vim-toml'
 " }}}
 " }}} END: non-language filetypes
 " Distraction-free writing {{{
 " Plugin: limelight {{{
-  Plugin 'junegunn/limelight.vim'
+  Plug 'junegunn/limelight.vim', { 'on': ['Goyo', 'GoyoEnter'] }
   let g:limelight_conceal_ctermfg = 'darkgray'
 " }}}
 " Plugin: Goyo {{{
-  Plugin 'junegunn/goyo.vim'
+  Plug 'junegunn/goyo.vim', {'for': 'markdown' }
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
   map <silent> <F3> :Goyo<CR>
 " }}}
 " }}}
 
-call vundle#end()  " }}} End Vundle plugins
+call plug#end()  " }}} End Plug configs and plugins
+
 filetype plugin indent on  " set filetype back on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins;
-"                     append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo;
-"                     append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins;
-"                     append `!` to auto-approve removal
 "}}}
 " Language/font settings (default to English) {{{
 set langmenu=en_US.UTF-8    " sets the language of the menu

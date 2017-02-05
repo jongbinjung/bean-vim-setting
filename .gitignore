@@ -74,9 +74,9 @@ pip-log.txt
 # Mac crap
 .DS_Store
 
-
-# Don't include the bundle folder! This should be managed through Vundle on each machine!!!
-bundle/*
+# Don't include the plug folder!
+# This should be managed through Plug on each machine!!!
+plug/*
 
 # Keep vim swap files out
 *~
