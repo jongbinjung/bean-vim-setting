@@ -76,7 +76,7 @@ pip-log.txt
 
 # Don't include the plug folder!
 # This should be managed through Plug on each machine!!!
-plug/*
+plugs/*
 
 # Keep vim swap files out
 *~
