@@ -17,6 +17,8 @@ endif
 
 call plug#begin(path)  " Start vim-plug configs and plugins {{{
 
+" Usability enhancements {{{
+" }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
   Plug 'tpope/vim-surround'
@@ -189,7 +191,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
 " }}}
-"}}} END: basic IDE capabilities
+" }}} END: basic IDE capabilities
 " Plugin: Collection of python-specific plugins {{{
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
@@ -235,6 +237,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
 " }}}
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+  let g:vimtex_view_method = 'zathura'
 " }}}
 " }}} END: IDE plugins
 " non-language filetypes {{{
