@@ -143,7 +143,8 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
-  Plug 'editorconfig/editorconfig'
+  Plug 'editorconfig/editorconfig-vim'
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " }}}
 " Plugin: ultisnips {{{
   Plug 'SirVer/ultisnips'
