@@ -190,7 +190,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   Plug 'scrooloose/syntastic'
 " }}}
 " Plugin: YCM {{{
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Collection of python-specific plugins {{{
