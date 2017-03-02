@@ -208,7 +208,6 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let R_applescript = 0
   let R_tmux_split = 1
   let R_assign = 0
-  let R_vsplit = 1
   let R_rconsole_width = 90
   let R_tmpdir="~/tmp"
 
