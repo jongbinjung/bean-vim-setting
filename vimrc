@@ -201,7 +201,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let g:flake8_show_in_gutter=0  " show
 "}}}
 " Plugin: Nvim-R {{{
-  Plug 'jalvesaq/R-Vim-runtime'
+  Plug 'jongbinjung/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rmd', 'rnw'] }
 
   " Use tmux
