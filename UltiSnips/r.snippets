@@ -15,3 +15,25 @@ endsnippet
 snippet todoc "Add todo with user name" b
 # TODO(`echo $USER`): $0
 endsnippet
+
+snippet sec "Create section folds" b
+# ${1:Section description} ----
+$0
+endsnippet
+
+snippet lib "Add library" b
+library(${1:tidyverse})$0
+endsnippet
+
+snippet gg "ggplot skeleton" b
+${1:p} <- ggplot(${2:data}, aes(x = ${3:x}, y = ${4:y})) +
+  geom_${5:point}(${6:aes(${7:color} = ${8:v_color}${9:, ${10:...}})}) $0
+endsnippet
+
+snippet theme "Add theme to ggplot with common options"
+
+theme(
+  ${1:legend.position = ${2:c(${3:0}, ${4:0})}${5:,}}
+  ${4:legend.justification = ${5:c(${6:0}, ${7:0})}${8:,}}
+	) $0
+endsnippet
