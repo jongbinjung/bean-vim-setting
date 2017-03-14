@@ -49,7 +49,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
   Plug 'kien/ctrlp.vim'
   let g:ctrlp_show_hidden = 1
-  " Use silver_searcher (https://github.com/ggreer/the_silver_searcher) instead of ack
+  " Use silver_searcher (https://github.com/ggreer/the_silver_searcher)
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
@@ -363,7 +363,8 @@ map , <C-w>
 " Remove trailing white spaces on save
 autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
-" Tabstops are 2 spaces by default (different specs are defined as ftplugins)
+" Tabstops are 2 spaces by default
+" (different specs are defined as ftplugins or with .editorconfig)
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -377,7 +378,7 @@ set wrapscan
 " thing but it just wasn't working out for me
 set noignorecase
 
-" set the forward slash to be the slash of note.  Backslashes suck
+" Backslashes suck chipmunk balls
 set shellslash
 
 if has("unix")
@@ -423,7 +424,7 @@ set history=100
 
 " Set the syntax foldmethod options
 let g:vimsyn_folding='afPt'
-"
+
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 
@@ -452,9 +453,6 @@ set showfulltag
 " Set the textwidth to be 80 chars, but don't wrap
 set textwidth=80
 set colorcolumn=80
-
-" Set the textwidth to 72 for gitcommits
-au FileType gitcommit set tw=72
 
 " get rid of the silly characters in separators
 set fillchars = ""
