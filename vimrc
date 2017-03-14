@@ -188,6 +188,8 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " }}}
 " Plugin: syntastic {{{
   Plug 'scrooloose/syntastic'
+
+  let g:syntastic_sh_checkers = ["shellcheck"]
 " }}}
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
