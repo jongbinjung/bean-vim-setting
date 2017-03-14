@@ -18,6 +18,9 @@ endif
 call plug#begin(path)  " Start vim-plug configs and plugins {{{
 
 " Usability enhancements {{{
+" Plugin: vim-unimpaired  {{{
+  Plug 'tpope/vim-unimpaired'
+" }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
@@ -190,6 +193,11 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   Plug 'scrooloose/syntastic'
 
   let g:syntastic_sh_checkers = ["shellcheck"]
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
 " }}}
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
