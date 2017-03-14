@@ -1,6 +1,7 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Created: `date +%F`
-# Author: ${1:`id -u -n`}
+${1:# Author: ${2:`id -u -n`}}
+${3:# Description: ${4}}
 
 $0
