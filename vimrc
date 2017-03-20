@@ -15,6 +15,7 @@ elseif has("win32")
   let &runtimepath=&runtimepath . ',' . $HOME . '_vim'
 endif
 
+call has('python3')
 call plug#begin(path)  " Start vim-plug configs and plugins {{{
 
 " Usability enhancements {{{
@@ -217,6 +218,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " }}}
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
+let g:ycm_auto_start_csharp_server = 0
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Collection of python-specific plugins {{{
@@ -235,7 +237,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
   let R_applescript = 0
   let R_tmux_split = 1
   let R_assign = 0
-  let R_rconsole_width = 90
+  let R_rconsole_width = 100
   let R_tmpdir="~/tmp"
 
   let r_syntax_folding = 1
