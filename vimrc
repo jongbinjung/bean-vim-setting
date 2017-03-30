@@ -200,6 +200,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " }}}
 " Plugin: nerdcommenter {{{
   Plug 'scrooloose/nerdcommenter'
+  let g:NERDSpaceDelims = 1
 " }}}
 " Plugin: TaskList {{{
   " Create a list of TODO/FIXME
