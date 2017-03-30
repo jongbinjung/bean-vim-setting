@@ -351,6 +351,9 @@ syntax on
 
 " Hide the mouse pointer while typing
 set mousehide
+
+" Let ViM change the terminal title
+set title
 "}}}
 """ Key ReMappings                                                           {{{
 " <leader>l to clear search highlighting
@@ -363,7 +366,7 @@ map , <C-w>
 """ Functional stuff {{{
 
 " Remove trailing white spaces on save
-autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
+"autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
 " Tabstops are 2 spaces by default
 " (different specs are defined as ftplugins or with .editorconfig)
