@@ -207,27 +207,32 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   Plug 'vim-scripts/TaskList.vim'
   map <leader>td <Plug>TaskList
 " }}}
-" Plugin: syntastic {{{
-  Plug 'scrooloose/syntastic'
+" Plugin: Syntax checker {{{
+  Plug 'w0rp/ale'
 
-  let g:syntastic_sh_checkers = ["shellcheck"]
+  " ALE status line messages Error/Warnings/OK
+  let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥']
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
+  let g:ale_sign_error = '!!'
+  let g:ale_sign_warning = '??'
+
+  let g:ale_set_loclist = 0
+  let g:ale_set_quickfix = 1
+  let g:ale_open_list = 1
 " }}}
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
 let g:ycm_auto_start_csharp_server = 0
 " }}}
 " }}} END: basic IDE capabilities
-" Plugin: Collection of python-specific plugins {{{
+" Plugin: Python {{{
+  " Plug 'python-mode/python-mode'
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'nvie/vim-flake8', { 'for': 'python' }
+  Plug 'jmcantrell/vim-virtualenv'
 
-  let g:flake8_show_in_gutter=0  " show
+  let g:flake8_show_in_gutter=1  " show
 "}}}
 " Plugin: Nvim-R {{{
   Plug 'jongbinjung/R-Vim-runtime'
@@ -262,8 +267,8 @@ let g:ycm_auto_start_csharp_server = 0
   let g:go_highlight_build_constraints = 1
 
   " Colision prevention between syntastic and go-vim
-  let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-  let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+  " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+  " let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
