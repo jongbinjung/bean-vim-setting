@@ -1,5 +1,5 @@
-setlocal foldexpr=SimplyFold(v:lnum)
-setlocal foldmethod=expr
+" setlocal foldexpr=SimplyFold(v:lnum)
+" setlocal foldmethod=expr
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
