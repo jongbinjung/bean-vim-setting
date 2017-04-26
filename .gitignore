@@ -83,3 +83,4 @@ plugs/*
 
 # Ycm compiled stuff
 node_modules/
+.netrwhist
