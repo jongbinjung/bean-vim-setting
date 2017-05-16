@@ -4,3 +4,12 @@ snippet hugofig "Add figure to hugo markdown" b
   caption="$4" >}}
 $0
 endsnippet	
+
+snippet name "Create anchor (empty <a> with name attribute)" 
+<a name="$0"></a>
+endsnippet
+
+	
+snippet ref "Reference link" 
+[${1:Text}](#${2:name})
+endsnippet
