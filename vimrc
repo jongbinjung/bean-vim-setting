@@ -228,6 +228,7 @@ let g:ycm_auto_start_csharp_server = 0
 " Plugin: Python {{{
   " Plug 'python-mode/python-mode'
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+  let g:SimpylFold_docstring_preview=1
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'nvie/vim-flake8', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
