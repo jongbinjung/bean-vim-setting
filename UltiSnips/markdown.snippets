@@ -1,0 +1,23 @@
+snippet hugofig "Add figure to hugo markdown" b
+{{< figure
+  src="${1:/media/weekends/${2:num}/${3:file}.jpg}"
+  caption="$4" >}}
+$0
+endsnippet	
+
+snippet hugolink "Add internal reference link to hugo markdown"
+({{< ref "post/${1:path}" >}})$0
+endsnippet	
+	
+snippet dammap "Description" 
+[${1:place}]({{< ref "post/map.md" >}}#$1)$0
+endsnippet
+
+snippet name "Create anchor (empty <a> with name attribute)" 
+<a name="$0"></a>
+endsnippet
+
+	
+snippet ref "Reference link" 
+[${1:Text}](#${2:name})
+endsnippet
