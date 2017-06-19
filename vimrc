@@ -310,7 +310,7 @@ set fencs=utf-8,euc-kr
 set encoding=utf-8
 
 if has("unix")
-    set gfn=Inconsolata-dz\ for\ Powerline
+    set gfn=Roboto\ Mono\ for\ Powerline
 elseif has("mac")
     set gfn=Inconsolata-dz\ for\ Powerline:h10
 elseif has("win32")
