@@ -221,8 +221,8 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let g:ale_open_list = 1
 " }}}
 " Plugin: YCM {{{
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
-let g:ycm_auto_start_csharp_server = 0
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
+" let g:ycm_auto_start_csharp_server = 0
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
