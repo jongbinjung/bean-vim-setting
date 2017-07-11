@@ -64,18 +64,18 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " Visual enhancements {{{
 " Plugin: color schemes {{{
   Plug 'altercation/vim-colors-solarized'
-  "let g:solarized_termcolors=256
+  " let g:solarized_termcolors=256
   "Plug 'crusoexia/vim-monokai'
 "}}}
 " Plugin: Dim inactive windows {{{
-  Plug 'blueyed/vim-diminactive'
-  let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
-  let g:diminactive_enable_focus = 1
+  " Plug 'blueyed/vim-diminactive'
+  " let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
+  " let g:diminactive_enable_focus = 1
 "}}}
 " Plugin: Vim-tmux focus events fix {{{
   " TODO(jongbin): Using Ctrl to show mouse location in Gnome will mess-up
   " Ctrl key bindings -- Ctrl-down will be captured as losing focus from vim!
-  Plug 'tmux-plugins/vim-tmux-focus-events'
+  " Plug 'tmux-plugins/vim-tmux-focus-events'
 "}}}
 " Plugin: Airline (for fancy status bar) {{{
   Plug 'vim-airline/vim-airline-themes'
@@ -102,6 +102,9 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let g:airline_theme='solarized'
   " set terminal colors to 256 for solarized theme
   set t_Co=256
+  " Terminal background wierdness
+  " (see: https://sunaku.github.io/vim-256color-bce.html)
+  " set t_ut=y
 
   " Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
@@ -236,7 +239,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let g:flake8_show_in_gutter=1  " show
 "}}}
 " Plugin: Nvim-R {{{
-  Plug 'jongbinjung/R-Vim-runtime'
+  Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
 
   " Use tmux
@@ -245,9 +248,13 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let R_tmux_split = 1
   let R_assign = 0
   let R_rconsole_width = 100
-  let R_tmpdir="~/tmp"
+  let R_tmpdir="~/.tmp"
 
   let r_syntax_folding = 1
+
+  " Set R working directory to Vim's working directory
+  " (Not file path)
+  let R_nvim_wd = 1
 
   " Vim-R plugin mappings
   vmap <Space> <Plug>RDSendSelection
@@ -373,8 +380,8 @@ map , <C-w>
 """ Functional stuff {{{
 
 " Remove trailing white spaces with <F5>
-nnoremap <F5> :%s/\s\+$//e<Bar>:keepp<Bar>:keepj<Bar><CR>
-"autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
+nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
+autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
 " Tabstops are 2 spaces by default
 " (different specs are defined as ftplugins or with .editorconfig)
