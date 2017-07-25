@@ -236,7 +236,7 @@ let g:ycm_auto_start_csharp_server = 0
   let g:flake8_show_in_gutter=1  " show
 "}}}
 " Plugin: Nvim-R {{{
-  Plug 'jongbinjung/R-Vim-runtime'
+  Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
 
   " Use tmux
