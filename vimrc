@@ -373,8 +373,8 @@ map , <C-w>
 """ Functional stuff {{{
 
 " Remove trailing white spaces with <F5>
-nnoremap <F5> :%s/\s\+$//e<Bar>:keepp<Bar>:keepj<Bar><CR>
-"autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
+nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
+autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
 " Tabstops are 2 spaces by default
 " (different specs are defined as ftplugins or with .editorconfig)
