@@ -22,6 +22,12 @@ snip.rv = "-" * max((75 - len(t[1]) - 3), 4)
 ` $0
 endsnippet
 
+snippet psec "Create plot section folds" b
+# PLOT: ${1:Section description} `!p
+snip.rv = "-" * max((75 - len(t[1]) - 9), 4)
+` $0
+endsnippet
+
 snippet lib "Add library" b
 library(${1:tidyverse})$0
 endsnippet
