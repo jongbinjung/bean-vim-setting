@@ -388,10 +388,6 @@ map <silent> <leader>l :let @/=""<CR>
 
 " Window commands with ,
 map , <C-w>
-
-" Esc in normal mode to toggle folds (works well with tap-Ctrl-for-Esc)
-nmap <Esc> za
-
 "}}}
 """ Functional stuff {{{
 
