@@ -219,6 +219,9 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   let g:ale_set_loclist = 0
   let g:ale_set_quickfix = 1
   let g:ale_open_list = 1
+
+  " Let shellcheck follow external sources (SC1091)
+  let g:ale_sh_shellcheck_options = '-x'
 " }}}
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
