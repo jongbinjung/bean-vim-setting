@@ -13,5 +13,6 @@ def main():
     """${5:Main function}"""
     ${0:# Write code here}
 
+
 if __name__ == "__main__":
     main()
