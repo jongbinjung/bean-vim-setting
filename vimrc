@@ -16,11 +16,15 @@ elseif has("win32")
 endif
 
 call has('python3')
-call plug#begin(path)  " Start vim-plug configs and plugins {{{
+" Start vim-plug configs and plugins {{{
+call plug#begin(path)
 
 " Usability enhancements {{{
 " Plugin: vim-unimpaired  {{{
   Plug 'tpope/vim-unimpaired'
+" }}}
+" Plugin: vim-dispatch - Asynchronous commands! {{{
+  Plug 'tpope/vim-dispatch'
 " }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
@@ -185,15 +189,22 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
   " send commands to a tmux pane
   Plug 'christoomey/vim-tmux-runner'
 
-  " Options for retaining whitespaces when used with python
+  " Percentage and orientation of runner window
+  let g:VtrPercentage = 35
+  let g:VtrOrientation = "h"  " Open to right of vim
+
+  " Options for retaining whbtespaces when used with python
   let g:VtrStripLeadingWhitespace = 0
   let g:VtrClearEmptyLines = 1
   let g:VtrAppendNewline = 1
 
   " Vim-tmux-runner Mappings
-  vmap <leader><Space> :VtrSendLinesToRunner<cr>
-  nmap <leader><Space> :VtrSendLinesToRunner<cr><Down>
+  " Some filetype specific mappings are defined in ftplugins (e.g., python)
+  vnoremap <leader><Space> :VtrSendLinesToRunner<cr>
+  nnoremap <leader><Space> :VtrSendLinesToRunner<cr><Down>
   nmap <leader>or :VtrOpenRunner<cr>
+  nmap <leader>cr :VtrSendCtrlD<cr>
+  nmap <leader>ar :VtrAttachToPane<cr>
 "}}}
 " Plugin: Supertab (for completion with Tab) {{{
   Plug 'ervandew/supertab'
@@ -226,6 +237,7 @@ call plug#begin(path)  " Start vim-plug configs and plugins {{{
 " Plugin: YCM {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
 let g:ycm_auto_start_csharp_server = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
@@ -233,10 +245,11 @@ let g:ycm_auto_start_csharp_server = 0
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
   let g:SimpylFold_docstring_preview=1
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-  Plug 'nvie/vim-flake8', { 'for': 'python' }
+  " Plug 'nvie/vim-flake8', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
+  Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
-  let g:flake8_show_in_gutter=1  " show
+  " let g:flake8_show_in_gutter=1  " show
 "}}}
 " Plugin: Nvim-R {{{
   Plug 'jalvesaq/R-Vim-runtime'
@@ -246,15 +259,19 @@ let g:ycm_auto_start_csharp_server = 0
   let R_in_buffer = 0
   let R_applescript = 0
   let R_tmux_split = 1
-  let R_assign = 0
   let R_rconsole_width = 100
   let R_tmpdir="~/tmp"
+  let R_nvimpager = "horizontal"
+
+  " Map assignment shortcut to match Rstudio
+  set <M-->=-
+  let R_assign_map = "<M-->"
 
   let r_syntax_folding = 1
 
   " Vim-R plugin mappings
-  vmap <Space> <Plug>RDSendSelection
-  nmap <Space> <Plug>RDSendLine
+  vnoremap <Space> <Plug>RDSendSelection
+  nnoremap <Space> <Plug>RDSendLine
   nmap K <Plug>RHelp
 " }}}
 " Plugin: vim-julia {{{
@@ -371,6 +388,9 @@ map <silent> <leader>l :let @/=""<CR>
 
 " Window commands with ,
 map , <C-w>
+
+" Esc in normal mode to toggle folds (works well with tap-Ctrl-for-Esc)
+nmap <Esc> za
 
 "}}}
 """ Functional stuff {{{
