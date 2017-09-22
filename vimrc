@@ -26,10 +26,14 @@ call plug#begin(path)
 " Plugin: vim-dispatch - Asynchronous commands! {{{
   Plug 'tpope/vim-dispatch'
 " }}}
+" Plugin: ZoomWin  {{{
+  Plug 'vim-scripts/ZoomWin'
+" }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
   Plug 'tpope/vim-surround'
+
   " cs: change surround
   " ds: delete surround
   " yss: create surround (whole line)
@@ -42,6 +46,7 @@ call plug#begin(path)
 " Plugin: NERDtree {{{
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeMirrorToggle' }
   Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeMirrorToggle' }
+
   " set <C-n> to toggle
   map <C-n> :NERDTreeMirrorToggle<CR>
   " use arrows to look prettier
@@ -53,6 +58,7 @@ call plug#begin(path)
 "}}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
   Plug 'kien/ctrlp.vim'
+
   let g:ctrlp_show_hidden = 1
   " Use silver_searcher (https://github.com/ggreer/the_silver_searcher)
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
@@ -68,12 +74,12 @@ call plug#begin(path)
 " Visual enhancements {{{
 " Plugin: color schemes {{{
   Plug 'altercation/vim-colors-solarized'
-  "let g:solarized_termcolors=256
-  "Plug 'crusoexia/vim-monokai'
+  " Plug 'crusoexia/vim-monokai'
 "}}}
 " Plugin: Dim inactive windows {{{
   Plug 'blueyed/vim-diminactive'
-  let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
+
+  let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
   let g:diminactive_enable_focus = 1
 "}}}
 " Plugin: Vim-tmux focus events fix {{{
@@ -84,9 +90,15 @@ call plug#begin(path)
 " Plugin: Airline (for fancy status bar) {{{
   Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-airline/vim-airline'
+
   let g:airline_powerline_fonts = 1
   let g:airline_left_sep=''
+  let g:airline_left_alt_sep = ''
   let g:airline_right_sep=''
+  let g:airline_right_alt_sep = ''
+
+  let g:airline#extensions#quickfix#quickfix_text = 'Q'
+  let g:airline#extensions#quickfix#location_text = 'L'
 
   let g:airline_mode_map = {
       \ '__' : '-',
@@ -126,13 +138,9 @@ call plug#begin(path)
 
   let g:airline#extensions#tabline#fnamemod = ':t'
 "}}}
-" Plugin: absolute/relative line number toggle {{{
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'
-  let g:NumberToggleTrigger="<F2>"
-  set relativenumber
-" }}}
 " Plugin: Markdown folding {{{
   Plug 'gabrielelana/vim-markdown', { 'for': ['markdown', 'rmd'] }
+
   let g:markdown_enable_folding = 1
 " }}}
 " }}} END: Visual enhancements
@@ -147,6 +155,7 @@ call plug#begin(path)
 " }}}
 " Plugin: signify (visualize diffs in the gutter) {{{
   Plug 'mhinz/vim-signify'
+
   let g:signify_line_highlight = 0
   let g:signify_vcs_list = [ 'git' ]
   let g:signify_sign_change = '~'
@@ -162,16 +171,18 @@ call plug#begin(path)
 " basic IDE capabilities {{{
 " Plugin: Auto Pairs (Pair parentheses) {{{
   Plug 'jiangmiao/auto-pairs'
+
   let g:AutoPairsFlyMode = 0
-  "let g:AutoPairsShortcutBackInsert = '<C-b>'
 " }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
   Plug 'editorconfig/editorconfig-vim'
+
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " }}}
 " Plugin: ultisnips {{{
   Plug 'SirVer/ultisnips'
+
   let g:UltiSnipsExpandTrigger = "<C-j>"
   let g:UltiSnipsJumpForwardTrigger = "<C-j>"
   let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
@@ -183,6 +194,7 @@ call plug#begin(path)
 " }}}
 " Plugin: skeletons {{{
   Plug 'pgilad/vim-skeletons'
+
   let skeletons#autoRegister = 1
 " }}}
 " Plugin: vim-tmux-runner {{{
@@ -211,21 +223,25 @@ call plug#begin(path)
 " }}}
 " Plugin: nerdcommenter {{{
   Plug 'scrooloose/nerdcommenter'
+
   let g:NERDSpaceDelims = 1
 " }}}
 " Plugin: TaskList {{{
   " Create a list of TODO/FIXME
   Plug 'vim-scripts/TaskList.vim'
+
   map <leader>td <Plug>TaskList
 " }}}
 " Plugin: Syntax checker {{{
   Plug 'w0rp/ale'
 
+  map <F8> <Plug>(ale_fix)
+
   " ALE status line messages Error/Warnings/OK
   let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥']
 
   let g:ale_sign_error = '!!'
-  let g:ale_sign_warning = '??'
+  let g:ale_sign_warning = '>>'
 
   let g:ale_set_loclist = 0
   let g:ale_set_quickfix = 1
@@ -233,23 +249,28 @@ call plug#begin(path)
 
   " Let shellcheck follow external sources (SC1091)
   let g:ale_sh_shellcheck_options = '-x'
+
+  let g:ale_linters = {'python': ['pylint', 'flake8']}
+
+  let g:ale_fixers = {
+  \   'python': [
+  \       'yapf',
+  \   ],
+  \}
 " }}}
 " Plugin: YCM {{{
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
-let g:ycm_auto_start_csharp_server = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
+
+  let g:ycm_auto_start_csharp_server = 0
+  let g:ycm_autoclose_preview_window_after_completion = 1
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
-  " Plug 'python-mode/python-mode'
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
-  let g:SimpylFold_docstring_preview=1
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-  " Plug 'nvie/vim-flake8', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
-  Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
-  " let g:flake8_show_in_gutter=1  " show
+  let g:SimpylFold_docstring_preview=1
 "}}}
 " Plugin: Nvim-R {{{
   Plug 'jalvesaq/R-Vim-runtime'
@@ -286,13 +307,10 @@ let g:ycm_autoclose_preview_window_after_completion = 1
   let g:go_highlight_interfaces = 1
   let g:go_highlight_operators = 1
   let g:go_highlight_build_constraints = 1
-
-  " Colision prevention between syntastic and go-vim
-  " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-  " let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 " }}}
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+
   let g:vimtex_view_method = 'zathura'
 " }}}
 " }}} END: IDE plugins
@@ -306,11 +324,18 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " }}} END: non-language filetypes
 " Distraction-free writing {{{
 " Plugin: limelight {{{
-  Plug 'junegunn/limelight.vim', { 'on': ['Goyo', 'GoyoEnter'] }
+  Plug 'junegunn/limelight.vim'
+
+  nmap <Leader>l :Limelight!!<CR>
+  " nmap <Leader>l <Plug>(Limelight)
+  " xmap <Leader>l <Plug>(Limelight)
+
   let g:limelight_conceal_ctermfg = 'darkgray'
+  " let g:limelight_default_coefficient = 0.5
 " }}}
 " Plugin: Goyo {{{
-  Plug 'junegunn/goyo.vim', {'for': 'markdown' }
+  Plug 'junegunn/goyo.vim'
+
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
   map <silent> <F3> :Goyo<CR>
@@ -353,8 +378,13 @@ endfun
 set background=dark
 colorscheme solarized
 
+set relativenumber
+
 " Set conceal to hide stuff under the hood
 set conceallevel=2
+
+" Hide the mouse pointer while typing
+set mousehide
 
 set cursorline
 
@@ -376,21 +406,17 @@ set showmode
 " Switch on syntax highlighting.
 syntax on
 
-" Hide the mouse pointer while typing
-set mousehide
-
 " Let ViM change the terminal title
 set title
 "}}}
 """ Key ReMappings                                                           {{{
-" <leader>l to clear search highlighting
-map <silent> <leader>l :let @/=""<CR>
+" <leader>c to clear search highlighting
+map <silent> <leader>c :let @/=""<CR>
 
 " Window commands with ,
 map , <C-w>
 "}}}
 """ Functional stuff {{{
-
 " Remove trailing white spaces with <F5>
 nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
 autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
@@ -416,9 +442,7 @@ set shellslash
 if has("unix")
     set shell=bash
 elseif has("win32")
-    " set shell=bash.exe
     set shell=cmd.exe
-    " set shell=ksh.exe
 endif
 
 " Make sure that unsaved buffers that are to be put in the background are
