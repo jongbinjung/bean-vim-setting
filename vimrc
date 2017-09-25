@@ -308,6 +308,9 @@ call plug#begin(path)
   let g:go_highlight_operators = 1
   let g:go_highlight_build_constraints = 1
 " }}}
+" Plugin: Stan {{{
+  Plug 'maverickg/stan.vim'
+" }}}
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 
