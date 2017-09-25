@@ -291,8 +291,8 @@ call plug#begin(path)
   let r_syntax_folding = 1
 
   " Vim-R plugin mappings
-  vnoremap <Space> <Plug>RDSendSelection
-  nnoremap <Space> <Plug>RDSendLine
+  vmap <Space> <Plug>RDSendSelection
+  nmap <Space> <Plug>RDSendLine
   nmap K <Plug>RHelp
 " }}}
 " Plugin: vim-julia {{{
