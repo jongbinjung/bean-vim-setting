@@ -392,6 +392,7 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 set background=dark
 colorscheme solarized
 
+set number
 set relativenumber
 
 " Set conceal to hide stuff under the hood
