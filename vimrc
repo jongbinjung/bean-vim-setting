@@ -250,6 +250,10 @@ call plug#begin(path)
   " Let shellcheck follow external sources (SC1091)
   let g:ale_sh_shellcheck_options = '-x'
 
+  " Ignore
+  "   SC2002: Useless cat
+  let g:ale_sh_shellcheck_exclusions = 'SC2002'
+
   let g:ale_linters = {'python': ['pylint', 'flake8']}
 
   let g:ale_fixers = {
@@ -500,8 +504,8 @@ let g:vimsyn_folding='afPt'
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 
 " Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
-autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
-autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
+" autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
+" autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
