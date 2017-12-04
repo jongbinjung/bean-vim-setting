@@ -53,8 +53,8 @@ call plug#begin(path)
   let g:NERDTreeDirArrows=1
   let g:nerdtree_tabs_open_on_gui_startup = 0
 "}}}
-" Plugin: easymotion (because I'm not good with <count>) {{{
-  Plug 'Lokaltog/vim-easymotion'
+" Plugin: vim-snipe (replace easymotion) {{{
+  Plug 'yangmillstheory/vim-snipe'
 "}}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
   Plug 'kien/ctrlp.vim'
@@ -202,7 +202,7 @@ call plug#begin(path)
   Plug 'christoomey/vim-tmux-runner'
 
   " Percentage and orientation of runner window
-  let g:VtrPercentage = 35
+  let g:VtrPercentage = 50
   let g:VtrOrientation = "h"  " Open to right of vim
 
   " Options for retaining whbtespaces when used with python
