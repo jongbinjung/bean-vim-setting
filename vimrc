@@ -55,6 +55,20 @@ call plug#begin(path)
 "}}}
 " Plugin: vim-snipe (replace easymotion) {{{
   Plug 'yangmillstheory/vim-snipe'
+
+  map <leader><leader>F <Plug>(snipe-F)
+  map <leader><leader>f <Plug>(snipe-f)
+  map <leader><leader>T <Plug>(snipe-T)
+  map <leader><leader>t <Plug>(snipe-t)
+
+  map <leader><leader>w <Plug>(snipe-w)
+  map <leader><leader>W <Plug>(snipe-W)
+  map <leader><leader>e <Plug>(snipe-e)
+  map <leader><leader>E <Plug>(snipe-E)
+  map <leader><leader>b <Plug>(snipe-b)
+  map <leader><leader>B <Plug>(snipe-B)
+  map <leader><leader>ge <Plug>(snipe-ge)
+  map <leader><leader>gE <Plug>(snipe-gE)
 "}}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
   Plug 'kien/ctrlp.vim'
