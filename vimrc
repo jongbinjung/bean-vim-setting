@@ -80,6 +80,7 @@ call plug#begin(path)
     \ --ignore .svn
     \ --ignore .hg
     \ --ignore .DS_Store
+    \ --ignore "*.rds"
     \ --ignore "**/*.pyc"
     \ --ignore review
     \ -g ""'
