@@ -81,6 +81,9 @@ call plug#begin(path)
     \ --ignore .hg
     \ --ignore .DS_Store
     \ --ignore "*.rds"
+    \ --ignore "*.png"
+    \ --ignore "*.jpg"
+    \ --ignore "*.pdf"
     \ --ignore "**/*.pyc"
     \ --ignore review
     \ -g ""'
