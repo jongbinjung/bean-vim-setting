@@ -316,6 +316,14 @@ call plug#begin(path)
   vmap <Space> <Plug>RDSendSelection
   nmap <Space> <Plug>RDSendLine
   nmap K <Plug>RHelp
+
+  " Action shortcuts
+  nmap <silent> <LocalLeader>rk :call RAction("levels")<CR>
+  nmap <silent> <LocalLeader>rh :call RAction("head")<CR>
+  nmap <silent> <LocalLeader>rz :call RAction("tail")<CR>
+
+  vmap <silent> <LocalLeader>rh :call RAction("head", "v")<CR>
+  vmap <silent> <LocalLeader>rz :call RAction("tail", "v")<CR>
 " }}}
 " Plugin: vim-julia {{{
   Plug 'JuliaLang/julia-vim'
