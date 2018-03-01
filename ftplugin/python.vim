@@ -18,5 +18,5 @@ nnoremap <LocalLeader>= :0,$!yapf --style google<CR>
 nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 " More convenient VTR options and mappings for python
-vnoremap <Space> :VtrSendLinesToRunner<cr>
-nnoremap <Space> :VtrSendLinesToRunner<cr><Down>
+vnoremap <buffer> <Space> :VtrSendLinesToRunner<cr>
+nnoremap <buffer> <Space> :VtrSendLinesToRunner<cr><Down>
