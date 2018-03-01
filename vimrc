@@ -97,7 +97,7 @@ call plug#begin(path)
 " Plugin: Dim inactive windows {{{
   Plug 'blueyed/vim-diminactive'
 
-  let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
+  let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
   let g:diminactive_enable_focus = 1
 "}}}
 " Plugin: Vim-tmux focus events fix {{{
