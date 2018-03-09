@@ -80,6 +80,10 @@ call plug#begin(path)
     \ --ignore .svn
     \ --ignore .hg
     \ --ignore .DS_Store
+    \ --ignore "*.rds"
+    \ --ignore "*.png"
+    \ --ignore "*.jpg"
+    \ --ignore "*.pdf"
     \ --ignore "**/*.pyc"
     \ --ignore review
     \ -g ""'
@@ -93,7 +97,7 @@ call plug#begin(path)
 " Plugin: Dim inactive windows {{{
   Plug 'blueyed/vim-diminactive'
 
-  let g:diminactive_use_syntax = 1  " disable syntax hl for inactive windows
+  let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
   let g:diminactive_enable_focus = 1
 "}}}
 " Plugin: Vim-tmux focus events fix {{{
@@ -518,8 +522,8 @@ let g:vimsyn_folding='afPt'
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 
 " Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
-" autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
-" autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
+autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
+autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
