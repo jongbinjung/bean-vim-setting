@@ -1,10 +1,13 @@
 let maplocalleader="'"
 
 " Load tmux script for Nvim-R
-let R_source = '~/.vim/plugs/Nvim-R/R/tmux_split.vim'
+" let R_source = '~/.vim/plugs/Nvim-R/R/tmux_split.vim'
 
 " Auto expand ">>" snippet to pipe operator
 inoremap <silent><buffer> >> >><C-R>=UltiSnips#Anon('%>%', '>>')<cr>
+
+" Use omnicomplete first
+let b:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " Action shortcuts
 nmap <silent> <LocalLeader>rk :call RAction("levels")<CR>

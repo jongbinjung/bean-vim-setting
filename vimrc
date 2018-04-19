@@ -26,9 +26,6 @@ call plug#begin(path)
 " Plugin: vim-dispatch - Asynchronous commands! {{{
   Plug 'tpope/vim-dispatch'
 " }}}
-" Plugin: ZoomWin  {{{
-  Plug 'vim-scripts/ZoomWin'
-" }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
@@ -238,6 +235,7 @@ call plug#begin(path)
 "}}}
 " Plugin: Supertab (for completion with Tab) {{{
   Plug 'ervandew/supertab'
+  let g:SuperTabDefaultCompletionType = "context"
 " }}}
 " Plugin: nerdcommenter {{{
   Plug 'scrooloose/nerdcommenter'
@@ -298,16 +296,11 @@ call plug#begin(path)
   Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
 
-  " Use tmux
-  let R_in_buffer = 0
+  let R_in_buffer = 1
   let R_applescript = 0
   let R_rconsole_width = 100
   let R_tmpdir="~/tmp"
   let R_nvimpager = "horizontal"
-
-  " Map assignment shortcut to match Rstudio
-  set <M-->=-
-  let R_assign_map = "<M-->"
 
   let r_syntax_folding = 1
 
@@ -532,7 +525,7 @@ set scrolloff=8
 set virtualedit=all
 
 " Disable encryption (:X)
-set key=
+" set key=
 
 " Make the command-line completion better
 set wildmenu
