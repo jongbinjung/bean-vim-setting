@@ -301,7 +301,6 @@ call plug#begin(path)
   " Use tmux
   let R_in_buffer = 0
   let R_applescript = 0
-  let R_tmux_split = 1
   let R_rconsole_width = 100
   let R_tmpdir="~/tmp"
   let R_nvimpager = "horizontal"
