@@ -195,17 +195,15 @@ call plug#begin(path)
 
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " }}}
-" Plugin: ultisnips {{{
+" Plugin: Snippets (ultisnips) {{{
   Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
 
   let g:UltiSnipsExpandTrigger = "<C-j>"
   let g:UltiSnipsJumpForwardTrigger = "<C-j>"
   let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
   let g:UltiSnipsEditSplit = "context"
   let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
-" }}}
-" Plugin: vim-snippets {{{
-  Plug 'honza/vim-snippets'
 " }}}
 " Plugin: skeletons {{{
   Plug 'pgilad/vim-skeletons'
@@ -233,10 +231,6 @@ call plug#begin(path)
   nmap <leader>cr :VtrSendCtrlD<cr>
   nmap <leader>ar :VtrAttachToPane<cr>
 "}}}
-" Plugin: Supertab (for completion with Tab) {{{
-  Plug 'ervandew/supertab'
-  let g:SuperTabDefaultCompletionType = "context"
-" }}}
 " Plugin: nerdcommenter {{{
   Plug 'scrooloose/nerdcommenter'
 
@@ -278,11 +272,17 @@ call plug#begin(path)
   \   ],
   \}
 " }}}
-" Plugin: YCM {{{
+" Plugin: Completion YCM {{{
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 
   let g:ycm_auto_start_csharp_server = 0
   let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_filetype_blacklist = {
+        \ 'gitcommit': 1
+        \}
+  " let g:ycm_semantic_triggers = {
+    " \ 'r' : ['re!..', '::', '$', '@']
+    " \ }
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
@@ -292,15 +292,23 @@ call plug#begin(path)
 
   let g:SimpylFold_docstring_preview=1
 "}}}
-" Plugin: Nvim-R {{{
+" Plugin: R {{{
   Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
 
-  let R_in_buffer = 1
   let R_applescript = 0
   let R_rconsole_width = 100
   let R_tmpdir="~/tmp"
   let R_nvimpager = "horizontal"
+
+
+  " Load tmux script for Nvim-R
+  let R_in_buffer = 0
+  let R_source = '~/.vim/plugs/Nvim-R/R/tmux_split.vim'
+
+  " Packages to complete/highlighting out-of-box
+  " (Otherwise, R env must be loaded)
+  let R_start_libs = 'base,stats,graphics,grDevices,utils,methods,dplyr,ggplot2'
 
   let r_syntax_folding = 1
 
@@ -309,10 +317,10 @@ call plug#begin(path)
   nmap <Space> <Plug>RDSendLine
   nmap K <Plug>RHelp
 " }}}
-" Plugin: vim-julia {{{
+" Plugin: julia {{{
   Plug 'JuliaLang/julia-vim'
 " }}}
-" Plugin: vim-go {{{
+" Plugin: go {{{
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
   let g:go_highlight_functions = 1
