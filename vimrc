@@ -272,11 +272,12 @@ call plug#begin(path)
   \   ],
   \}
 " }}}
-" Plugin: Completion YCM {{{
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
+" Plugin: Completion {{{
+  Plug 'roxma/nvim-completion-manager'
+  " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 
-  let g:ycm_auto_start_csharp_server = 0
-  let g:ycm_autoclose_preview_window_after_completion = 1
+  " let g:ycm_auto_start_csharp_server = 0
+  " let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_filetype_blacklist = {
         \ 'gitcommit': 1
         \}
@@ -295,6 +296,7 @@ call plug#begin(path)
 " Plugin: R {{{
   Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
+  Plug 'gaalcaras/ncm-R'
 
   let R_applescript = 0
   let R_rconsole_width = 100
