@@ -278,7 +278,8 @@ call plug#begin(path)
   let g:ycm_auto_start_csharp_server = 0
   let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_filetype_blacklist = {
-        \ 'gitcommit': 1
+        \ 'gitcommit': 1,
+        \ 'sh': 1
         \}
   " let g:ycm_semantic_triggers = {
     " \ 'r' : ['re!..', '::', '$', '@']
@@ -311,6 +312,10 @@ call plug#begin(path)
   let R_start_libs = 'base,stats,graphics,grDevices,utils,methods,dplyr,ggplot2'
 
   let r_syntax_folding = 1
+
+  " an underscore will be replaced with the assign operator only if it is
+  " preceded by a space and followed by a non-word character.
+  let R_assign = 3
 
   " Vim-R plugin mappings
   vmap <Space> <Plug>RDSendSelection
