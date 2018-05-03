@@ -340,6 +340,13 @@ call plug#begin(path)
 " Plugin: Stan {{{
   Plug 'jongbinjung/stan.vim'
 " }}}
+" Plugin: scala {{{
+  Plug 'ensime/ensime-vim'
+  Plug 'derekwyatt/vim-scala'
+
+  " Typecheck after write
+  autocmd BufWritePost *.scala silent :EnTypeCheck
+" }}}
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 
