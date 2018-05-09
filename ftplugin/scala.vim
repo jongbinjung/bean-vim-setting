@@ -8,7 +8,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
 
-let $BROWSER = 'brave %s'
+let $BROWSER = 'w3m %s'
 
 nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR>
 xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR>
