@@ -280,6 +280,7 @@ call plug#begin(path)
   let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_filetype_blacklist = {
         \ 'gitcommit': 1,
+        \ 'markdown': 1,
         \ 'sh': 1
         \}
   " let g:ycm_semantic_triggers = {
