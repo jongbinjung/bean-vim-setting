@@ -17,6 +17,7 @@ nnoremap <LocalLeader>g :YcmCompleter GoTo<CR>
 nnoremap <LocalLeader>= :0,$!yapf --style google<CR>
 nnoremap <LocalLeader>i :!isort %<CR><CR>
 
-" More convenient VTR options and mappings for python
-vnoremap <buffer> <Space> :VtrSendLinesToRunner<cr>
-nnoremap <buffer> <Space> :VtrSendLinesToRunner<cr><Down>
+let g:slime_no_mappings = 1
+xmap <buffer> <Space> <Plug>SlimeRegionSend
+nmap <buffer> <Space> <Plug>SlimeLineSend<Down>
+nmap <buffer> <LocalLeader>pp <Plug>SlimeParagraphSend<Down>

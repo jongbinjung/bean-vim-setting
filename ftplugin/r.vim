@@ -13,3 +13,7 @@ nmap <silent> <LocalLeader>rz :call RAction("tail")<CR>
 
 vmap <silent> <LocalLeader>rh :call RAction("head", "v")<CR>
 vmap <silent> <LocalLeader>rz :call RAction("tail", "v")<CR>
+
+vmap <buffer> <Space> <Plug>RDSendSelection
+nmap <buffer> <Space> <Plug>RDSendLine
+nmap <buffer> K <Plug>RHelp

@@ -173,8 +173,8 @@ call plug#begin(path)
 
   let g:signify_line_highlight = 0
   let g:signify_vcs_list = [ 'git' ]
-  let g:signify_sign_change = '~'
-  let g:signify_sign_changedelete = '/'
+  let g:signify_sign_change = 'M'
+  let g:signify_sign_changedelete = 'D'
 
   let g:signify_cursorhold_insert     = 1
   let g:signify_cursorhold_normal     = 1
@@ -210,26 +210,15 @@ call plug#begin(path)
 
   let skeletons#autoRegister = 1
 " }}}
-" Plugin: vim-tmux-runner {{{
+" Plugin: REPL environment {{{
   " send commands to a tmux pane
-  Plug 'christoomey/vim-tmux-runner'
+  Plug 'jongbinjung/vim-slime'
 
-  " Percentage and orientation of runner window
-  let g:VtrPercentage = 50
-  let g:VtrOrientation = "h"  " Open to right of vim
+  let g:slime_target = "tmux"
+  " let g:slime_paste_file = '/tmp/.$USER_slime_paste'
+  let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.1"}
 
-  " Options for retaining whbtespaces when used with python
-  let g:VtrStripLeadingWhitespace = 0
-  let g:VtrClearEmptyLines = 1
-  let g:VtrAppendNewline = 1
-
-  " Vim-tmux-runner Mappings
-  " Some filetype specific mappings are defined in ftplugins (e.g., python)
-  vnoremap <leader><Space> :VtrSendLinesToRunner<cr>
-  nnoremap <leader><Space> :VtrSendLinesToRunner<cr><Down>
-  nmap <leader>or :VtrOpenRunner<cr>
-  nmap <leader>cr :VtrSendCtrlD<cr>
-  nmap <leader>ar :VtrAttachToPane<cr>
+  let g:slime_python_ipython = 1
 "}}}
 " Plugin: nerdcommenter {{{
   Plug 'scrooloose/nerdcommenter'
@@ -321,9 +310,9 @@ call plug#begin(path)
   let R_assign = 3
 
   " Vim-R plugin mappings
-  vmap <Space> <Plug>RDSendSelection
-  nmap <Space> <Plug>RDSendLine
-  nmap K <Plug>RHelp
+  " vmap <Space> <Plug>RDSendSelection
+  " nmap <Space> <Plug>RDSendLine
+  " nmap K <Plug>RHelp
 " }}}
 " Plugin: julia {{{
   Plug 'JuliaLang/julia-vim'
@@ -471,7 +460,7 @@ map , <C-w>
 """ Functional stuff {{{
 " Remove trailing white spaces with <F5>
 nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
-autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
+" autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
 
 " Tabstops are 2 spaces by default
 " (different specs are defined as ftplugins or with .editorconfig)
