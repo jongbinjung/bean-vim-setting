@@ -60,7 +60,7 @@ call plug#begin(path)
   " use arrows to look prettier
   let g:NERDTreeDirArrows=1
   let g:nerdtree_tabs_open_on_gui_startup = 0
-"}}}
+" }}}
 " Plugin: vim-snipe (replace easymotion) {{{
   Plug 'yangmillstheory/vim-snipe'
 
@@ -77,7 +77,7 @@ call plug#begin(path)
   map <leader><leader>B <Plug>(snipe-B)
   map <leader><leader>ge <Plug>(snipe-ge)
   map <leader><leader>gE <Plug>(snipe-gE)
-"}}}
+" }}}
 " Plugin: CtrlP (fuzzy file/directory search matching) {{{
   Plug 'kien/ctrlp.vim'
 
@@ -95,7 +95,7 @@ call plug#begin(path)
     \ --ignore "**/*.pyc"
     \ --ignore review
     \ -g ""'
-"}}}
+" }}}
 " Plugin: Deep search with ack.vim {{{
   Plug 'mileszs/ack.vim'
 
@@ -114,18 +114,18 @@ call plug#begin(path)
 " Plugin: color schemes {{{
   Plug 'altercation/vim-colors-solarized'
   " Plug 'crusoexia/vim-monokai'
-"}}}
+" }}}
 " Plugin: Dim inactive windows {{{
   Plug 'blueyed/vim-diminactive'
 
   let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
   let g:diminactive_enable_focus = 1
-"}}}
+" }}}
 " Plugin: Vim-tmux focus events fix {{{
   " TODO(jongbin): Using Ctrl to show mouse location in Gnome will mess-up
   " Ctrl key bindings -- Ctrl-down will be captured as losing focus from vim!
   Plug 'tmux-plugins/vim-tmux-focus-events'
-"}}}
+" }}}
 " Plugin: Airline (for fancy status bar) {{{
   Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-airline/vim-airline'
@@ -176,7 +176,7 @@ call plug#begin(path)
   nmap <leader>s <Plug>AirlineSelectNextTab
 
   let g:airline#extensions#tabline#fnamemod = ':t'
-"}}}
+" }}}
 " Plugin: Markdown folding {{{
   Plug 'gabrielelana/vim-markdown', { 'for': ['markdown', 'rmd'] }
 
@@ -204,7 +204,7 @@ call plug#begin(path)
   " let g:signify_cursorhold_normal     = 0
   " let g:signify_update_on_bufenter    = 0
   " let g:signify_update_on_focusgained = 0
-"}}}
+" }}}
 " }}} END: VCS (git)
 " IDE plugins {{{
 " basic IDE capabilities {{{
@@ -246,7 +246,7 @@ call plug#begin(path)
   let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.1"}
 
   let g:slime_python_ipython = 1
-"}}}
+" }}}
 " Plugin: nerdcommenter {{{
   Plug 'scrooloose/nerdcommenter'
 
@@ -314,7 +314,7 @@ call plug#begin(path)
   Plug 'jmcantrell/vim-virtualenv'
 
   let g:SimpylFold_docstring_preview=1
-"}}}
+" }}}
 " Plugin: R {{{
   Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
@@ -398,7 +398,7 @@ call plug#begin(path)
 " }}}
 
 call plug#end()  " }}} End Plug configs and plugins
-"}}}
+" }}}
 " Language/font settings (default to English) {{{
 set langmenu=en_US.UTF-8    " sets the language of the menu
 language C
@@ -417,7 +417,7 @@ endif
 
 " set spelling to ignore CJK languages
 set spelllang=en_us,cjk
-"}}}
+" }}}
 " Global key ReMappings                                                    {{{
 " <leader>c to clear search highlighting
 map <silent> <leader>c :let @/=""<CR>
@@ -428,7 +428,7 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Window commands with ,
 map , <C-w>
-"}}}
+" }}}
 " Custom functions {{{
 function! <SID>StripTrailingWhiteSpaces()
   let l = line(".")
@@ -454,7 +454,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 " Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
 " autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
 " autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
-"}}}
+" }}}
 " Visual settings {{{
 " solarized color scheme
 set background=dark
@@ -488,7 +488,7 @@ set showmode
 
 " Let ViM change the terminal title
 set title
-"}}}
+" }}}
 " Functional stuff {{{
 if has("unix")
     set shell=bash
