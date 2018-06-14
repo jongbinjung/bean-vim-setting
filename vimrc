@@ -284,10 +284,7 @@ call plug#begin(path)
         \ 'markdown': 1,
         \ 'sh': 1
         \}
-  " let g:ycm_semantic_triggers = {
-    " \ 'r' : ['re!..', '::', '$', '@']
-    " \ }
-    "
+
   " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
   " (via http://stackoverflow.com/a/22253548/1626737)
   let g:SuperTabDefaultCompletionType    = '<C-n>'
@@ -306,7 +303,6 @@ call plug#begin(path)
 " Plugin: R {{{
   Plug 'jalvesaq/R-Vim-runtime'
   Plug 'jalvesaq/Nvim-R'
-  " Plug 'gaalcaras/ncm-R'
 
   let R_applescript = 0
   let R_rconsole_width = 100
@@ -327,11 +323,6 @@ call plug#begin(path)
   " an underscore will be replaced with the assign operator only if it is
   " preceded by a space and followed by a non-word character.
   let R_assign = 3
-
-  " Vim-R plugin mappings
-  " vmap <Space> <Plug>RDSendSelection
-  " nmap <Space> <Plug>RDSendLine
-  " nmap K <Plug>RHelp
 " }}}
 " Plugin: julia {{{
   Plug 'JuliaLang/julia-vim'
