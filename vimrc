@@ -7,7 +7,7 @@ let mapleader=";"
 " Allow external configs for project-specific settings
 set exrc
 
-""" Plugin path settings {{{
+" Plugin path settings {{{
 if has("unix")
   let path=$HOME. '/.vim/plugs/'
 elseif has("win32")
@@ -15,7 +15,9 @@ elseif has("win32")
   let &runtimepath=&runtimepath . ',' . $HOME . '_vim'
 endif
 
+" Force use of python3 --- which makes some plugins faster? (YCM!!!)
 call has('python3')
+
 " Start vim-plug configs and plugins {{{
 call plug#begin(path)
 
@@ -81,7 +83,7 @@ call plug#begin(path)
 
   let g:ctrlp_show_hidden = 1
   " Use silver_searcher (https://github.com/ggreer/the_silver_searcher)
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+  let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
     \ --ignore .hg
@@ -94,6 +96,19 @@ call plug#begin(path)
     \ --ignore review
     \ -g ""'
 "}}}
+" Plugin: Deep search with ack.vim {{{
+  Plug 'mileszs/ack.vim'
+
+  " Use ag, if it exists
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep --smart-case'
+  endif
+
+  " Search in background via vim-dispatch
+  let g:ack_use_dispatch = 1
+
+  nnoremap <Leader>/ :Ack!<Space>
+" }}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
 " Plugin: color schemes {{{
@@ -403,7 +418,18 @@ endif
 " set spelling to ignore CJK languages
 set spelllang=en_us,cjk
 "}}}
-""" Custom functions {{{
+" Global key ReMappings                                                    {{{
+" <leader>c to clear search highlighting
+map <silent> <leader>c :let @/=""<CR>
+
+" Remove trailing white spaces with <F5>
+nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" Window commands with ,
+map , <C-w>
+"}}}
+" Custom functions {{{
 function! <SID>StripTrailingWhiteSpaces()
   let l = line(".")
   let c = col(".")
@@ -421,7 +447,15 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 """ }}}
-""" Visual settings {{{
+" Autocmds {{{
+" Remove trailing whitespaces before BufWrite
+autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
+
+" Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
+" autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
+" autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
+"}}}
+" Visual settings {{{
 " solarized color scheme
 set background=dark
 colorscheme solarized
@@ -455,26 +489,7 @@ set showmode
 " Let ViM change the terminal title
 set title
 "}}}
-""" Global key ReMappings                                                    {{{
-" <leader>c to clear search highlighting
-map <silent> <leader>c :let @/=""<CR>
-
-" Remove trailing white spaces with <F5>
-nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
-" Window commands with ,
-map , <C-w>
-"}}}
-""" Autocmds {{{
-" Remove trailing whitespaces before BufWrite
-autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
-
-" Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
-" autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
-" autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
-"}}}
-""" Functional stuff {{{
+" Functional stuff {{{
 if has("unix")
     set shell=bash
 elseif has("win32")
