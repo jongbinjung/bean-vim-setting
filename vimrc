@@ -151,6 +151,7 @@ call plug#begin(path)
       \ 's'  : 'S',
       \ 'S'  : 'S',
       \ '' : 'S',
+      \ 't'  : 'T',
       \ }
 
   " set tabs with Airline
@@ -208,16 +209,16 @@ call plug#begin(path)
 " }}} END: VCS (git)
 " IDE plugins {{{
 " basic IDE capabilities {{{
-" Plugin: Auto Pairs (Pair parentheses) {{{
-  Plug 'jiangmiao/auto-pairs'
-
-  let g:AutoPairsFlyMode = 0
-" }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
   Plug 'editorconfig/editorconfig-vim'
 
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+" }}}
+" Plugin: Auto Pairs (Pair parentheses) {{{
+  Plug 'jiangmiao/auto-pairs'
+
+  let g:AutoPairsFlyMode = 0
 " }}}
 " Plugin: Snippets (ultisnips) {{{
   Plug 'SirVer/ultisnips'
@@ -242,8 +243,11 @@ call plug#begin(path)
   Plug 'jongbinjung/vim-slime'
 
   let g:slime_target = "tmux"
-  " let g:slime_paste_file = '/tmp/.$USER_slime_paste'
-  let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.1"}
+  let g:slime_paste_file = '/tmp/.' . $USER . '_slime_paste'
+  let g:slime_default_config = {
+        \ "socket_name": split($TMUX, ",")[0],
+        \ "target_pane": ":.1"
+        \ }
 
   let g:slime_python_ipython = 1
 " }}}
