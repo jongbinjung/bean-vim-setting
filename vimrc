@@ -182,13 +182,13 @@ call plug#begin(path)
 
   let g:signify_line_highlight = 0
   let g:signify_vcs_list = [ 'git' ]
-  let g:signify_sign_change = 'M'
-  let g:signify_sign_changedelete = 'D'
+  let g:signify_sign_change = '~'
+  let g:signify_sign_changedelete = '\'
 
-  let g:signify_cursorhold_insert     = 1
-  let g:signify_cursorhold_normal     = 1
-  let g:signify_update_on_bufenter    = 0
-  let g:signify_update_on_focusgained = 1
+  " let g:signify_cursorhold_insert     = 0
+  " let g:signify_cursorhold_normal     = 0
+  " let g:signify_update_on_bufenter    = 0
+  " let g:signify_update_on_focusgained = 0
 "}}}
 " }}} END: VCS (git)
 " IDE plugins {{{
