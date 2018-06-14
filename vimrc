@@ -7,7 +7,7 @@ let mapleader=";"
 " Allow external configs for project-specific settings
 set exrc
 
-" Plugin path settings {{{
+" Start vim-plug configs and plugins {{{
 if has("unix")
   let path=$HOME. '/.vim/plugs/'
 elseif has("win32")
@@ -18,7 +18,6 @@ endif
 " Force use of python3 --- which makes some plugins faster? (YCM!!!)
 call has('python3')
 
-" Start vim-plug configs and plugins {{{
 call plug#begin(path)
 
 " Usability enhancements {{{
@@ -177,11 +176,6 @@ call plug#begin(path)
   nmap <leader>s <Plug>AirlineSelectNextTab
 
   let g:airline#extensions#tabline#fnamemod = ':t'
-" }}}
-" Plugin: Markdown folding {{{
-  Plug 'gabrielelana/vim-markdown', { 'for': ['markdown', 'rmd'] }
-
-  let g:markdown_enable_folding = 1
 " }}}
 " }}} END: Visual enhancements
 " Version Control (git) {{{
@@ -372,25 +366,27 @@ call plug#begin(path)
   let g:vimtex_view_method = 'zathura'
 " }}}
 " }}} END: IDE plugins
-" non-language filetypes {{{
+" markup/non-language filetypes {{{
 " Plugin: csv.vim {{{
   Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " }}}
 " Plugin: vim-toml {{{
   Plug 'cespare/vim-toml'
 " }}}
-" }}} END: non-language filetypes
+" Plugin: markdown {{{
+  Plug 'gabrielelana/vim-markdown', { 'for': ['markdown', 'rmd'] }
+
+  let g:markdown_enable_folding = 1
+" }}}
+" }}} END: markup/non-language filetypes
 " Distraction-free writing {{{
 " Plugin: limelight {{{
   Plug 'junegunn/limelight.vim'
 
   " Map to <leader>f(ocus)
-  nmap <Leader>f :Limelight!!<CR>
-  " nmap <Leader>l <Plug>(Limelight)
-  " xmap <Leader>l <Plug>(Limelight)
+  nmap <silent> <Leader>f :Limelight!!<CR>
 
   let g:limelight_conceal_ctermfg = 'darkgray'
-  " let g:limelight_default_coefficient = 0.5
 " }}}
 " Plugin: Goyo {{{
   Plug 'junegunn/goyo.vim'
@@ -401,10 +397,9 @@ call plug#begin(path)
 " }}}
 " }}}
 
-call plug#end()  " }}} End Plug configs and plugins
+call plug#end()
 " }}}
 " Language/font settings (default to English) {{{
-set langmenu=en_US.UTF-8    " sets the language of the menu
 language C
 
 " set encoding/font options
@@ -615,3 +610,4 @@ endif
 " Set the update to 250ms for signs and whatnot
 set updatetime=250
 " }}}
+" vim: set ts=2 sw=2 tw=80 et :
