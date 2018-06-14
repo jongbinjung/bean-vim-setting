@@ -26,6 +26,15 @@ call plug#begin(path)
 " Plugin: vim-dispatch - Asynchronous commands! {{{
   Plug 'tpope/vim-dispatch'
 " }}}
+" Plugin: Toggle quick/location lists {{{
+  Plug 'fszymanski/ListToggle.vim'
+
+  let g:listtoggle_no_maps = 1
+  nmap <Leader>q <Plug>ListToggleQuickfixListToggle
+  nmap <Leader>l <Plug>ListToggleLocationListToggle
+
+  let g:listtoggle_no_focus = 1
+" }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
@@ -199,11 +208,14 @@ call plug#begin(path)
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
 
-  let g:UltiSnipsExpandTrigger = "<C-j>"
-  let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-  let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
   let g:UltiSnipsEditSplit = "context"
   let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+  " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+  " (via http://stackoverflow.com/a/22253548/1626737)
+  let g:UltiSnipsExpandTrigger       = '<C-j>'
+  let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
+  let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 " }}}
 " Plugin: skeletons {{{
   Plug 'pgilad/vim-skeletons'
@@ -242,16 +254,9 @@ call plug#begin(path)
   let g:ale_sign_error = '!!'
   let g:ale_sign_warning = '>>'
 
-  let g:ale_set_loclist = 0
-  let g:ale_set_quickfix = 1
-  let g:ale_open_list = 1
-
-  " Let shellcheck follow external sources (SC1091)
-  let g:ale_sh_shellcheck_options = '-x'
-
-  " Ignore
-  "   SC2002: Useless cat
-  let g:ale_sh_shellcheck_exclusions = 'SC2002'
+  let g:ale_set_loclist = 1
+  let g:ale_set_quickfix = 0
+  let g:ale_open_list = 0
 
   let g:ale_linters = {'python': ['pylint', 'flake8']}
 
@@ -260,9 +265,16 @@ call plug#begin(path)
   \       'yapf',
   \   ],
   \}
+
+  " Let shellcheck follow external sources (SC1091)
+  let g:ale_sh_shellcheck_options = '-x'
+
+  " Ignore
+  "   SC2002: Useless cat
+  let g:ale_sh_shellcheck_exclusions = 'SC2002'
 " }}}
 " Plugin: Completion engine {{{
-  " Plug 'roxma/nvim-completion-manager'
+  Plug 'ervandew/supertab'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 
   let g:ycm_auto_start_csharp_server = 0
@@ -275,6 +287,13 @@ call plug#begin(path)
   " let g:ycm_semantic_triggers = {
     " \ 'r' : ['re!..', '::', '$', '@']
     " \ }
+    "
+  " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+  " (via http://stackoverflow.com/a/22253548/1626737)
+  let g:SuperTabDefaultCompletionType    = '<C-n>'
+  let g:SuperTabCrMapping                = 0
+  let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']"
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
@@ -331,7 +350,7 @@ call plug#begin(path)
   Plug 'jongbinjung/stan.vim'
 " }}}
 " Plugin: scala {{{
-  Plug 'ensime/ensime-vim'
+  Plug 'ensime/ensime-vim', { 'for': 'scala' }
   Plug 'derekwyatt/vim-scala'
 
   " Typecheck after write
@@ -355,7 +374,8 @@ call plug#begin(path)
 " Plugin: limelight {{{
   Plug 'junegunn/limelight.vim'
 
-  nmap <Leader>l :Limelight!!<CR>
+  " Map to <leader>f(ocus)
+  nmap <Leader>f :Limelight!!<CR>
   " nmap <Leader>l <Plug>(Limelight)
   " xmap <Leader>l <Plug>(Limelight)
 
@@ -372,8 +392,6 @@ call plug#begin(path)
 " }}}
 
 call plug#end()  " }}} End Plug configs and plugins
-
-filetype plugin indent on  " set filetype back on
 "}}}
 " Language/font settings (default to English) {{{
 set langmenu=en_US.UTF-8    " sets the language of the menu
@@ -411,7 +429,6 @@ function! AppendModeline()
   let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
   call append(line("$"), l:modeline)
 endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 """ }}}
 """ Visual settings {{{
 " solarized color scheme
@@ -444,26 +461,37 @@ set laststatus=2
 " Show the current mode
 set showmode
 
-" Switch on syntax highlighting.
-syntax on
-
 " Let ViM change the terminal title
 set title
 "}}}
-""" Key ReMappings                                                           {{{
+""" Global key ReMappings                                                    {{{
 " <leader>c to clear search highlighting
 map <silent> <leader>c :let @/=""<CR>
+
+" Remove trailing white spaces with <F5>
+nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Window commands with ,
 map , <C-w>
 "}}}
+""" Autocmds {{{
+" Remove trailing whitespaces before BufWrite
+autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
+
+" Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
+" autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
+" autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
+"}}}
 """ Functional stuff {{{
-" Remove trailing white spaces with <F5>
-nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
-" autocmd BufWRitePre * :call <SID>StripTrailingWhiteSpaces()
+if has("unix")
+    set shell=bash
+elseif has("win32")
+    set shell=cmd.exe
+endif
 
 " Tabstops are 2 spaces by default
-" (different specs are defined as ftplugins or with .editorconfig)
+" (different specs are defined via ftplugins, modline, or with .editorconfig)
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -479,12 +507,6 @@ set noignorecase
 
 " Backslashes suck chipmunk balls
 set shellslash
-
-if has("unix")
-    set shell=bash
-elseif has("win32")
-    set shell=cmd.exe
-endif
 
 " Make sure that unsaved buffers that are to be put in the background are
 " allowed to go in there (ie. the "must save first" error doesn't come up)
@@ -506,14 +528,7 @@ set showcmd
 " as NerdTree or CtrlP
 "set debug=msg
 
-" This is the timeout used while waiting for user input on a multi-keyed macro
-" or while just sitting and waiting for another key to be pressed measured
-" in milliseconds.
-"
-" i.e. for the ",d" command, there is a "timeoutlen" wait period between the
-"      "," key and the "d" key.  If the "d" key isn't pressed before the
-"      timeout expires, one of two things happens: The "," command is executed
-"      if there is one (which there isn't) or the command aborts.
+" Timeout between multikey map/macros
 set timeoutlen=500
 
 " Keep some stuff in the history
@@ -522,12 +537,8 @@ set history=100
 " Set the syntax foldmethod options
 let g:vimsyn_folding='afPt'
 
-" These commands open folds
+" These commands open folds (basically everything but horizontal movement)
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-
-" Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
-autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
-autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -551,9 +562,9 @@ set complete=.,w,b,t
 " When completing by tag, show the whole tag, not just the function name
 set showfulltag
 
-" Set the textwidth to be 80 chars, but don't wrap
+" Set the textwidth to be 80 chars
 set textwidth=80
-set colorcolumn=80
+set colorcolumn=81
 
 " get rid of the silly characters in separators
 set fillchars = ""
@@ -568,6 +579,10 @@ set hlsearch
 set incsearch
 
 " Add the unnamed register to the clipboard
+if has('unnamedplus')
+  " Yank to "+ (X11 clipboard) by default, if available
+  set clipboard+=unnamedplus
+endif
 set clipboard+=unnamed
 
 " Automatically read a file that has changed on disk
