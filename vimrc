@@ -238,10 +238,12 @@ call plug#begin(path)
 
   let g:slime_target = "tmux"
   let g:slime_paste_file = '/tmp/.' . $USER . '_slime_paste'
-  let g:slime_default_config = {
-        \ "socket_name": split($TMUX, ",")[0],
-        \ "target_pane": ":.1"
-        \ }
+  if len($TMUX) > 0
+    let g:slime_default_config = {
+          \ "socket_name": split($TMUX, ",")[0],
+          \ "target_pane": ":.1"
+          \ }
+  endif
 
   let g:slime_python_ipython = 1
 " }}}
