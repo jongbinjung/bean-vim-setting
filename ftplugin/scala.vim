@@ -8,7 +8,7 @@ setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
 
-let $BROWSER = 'w3m %s'
+" let $BROWSER = 'chrome %s'
 
 nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR>
 xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR>
@@ -31,3 +31,7 @@ nnoremap <buffer> <silent> <LocalLeader>u :EnUsages<CR>
 " TODO(jongbin): set to search token under cursor?
 nnoremap <buffer> <LocalLeader>/ :EnSearch
 
+let g:slime_no_mappings = 1
+xmap <buffer> <Space> <Plug>SlimeRegionSend
+nmap <buffer> <Space> <Plug>SlimeLineSend<Down>
+nmap <buffer> <LocalLeader>pp <Plug>SlimeParagraphSend<Down>
