@@ -7,6 +7,7 @@ setlocal textwidth=79
 setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
+setlocal foldmethod=syntax
 
 " let $BROWSER = 'chrome %s'
 
