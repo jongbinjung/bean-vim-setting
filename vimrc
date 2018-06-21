@@ -273,12 +273,23 @@ call plug#begin(path)
   let g:ale_set_quickfix = 0
   let g:ale_open_list = 0
 
-  let g:ale_linters = {'python': ['pylint', 'flake8']}
+  let g:ale_linters = {
+  \  'python': [
+  \    'pylint',
+  \    'flake8',
+  \  ],
+  \  'scala': [
+  \    'scalastyle',
+  \  ],
+  \}
 
   let g:ale_fixers = {
   \   'python': [
   \       'yapf',
   \   ],
+  \  'scala': [
+  \    'scalafmt',
+  \  ],
   \}
 
   " Let shellcheck follow external sources (SC1091)
