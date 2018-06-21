@@ -186,6 +186,9 @@ call plug#begin(path)
   nnoremap <silent> gk :Gpush<CR>
   nnoremap <silent> gj :Gpull<CR>
   nnoremap <silent> gd :Gdiff<CR>
+  nnoremap <silent> gb :Gblame<CR>
+  " NOTE(jongbin): Only use diffput --- less confusing
+  nnoremap <silent> dp :diffput<CR>
 " }}}
 " Plugin: signify (visualize diffs in the gutter) {{{
   Plug 'mhinz/vim-signify'
@@ -284,9 +287,9 @@ call plug#begin(path)
   \}
 
   let g:ale_fixers = {
-  \   'python': [
-  \       'yapf',
-  \   ],
+  \  'python': [
+  \    'yapf',
+  \  ],
   \  'scala': [
   \    'scalafmt',
   \  ],
