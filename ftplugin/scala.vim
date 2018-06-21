@@ -3,7 +3,8 @@ let maplocalleader="'"
 setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
-setlocal textwidth=79
+setlocal textwidth=160
+setlocal colorcolumn=160
 setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
@@ -30,7 +31,7 @@ nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR>
 nnoremap <buffer> <silent> <LocalLeader>u :EnUsages<CR>
 
 " TODO(jongbin): set to search token under cursor?
-nnoremap <buffer> <LocalLeader>/ :EnSearch
+nnoremap <buffer> <LocalLeader>/ :EnSearch<Space>
 
 let g:slime_no_mappings = 1
 xmap <buffer> <Space> <Plug>SlimeRegionSend
