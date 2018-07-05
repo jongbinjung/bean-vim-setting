@@ -16,7 +16,9 @@ elseif has("win32")
 endif
 
 " Force use of python3 --- which makes some plugins faster? (YCM!!!)
-call has('python3')
+if has('python3')
+  silent! python3 1
+endif
 
 call plug#begin(path)
 
