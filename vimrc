@@ -548,7 +548,7 @@ set showcmd
 " Setting this below makes it so that error messages don't disappear after
 " one second on startup. But may result in excessive messaging in plugins such
 " as NerdTree or CtrlP
-set debug=msg
+" set debug=msg
 
 " Timeout between multikey map/macros
 set timeoutlen=500
