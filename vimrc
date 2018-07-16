@@ -306,7 +306,7 @@ call plug#begin(path)
 " }}}
 " Plugin: Completion engine {{{
   Plug 'ervandew/supertab'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
+  Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer' }
 
   let g:ycm_auto_start_csharp_server = 0
   let g:ycm_autoclose_preview_window_after_completion = 1
