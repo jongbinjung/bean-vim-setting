@@ -188,7 +188,7 @@ nnoremap <silent> dp :diffput<CR>
 " => useful if you're into using snippets and such ...
 "
 " let g:UltiSnipsEditSplit = "context"
-" let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+" let g:UltiSnipsSnippetsDir = $HOME . "/.vim/ultisnips"
 
 " => YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " => (via http://stackoverflow.com/a/22253548/1626737)
