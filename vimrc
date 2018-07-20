@@ -189,6 +189,7 @@ nnoremap <silent> dp :diffput<CR>
 "
 " let g:UltiSnipsEditSplit = "context"
 " let g:UltiSnipsSnippetsDir = $HOME . "/.vim/ultisnips"
+" let g:ultisnips_python_style = "google"
 
 " => YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " => (via http://stackoverflow.com/a/22253548/1626737)
