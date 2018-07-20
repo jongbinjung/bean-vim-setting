@@ -219,7 +219,8 @@ call plug#begin(path)
   Plug 'honza/vim-snippets'
 
   let g:UltiSnipsEditSplit = "context"
-  let g:UltiSnipsSnippetsDir = $HOME . "/.vim/ultisnips"
+  let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
+  let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips"]
 
   let g:ultisnips_python_style = "google"
 
