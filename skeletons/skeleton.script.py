@@ -1,6 +1,6 @@
 #!/usr/bin/env python${1:3}
 """
-${2:New python module}
+${2:New python script}
 
 Created: `date +%F`
 Author: ${3:`id -u -n`}
