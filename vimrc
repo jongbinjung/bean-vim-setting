@@ -8,12 +8,7 @@ let mapleader=";"
 set exrc
 
 " Start vim-plug configs and plugins {{{
-if has("unix")
-  let path=$HOME. '/.vim/plugs/'
-elseif has("win32")
-  let path=$HOME . '_vim/plugs/'
-  let &runtimepath=&runtimepath . ',' . $HOME . '_vim'
-endif
+let path=$HOME. '/.vim/plugs/'
 
 " Force use of python3 --- which makes some plugins faster? (YCM!!!)
 if has('python3')
@@ -224,7 +219,9 @@ call plug#begin(path)
   Plug 'honza/vim-snippets'
 
   let g:UltiSnipsEditSplit = "context"
-  let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+  let g:UltiSnipsSnippetsDir = $HOME . "/.vim/ultisnips"
+
+  let g:ultisnips_python_style = "google"
 
   " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
   " (via http://stackoverflow.com/a/22253548/1626737)
@@ -337,13 +334,13 @@ call plug#begin(path)
 
   let R_applescript = 0
   let R_rconsole_width = 100
-  let R_tmpdir="~/tmp"
+  let R_tmpdir=$HOME . "/tmp"
   let R_nvimpager = "horizontal"
 
 
   " Load tmux script for Nvim-R
   let R_in_buffer = 0
-  let R_source = '~/.vim/plugs/Nvim-R/R/tmux_split.vim'
+  let R_source = $HOME . '/.vim/plugs/Nvim-R/R/tmux_split.vim'
 
   " Packages to complete/highlighting out-of-box
   " (Otherwise, R env must be loaded)
@@ -602,29 +599,8 @@ set hlsearch
 " Incrementally match the search
 set incsearch
 
-" Add the unnamed register to the clipboard
-if has('unnamedplus')
-  " Yank to "+ (X11 clipboard) by default, if available
-  set clipboard+=unnamedplus
-endif
-set clipboard+=unnamed
-
 " Automatically read a file that has changed on disk
 set autoread
-
-" Don't make backups. Because I enjoy the thrill ...
-"set nobackup
-"set nowritebackup
-
-" ...But when I do make backups, make sure that they don't get in the way :D
-
-if has("unix")
-    set backupdir=~/.vim/tmp,.
-    set directory=~/.vim/tmp,.
-elseif has("win32")
-    set backupdir=~/_vim/tmp,.
-    set directory=~/_vim/tmp,.
-endif
 
 " Set the update to 250ms for signs and whatnot
 set updatetime=250
