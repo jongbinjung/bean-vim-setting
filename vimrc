@@ -33,6 +33,9 @@ call plug#begin(path)
 
   let g:listtoggle_no_focus = 1
 " }}}
+" Plugin: Window movements {{{
+Plug 'andymass/vim-tradewinds'
+" }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
@@ -283,6 +286,7 @@ call plug#begin(path)
   \  ],
   \  'scala': [
   \    'scalastyle',
+  \    'scalafix',
   \  ],
   \}
 
