@@ -14,7 +14,7 @@ nnoremap K :YcmCompleter GetDoc<CR>
 nnoremap <LocalLeader>g :YcmCompleter GoTo<CR>
 
 " Code formatting shortcuts
-nnoremap <LocalLeader>= :0,$!yapf --style google<CR>
+nnoremap <LocalLeader>= :0,$!yapf<CR>
 nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 let g:slime_no_mappings = 1
