@@ -215,6 +215,15 @@ Plug 'andymass/vim-tradewinds'
 " basic IDE capabilities {{{
 " Plugin: Keyword highlighting {{{
   Plug 'RRethy/vim-illuminate'
+  let g:Illuminate_ftHighlightGroups = {
+        \ 'vim': ['vimVar', 'vimString', 'vimLineComment', 'vimFuncName',
+        \         'vimFunction', 'vimUserFunc', 'vimFunc']
+        \ }
+
+  let g:Illuminate_ftblacklist = [
+        \ 'nerdtree',
+        \ 'gitcommit'
+        \ ]
 " }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
