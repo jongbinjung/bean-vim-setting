@@ -74,8 +74,9 @@ pip-log.txt
 # Mac crap
 .DS_Store
 
-# Don't include the plug folder!
+# Don't include the plug folder, or vim-plug itself
 # This should be managed through Plug on each machine!!!
+autoload/plug.vim*
 plugs/*
 
 # Keep vim swap files out
