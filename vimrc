@@ -213,6 +213,9 @@ Plug 'andymass/vim-tradewinds'
 " }}} END: VCS (git)
 " IDE plugins {{{
 " basic IDE capabilities {{{
+" Plugin: Keyword highlighting {{{
+  Plug 'RRethy/vim-illuminate'
+" }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
   Plug 'editorconfig/editorconfig-vim'
