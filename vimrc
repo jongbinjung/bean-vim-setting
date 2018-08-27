@@ -43,6 +43,10 @@ call plug#begin(path)
 " Plugin: Window movements {{{
 Plug 'andymass/vim-tradewinds'
 " }}}
+" Plugin: Calendar application {{{
+Plug 'itchyny/calendar.vim'
+let g:calendar_google_calendar = 1
+" }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
 " Plugin: vim-surround  {{{
@@ -445,6 +449,9 @@ language C
 " set encoding/font options
 set fencs=utf-8,euc-kr
 set encoding=utf-8
+
+" Input mehtod settings
+" set noimd
 
 if has("unix")
     set gfn=Inconsolata-dz\ for\ Powerline
