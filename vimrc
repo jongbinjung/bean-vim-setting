@@ -30,6 +30,9 @@ call plug#begin(path)
 " }}}
 " Plugin: vim-dispatch - Asynchronous commands! {{{
   Plug 'tpope/vim-dispatch'
+  let g:dispatch_compilers = {
+    \ 'rust': 'vargo'
+  \}
 " }}}
 " Plugin: Toggle quick/location lists {{{
   Plug 'fszymanski/ListToggle.vim'
@@ -331,7 +334,7 @@ let g:calendar_google_calendar = 1
 " }}}
 " Plugin: Completion engine {{{
   Plug 'ervandew/supertab'
-  Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer' }
+  Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --gocode-completer --rust-completer' }
 
   let g:ycm_auto_start_csharp_server = 0
   let g:ycm_autoclose_preview_window_after_completion = 1
@@ -408,6 +411,9 @@ let g:calendar_google_calendar = 1
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 
   let g:vimtex_view_method = 'zathura'
+" }}}
+" Plugin: rust {{{
+  Plug 'rust-lang/rust.vim'
 " }}}
 " }}} END: IDE plugins
 " markup/non-language filetypes {{{
