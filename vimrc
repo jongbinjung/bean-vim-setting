@@ -234,6 +234,11 @@ let g:calendar_google_calendar = 1
 " }}}
 " Plugin: Tags {{{
   Plug 'ludovicchabant/vim-gutentags'
+
+  " Don't be so aggresive about generating tags; I'll tell you when I need em
+  let g:gutentags_generate_on_missing = 0
+  let g:gutentags_generate_on_new=0
+  let g:gutentags_cache_dir=$HOME. '/.tags/'
 " }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
