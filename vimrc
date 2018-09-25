@@ -418,7 +418,7 @@ let g:calendar_google_calendar = 1
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 
-  let g:vimtex_view_method = 'zathura'
+  let g:vimtex_view_method = 'mupdf'
 " }}}
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'
