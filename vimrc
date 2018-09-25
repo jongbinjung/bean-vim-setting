@@ -232,6 +232,9 @@ let g:calendar_google_calendar = 1
         \ 'gitcommit'
         \ ]
 " }}}
+" Plugin: Tags {{{
+  Plug 'ludovicchabant/vim-gutentags'
+" }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
   Plug 'editorconfig/editorconfig-vim'
