@@ -16,6 +16,10 @@ snippet todoc "Add todo with user name" b
 # TODO(`echo $USER`): $0
 endsnippet
 
+snippet note "Add note with user name" b
+# NOTE(`echo $USER`): $0
+endsnippet
+
 snippet sec "Create section folds" b
 # ${1:Section description} `!p
 snip.rv = "-" * max((75 - len(t[1]) - 3), 4)
