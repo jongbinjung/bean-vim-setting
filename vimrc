@@ -35,13 +35,10 @@ call plug#begin(path)
   \}
 " }}}
 " Plugin: Toggle quick/location lists {{{
-  Plug 'fszymanski/ListToggle.vim'
+  Plug 'Valloric/ListToggle'
 
-  let g:listtoggle_no_maps = 1
-  nmap <Leader>q <Plug>ListToggleQuickfixListToggle
-  nmap <Leader>l <Plug>ListToggleLocationListToggle
-
-  let g:listtoggle_no_focus = 1
+  let g:lt_location_list_toggle_map = '<leader>l'
+  let g:lt_quickfix_list_toggle_map = '<leader>q'
 " }}}
 " Plugin: Window movements {{{
 Plug 'andymass/vim-tradewinds'
@@ -343,7 +340,7 @@ let g:calendar_google_calendar = 1
 " Plugin: Completion engine {{{
   Plug 'ervandew/supertab'
   Plug 'Valloric/YouCompleteMe', {
-    \ 'do': 'python3 install.py --clang-completer --gocode-completer --rust-completer'
+    \ 'do': 'python3 install.py --clang-completer --gocode-completer --rust-completer --java-completer'
     \}
 
   let g:ycm_auto_start_csharp_server = 0
@@ -389,6 +386,9 @@ let g:calendar_google_calendar = 1
 
   let r_syntax_folding = 1
 
+  " Open or reload html after knit
+  let R_openhtml = 1
+
   " an underscore will be replaced with the assign operator only if it is
   " preceded by a space and followed by a non-word character.
   let R_assign = 3
@@ -418,9 +418,10 @@ let g:calendar_google_calendar = 1
   autocmd BufWritePost *.scala silent :EnTypeCheck
 " }}}
 " Plugin: vimlatex {{{
-  Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+  Plug 'lervag/vimtex'
 
   let g:vimtex_view_method = 'mupdf'
+  " let g:vimtex_view_method = 'zathura'
 " }}}
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'

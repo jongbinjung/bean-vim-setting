@@ -34,3 +34,6 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
       \ ]
+
+setlocal textwidth=120
+setlocal colorcolumn=120
