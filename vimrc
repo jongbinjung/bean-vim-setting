@@ -28,24 +28,11 @@ call plug#begin(path)
 " Plugin: vim-unimpaired  {{{
   Plug 'tpope/vim-unimpaired'
 " }}}
-" Plugin: vim-dispatch - Asynchronous commands! {{{
-  Plug 'tpope/vim-dispatch'
-  let g:dispatch_compilers = {
-    \ 'rust': 'vargo'
-  \}
-" }}}
 " Plugin: Toggle quick/location lists {{{
   Plug 'Valloric/ListToggle'
 
   let g:lt_location_list_toggle_map = '<leader>l'
   let g:lt_quickfix_list_toggle_map = '<leader>q'
-" }}}
-" Plugin: Window movements {{{
-Plug 'andymass/vim-tradewinds'
-" }}}
-" Plugin: Calendar application {{{
-Plug 'itchyny/calendar.vim'
-let g:calendar_google_calendar = 1
 " }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
@@ -93,18 +80,20 @@ let g:calendar_google_calendar = 1
 
   let g:ctrlp_show_hidden = 1
   " Use silver_searcher (https://github.com/ggreer/the_silver_searcher)
-  let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "*.rds"
-    \ --ignore "*.png"
-    \ --ignore "*.jpg"
-    \ --ignore "*.pdf"
-    \ --ignore "**/*.pyc"
-    \ --ignore review
-    \ -g ""'
+  if executable('ag')
+    let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "*.rds"
+      \ --ignore "*.png"
+      \ --ignore "*.jpg"
+      \ --ignore "*.pdf"
+      \ --ignore "**/*.pyc"
+      \ --ignore review
+      \ -g ""'
+  endif
 " }}}
 " Plugin: Deep search with ack.vim {{{
   Plug 'mileszs/ack.vim'
@@ -124,17 +113,6 @@ let g:calendar_google_calendar = 1
 " Plugin: color schemes {{{
   Plug 'altercation/vim-colors-solarized'
   " Plug 'crusoexia/vim-monokai'
-" }}}
-" Plugin: Dim inactive windows {{{
-  Plug 'blueyed/vim-diminactive'
-
-  let g:diminactive_use_syntax = 0  " disable syntax hl for inactive windows
-  let g:diminactive_enable_focus = 1
-" }}}
-" Plugin: Vim-tmux focus events fix {{{
-  " TODO(jongbin): Using Ctrl to show mouse location in Gnome will mess-up
-  " Ctrl key bindings -- Ctrl-down will be captured as losing focus from vim!
-  Plug 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 " Plugin: Airline (for fancy status bar) {{{
   Plug 'vim-airline/vim-airline-themes'
@@ -229,14 +207,6 @@ let g:calendar_google_calendar = 1
         \ 'gitcommit'
         \ ]
 " }}}
-" Plugin: Tags {{{
-  Plug 'ludovicchabant/vim-gutentags'
-
-  " Don't be so aggresive about generating tags; I'll tell you when I need em
-  let g:gutentags_generate_on_missing = 0
-  let g:gutentags_generate_on_new=0
-  let g:gutentags_cache_dir=$HOME. '/.tags/'
-" }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
   Plug 'editorconfig/editorconfig-vim'
@@ -247,22 +217,6 @@ let g:calendar_google_calendar = 1
   Plug 'jiangmiao/auto-pairs'
 
   let g:AutoPairsFlyMode = 0
-" }}}
-" Plugin: Snippets (ultisnips) {{{
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
-
-  let g:UltiSnipsEditSplit = "context"
-  let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
-  let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips"]
-
-  let g:ultisnips_python_style = "google"
-
-  " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
-  " (via http://stackoverflow.com/a/22253548/1626737)
-  let g:UltiSnipsExpandTrigger       = '<C-j>'
-  let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
-  let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 " }}}
 " Plugin: skeletons {{{
   Plug 'pgilad/vim-skeletons'
@@ -337,27 +291,6 @@ let g:calendar_google_calendar = 1
   "   SC2002: Useless cat
   let g:ale_sh_shellcheck_exclusions = 'SC2002'
 " }}}
-" Plugin: Completion engine {{{
-  Plug 'ervandew/supertab'
-  Plug 'Valloric/YouCompleteMe', {
-    \ 'do': 'python3 install.py --clang-completer --gocode-completer --rust-completer --java-completer'
-    \}
-
-  let g:ycm_auto_start_csharp_server = 0
-  let g:ycm_autoclose_preview_window_after_completion = 1
-  let g:ycm_filetype_blacklist = {
-        \ 'gitcommit': 1,
-        \ 'markdown': 1,
-        \ 'sh': 1
-        \}
-
-  " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
-  " (via http://stackoverflow.com/a/22253548/1626737)
-  let g:SuperTabDefaultCompletionType    = '<C-n>'
-  let g:SuperTabCrMapping                = 0
-  let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']"
-" }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
@@ -395,16 +328,6 @@ let g:calendar_google_calendar = 1
 " }}}
 " Plugin: julia {{{
   Plug 'JuliaLang/julia-vim'
-" }}}
-" Plugin: go {{{
-  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_structs = 1
-  let g:go_highlight_interfaces = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_build_constraints = 1
 " }}}
 " Plugin: Stan {{{
   Plug 'jongbinjung/stan.vim'
