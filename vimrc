@@ -105,6 +105,7 @@ let g:calendar_google_calendar = 1
     \ --ignore "**/*.pyc"
     \ --ignore review
     \ -g ""'
+  let g:ctrlp_root_markers = ['.style.yapf']
 " }}}
 " Plugin: Deep search with ack.vim {{{
   Plug 'mileszs/ack.vim'
@@ -229,14 +230,6 @@ let g:calendar_google_calendar = 1
         \ 'gitcommit'
         \ ]
 " }}}
-" Plugin: Tags {{{
-  Plug 'ludovicchabant/vim-gutentags'
-
-  " Don't be so aggresive about generating tags; I'll tell you when I need em
-  let g:gutentags_generate_on_missing = 0
-  let g:gutentags_generate_on_new=0
-  let g:gutentags_cache_dir=$HOME. '/.tags/'
-" }}}
 " Plugin: Editorconfig {{{
 " see editorconfig.org for documentation
   Plug 'editorconfig/editorconfig-vim'
@@ -254,7 +247,7 @@ let g:calendar_google_calendar = 1
 
   let g:UltiSnipsEditSplit = "context"
   let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
-  let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips"]
+  let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
   let g:ultisnips_python_style = "google"
 
@@ -288,6 +281,7 @@ let g:calendar_google_calendar = 1
   Plug 'scrooloose/nerdcommenter'
 
   let g:NERDSpaceDelims = 1
+  let g:NERDDefaultAlign = 'left'
 " }}}
 " Plugin: TaskList {{{
   " Create a list of TODO/FIXME
@@ -344,7 +338,8 @@ let g:calendar_google_calendar = 1
     \}
 
   let g:ycm_auto_start_csharp_server = 0
-  let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_autoclose_preview_window_after_completion = 0
+  let g:ycm_autoclose_preview_window_after_insertion = 0
   let g:ycm_filetype_blacklist = {
         \ 'gitcommit': 1,
         \ 'markdown': 1,
@@ -426,6 +421,11 @@ let g:calendar_google_calendar = 1
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'
 " }}}
+" Plugin: Hive {{{
+  Plug 'autowitch/hive.vim'
+  au BufNewFile,BufRead *.hql set filetype=hive expandtab
+" }}}
+
 " }}} END: IDE plugins
 " markup/non-language filetypes {{{
 " Plugin: csv.vim {{{
