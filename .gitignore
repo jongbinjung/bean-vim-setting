@@ -85,3 +85,5 @@ plugs/*
 # Ycm compiled stuff
 node_modules/
 .netrwhist
+spell/en.*.*.spl
+tags
