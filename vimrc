@@ -478,7 +478,7 @@ set encoding=utf-8
 if has("unix")
     set gfn=Inconsolata-dz\ for\ Powerline
 elseif has("mac")
-    set gfn=Inconsolata-dz\ for\ Powerline:h10
+    set gfn=Droid\ Sans\ Mono\ Slashed\ for\ Powerline:h11
 elseif has("win32")
     set gfn=Inconsolata-dz_for_Powerline:h10:cDEFAULT
 endif
