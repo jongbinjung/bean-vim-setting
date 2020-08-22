@@ -421,12 +421,13 @@ let g:calendar_google_calendar = 1
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex'
 
-  " let g:vimtex_view_method = 'mupdf'
-  let g:vimtex_view_method = 'zathura'
+  " let g:vimtex_view_method = 'zathura'
+  let g:vimtex_view_method = 'mupdf'
   let g:vimtex_quickfix_latexlog = {
         \ 'overfull' : 0,
         \ 'underfull' : 0,
         \}
+  let g:tex_flavor = 'latex'
 " }}}
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'
@@ -440,9 +441,12 @@ let g:calendar_google_calendar = 1
   Plug 'cespare/vim-toml'
 " }}}
 " Plugin: markdown {{{
-  Plug 'gabrielelana/vim-markdown', { 'for': ['markdown', 'rmd'] }
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
 
-  let g:markdown_enable_folding = 1
+  let g:vim_markdown_conceal_code_blocks = 0
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_autowrite = 1
 " }}}
 " }}} END: markup/non-language filetypes
 " Distraction-free writing {{{

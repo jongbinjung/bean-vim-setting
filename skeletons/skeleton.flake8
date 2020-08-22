@@ -1,0 +1,20 @@
+[flake8]
+max-line-length = 80
+select = E, F, W
+ignore =
+   # F812: list comprehension redefines ...
+   F812,
+   # H101: Use TODO(NAME)
+   H101,
+   # H202: assertRaises Exception too broad
+   H202
+
+exclude =
+   # git directory
+   .git,
+   # Exempt cache directories
+   __pycache__,
+   # Folder containing build files
+   build,
+   # Distribution folder
+   dist
