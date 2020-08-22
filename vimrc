@@ -124,6 +124,7 @@ let g:calendar_google_calendar = 1
 " Plugin: color schemes {{{
   Plug 'altercation/vim-colors-solarized'
   " Plug 'crusoexia/vim-monokai'
+  Plug 'arcticicestudio/nord-vim'
 " }}}
 " Plugin: Dim inactive windows {{{
   Plug 'blueyed/vim-diminactive'
@@ -165,7 +166,7 @@ let g:calendar_google_calendar = 1
       \ }
 
   " set tabs with Airline
-  let g:airline_theme='solarized'
+  let g:airline_theme='nord'
   " set terminal colors to 256 for solarized theme
   set t_Co=256
 
@@ -420,8 +421,12 @@ let g:calendar_google_calendar = 1
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex'
 
-  let g:vimtex_view_method = 'mupdf'
-  " let g:vimtex_view_method = 'zathura'
+  " let g:vimtex_view_method = 'mupdf'
+  let g:vimtex_view_method = 'zathura'
+  let g:vimtex_quickfix_latexlog = {
+        \ 'overfull' : 0,
+        \ 'underfull' : 0,
+        \}
 " }}}
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'
@@ -519,9 +524,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 " autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
 " }}}
 " Visual settings {{{
-" solarized color scheme
+" solarized | nord
 set background=dark
-colorscheme solarized
+colorscheme nord
 
 set number
 set relativenumber
