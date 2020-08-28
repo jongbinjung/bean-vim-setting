@@ -61,15 +61,8 @@ let g:calendar_google_calendar = 1
   Plug 'tpope/vim-repeat'
   " repeat plugins with . (e.g., vim-surround)
 " }}}
-" Plugin: NERDtree {{{
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeMirrorToggle' }
-  Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeMirrorToggle' }
-
-  " set <C-n> to toggle
-  map <C-n> :NERDTreeMirrorToggle<CR>
-  " use arrows to look prettier
-  let g:NERDTreeDirArrows=1
-  let g:nerdtree_tabs_open_on_gui_startup = 0
+" Plugin: netrw w/ vinegar {{{
+  Plug 'tpope/vim-vinegar'
 " }}}
 " Plugin: vim-snipe (replace easymotion) {{{
   Plug 'yangmillstheory/vim-snipe'
@@ -88,34 +81,32 @@ let g:calendar_google_calendar = 1
   map <leader><leader>ge <Plug>(snipe-ge)
   map <leader><leader>gE <Plug>(snipe-gE)
 " }}}
-" Plugin: CtrlP (fuzzy file/directory search matching) {{{
-  Plug 'kien/ctrlp.vim'
+" Plugin: CtrlP-style fuzzy file/directory search matching {{{
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
-  let g:ctrlp_show_hidden = 1
-  " Use silver_searcher (https://github.com/ggreer/the_silver_searcher)
-  let g:ctrlp_user_command = 'ag %s --nocolor --nogroup --hidden
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "*.rds"
-    \ --ignore "*.png"
-    \ --ignore "*.jpg"
-    \ --ignore "*.pdf"
-    \ --ignore "**/*.pyc"
-    \ --ignore review
-    \ -g ""'
+  nnoremap <C-p> :Files<Cr>
+  nnoremap <C-b> :Buffers<Cr>
+
 " }}}
 " Plugin: Deep search with ack.vim {{{
   Plug 'mileszs/ack.vim'
 
   " Use ag, if it exists
-  if executable('ag')
-    let g:ackprg = 'ag --vimgrep --smart-case'
+  " if executable('ag')
+    " let g:ackprg = 'ag --vimgrep --smart-case'
+  " endif
+
+  " Use rg, if it exists
+  if executable('rg')
+    let g:ackprg = 'rg --vimgrep --smart-case'
   endif
 
   " Search in background via vim-dispatch
   let g:ack_use_dispatch = 1
+
+  " Any empty ack search will search for the work the cursor is on
+  let g:ack_use_cword_for_empty_search = 1
 
   nnoremap <Leader>/ :Ack!<Space>
 " }}}
@@ -123,7 +114,7 @@ let g:calendar_google_calendar = 1
 " Visual enhancements {{{
 " Plugin: color schemes {{{
   Plug 'altercation/vim-colors-solarized'
-  " Plug 'crusoexia/vim-monokai'
+  Plug 'cocopon/iceberg.vim'
   Plug 'arcticicestudio/nord-vim'
 " }}}
 " Plugin: Dim inactive windows {{{
@@ -166,9 +157,9 @@ let g:calendar_google_calendar = 1
       \ }
 
   " set tabs with Airline
-  let g:airline_theme='nord'
+  let g:airline_theme='iceberg'
   " set terminal colors to 256 for solarized theme
-  set t_Co=256
+  " set t_Co=256
 
   " Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
@@ -364,6 +355,7 @@ let g:calendar_google_calendar = 1
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
+  Plug 'MathSquared/vim-python-sql'
 
   let g:SimpylFold_docstring_preview=1
 " }}}
@@ -528,9 +520,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 " autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
 " }}}
 " Visual settings {{{
-" solarized | nord
+" solarized | nord | iceberg
 set background=dark
-colorscheme nord
+colorscheme iceberg
 
 set number
 set relativenumber
