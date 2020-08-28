@@ -246,7 +246,8 @@ let g:calendar_google_calendar = 1
 
   let g:UltiSnipsEditSplit = "context"
   let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
-  let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips"]
+  let g:UltiSnipsSnippetDirectories=["ultisnips"]
+  " let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips"]
 
   let g:ultisnips_python_style = "google"
 

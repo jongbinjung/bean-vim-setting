@@ -1,3 +1,17 @@
 snippet todoc "Todo comment" b
 # TODO(`echo $USER`): $0
 endsnippet
+
+snippet parseargs "Create a parse_args() function with argparse" b
+def parse_args():
+    """Parse command-line arguments and return arparse.Namespace"""
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--${0:arg}', type=${1:type},
+                        default=${2:defaults},
+                        help='${3:Help doc}')
+
+    return parser.parse_args()
+
+
+endsnippet
