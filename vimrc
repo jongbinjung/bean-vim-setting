@@ -43,6 +43,9 @@ call plug#begin(path)
 " Plugin: Window movements {{{
 Plug 'andymass/vim-tradewinds'
 " }}}
+" Plugin: Register peekaboo {{{
+Plug 'junegunn/vim-peekaboo'
+" }}}
 " Plugin: Calendar application {{{
 Plug 'itchyny/calendar.vim'
 let g:calendar_google_calendar = 1
@@ -341,6 +344,7 @@ let g:calendar_google_calendar = 1
   let g:ycm_filetype_blacklist = {
         \ 'gitcommit': 1,
         \ 'markdown': 1,
+        \ 'peekaboo': 1,
         \ 'sh': 1
         \}
 
