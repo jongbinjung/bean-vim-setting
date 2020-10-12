@@ -81,6 +81,10 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
+  " Tell FZF to use RG - so we can skip .gitignore files even if not using
+  " :GFiles search
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+
   nnoremap <C-p> :Files<Cr>
   nnoremap <C-b> :Buffers<Cr>
 " }}}
@@ -158,8 +162,9 @@ Plug 'junegunn/vim-peekaboo'
   " Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
 
+  let g:airline#extensions#virtualenv#enabled = 1
+
   " Show just the filename
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
   nmap <leader>1 <Plug>AirlineSelectTab1
   nmap <leader>2 <Plug>AirlineSelectTab2
   nmap <leader>3 <Plug>AirlineSelectTab3
@@ -172,7 +177,7 @@ Plug 'junegunn/vim-peekaboo'
   nmap <leader>a <Plug>AirlineSelectPrevTab
   nmap <leader>s <Plug>AirlineSelectNextTab
 
-  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#formatter = 'default'
 " }}}
 " }}} END: Visual enhancements
 " Version Control (git) {{{
