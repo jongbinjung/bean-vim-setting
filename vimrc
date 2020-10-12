@@ -4,9 +4,6 @@ set nocompatible " be iMproved
 " <Leader> to ,
 let mapleader=";"
 
-" Allow external configs for project-specific settings
-set exrc
-
 " Start vim-plug configs and plugins {{{
 let path=$HOME. '/.vim/plugs/'
 
@@ -45,10 +42,6 @@ Plug 'andymass/vim-tradewinds'
 " }}}
 " Plugin: Register peekaboo {{{
 Plug 'junegunn/vim-peekaboo'
-" }}}
-" Plugin: Calendar application {{{
-Plug 'itchyny/calendar.vim'
-let g:calendar_google_calendar = 1
 " }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
@@ -90,19 +83,17 @@ let g:calendar_google_calendar = 1
 
   nnoremap <C-p> :Files<Cr>
   nnoremap <C-b> :Buffers<Cr>
-
 " }}}
 " Plugin: Deep search with ack.vim {{{
   Plug 'mileszs/ack.vim'
 
-  " Use ag, if it exists
-  " if executable('ag')
-    " let g:ackprg = 'ag --vimgrep --smart-case'
-  " endif
 
   " Use rg, if it exists
   if executable('rg')
     let g:ackprg = 'rg --vimgrep --smart-case'
+  " Alternatively use ag, if it exists
+  elseif executable('ag')
+    let g:ackprg = 'ag --vimgrep --smart-case'
   endif
 
   " Search in background via vim-dispatch
@@ -191,7 +182,7 @@ let g:calendar_google_calendar = 1
   nnoremap <silent> gs :Gstatus<CR>
   nnoremap <silent> gk :Gpush<CR>
   nnoremap <silent> gj :Gpull<CR>
-  nnoremap <silent> gd :Gdiff<CR>
+  " nnoremap <silent> gd :Gdiff<CR>  " Used in coc-definition
   nnoremap <silent> gb :Gblame<CR>
   " NOTE(jongbin): Only use diffput --- less confusing
   nnoremap <silent> dp :diffput<CR>
@@ -346,7 +337,6 @@ let g:calendar_google_calendar = 1
         \ 'peekaboo': 1,
         \ 'sh': 1
         \}
-
   " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
   " (via http://stackoverflow.com/a/22253548/1626737)
   let g:SuperTabDefaultCompletionType    = '<C-n>'
@@ -359,7 +349,6 @@ let g:calendar_google_calendar = 1
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
-  Plug 'MathSquared/vim-python-sql'
 
   let g:SimpylFold_docstring_preview=1
 " }}}
@@ -475,14 +464,6 @@ set encoding=utf-8
 " Input mehtod settings
 " set noimd
 
-if has("unix")
-    set gfn=Inconsolata-dz\ for\ Powerline
-elseif has("mac")
-    set gfn=Droid\ Sans\ Mono\ Slashed\ for\ Powerline:h11
-elseif has("win32")
-    set gfn=Inconsolata-dz_for_Powerline:h10:cDEFAULT
-endif
-
 " set spelling to ignore CJK languages
 set spelllang=en_us,cjk
 " }}}
@@ -490,8 +471,6 @@ set spelllang=en_us,cjk
 " <leader>c to clear search highlighting
 map <silent> <leader>c :let @/=""<CR>
 
-" Remove trailing white spaces with <F5>
-nnoremap <F5> :keepp<Bar>:%s/\s\+$//e<Bar>:keepj<Bar><CR>
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Window commands with ,
@@ -527,6 +506,11 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 " solarized | nord | iceberg
 set background=dark
 colorscheme iceberg
+
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+endif
 
 set number
 set relativenumber
@@ -577,7 +561,8 @@ set wrapscan
 
 " I'm happy to type the case of things.  I tried the ignorecase, smartcase
 " thing but it just wasn't working out for me
-set noignorecase
+set ignorecase
+set smartcase
 
 " Backslashes suck chipmunk balls
 set shellslash
