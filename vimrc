@@ -157,7 +157,9 @@ Plug 'junegunn/vim-peekaboo'
   " set tabs with Airline
   let g:airline_theme='iceberg'
   " set terminal colors to 256 for solarized theme
-  set termguicolors
+  if has("termguicolors")
+    set termguicolors
+  endif
 
   " Enable the list of buffers
   let g:airline#extensions#tabline#enabled = 1
