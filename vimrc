@@ -2,6 +2,7 @@
 set nocompatible " be iMproved
 
 " <Leader> to ,
+" nnoremap <SPACE> <Nop>
 let mapleader=";"
 
 " Start vim-plug configs and plugins {{{
