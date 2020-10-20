@@ -224,6 +224,9 @@ Plug 'junegunn/vim-peekaboo'
 " }}}
 " Plugin: Tags {{{
   Plug 'ludovicchabant/vim-gutentags'
+  Plug 'liuchengxu/vista.vim'
+
+  map <silent><F5> :Vista!!<CR>
 
   " Don't be so aggresive about generating tags; I'll tell you when I need em
   let g:gutentags_generate_on_missing = 0
