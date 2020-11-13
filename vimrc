@@ -518,11 +518,6 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 set background=dark
 colorscheme iceberg
 
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-endif
-
 set number
 set relativenumber
 
