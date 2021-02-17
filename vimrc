@@ -112,7 +112,7 @@ Plug 'junegunn/vim-peekaboo'
 " }}} END: File/text navigation
 " Visual enhancements {{{
 " Plugin: color schemes {{{
-  Plug 'altercation/vim-colors-solarized'
+  Plug 'lifepillar/vim-solarized8'
   Plug 'cocopon/iceberg.vim'
   Plug 'arcticicestudio/nord-vim'
 " }}}
@@ -156,7 +156,6 @@ Plug 'junegunn/vim-peekaboo'
       \ }
 
   " set tabs with Airline
-  let g:airline_theme='iceberg'
   " set terminal colors to 256 for solarized theme
   if has("termguicolors")
     set termguicolors
@@ -516,7 +515,8 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 " Visual settings {{{
 " solarized | nord | iceberg
 set background=dark
-colorscheme iceberg
+colorscheme solarized8
+let g:airline_theme='solarized'
 
 set number
 set relativenumber
