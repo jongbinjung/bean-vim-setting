@@ -186,11 +186,11 @@ Plug 'junegunn/vim-peekaboo'
 " Plugin: Fugitive {{{
   Plug 'tpope/vim-fugitive'
 
-  nnoremap <silent> gs :Gstatus<CR>
-  nnoremap <silent> gk :Gpush<CR>
-  nnoremap <silent> gj :Gpull<CR>
+  nnoremap <silent> gs :Git<CR>
+  nnoremap <silent> gk :Git push<CR>
+  nnoremap <silent> gj :Git pull<CR>
   " nnoremap <silent> gd :Gdiff<CR>  " Used in coc-definition
-  nnoremap <silent> gb :Gblame<CR>
+  nnoremap <silent> gb :Git blame<CR>
   " NOTE(jongbin): Only use diffput --- less confusing
   nnoremap <silent> dp :diffput<CR>
 " }}}
