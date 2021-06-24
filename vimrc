@@ -1,9 +1,9 @@
 " Always use ViM (not Vi)
 set nocompatible " be iMproved
 
-" <Leader> to ,
-" nnoremap <SPACE> <Nop>
-let mapleader=";"
+" <Leader> to <SPACE>
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 " Start vim-plug configs and plugins {{{
 let path=$HOME. '/.vim/plugs/'
@@ -479,7 +479,7 @@ set spelllang=en_us,cjk
 " }}}
 " Global key ReMappings                                                    {{{
 " <leader>c to clear search highlighting
-map <silent> <leader>c :let @/=""<CR>
+" map <silent> <leader>c :let @/=""<CR>
 
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
