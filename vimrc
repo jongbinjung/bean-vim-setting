@@ -281,10 +281,11 @@ Plug 'junegunn/vim-peekaboo'
 
   let g:slime_python_ipython = 1
 " }}}
-" Plugin: nerdcommenter {{{
-  Plug 'scrooloose/nerdcommenter'
+" Plugin: Comment managemetn {{{
+  " Plug 'scrooloose/nerdcommenter'
+  Plug 'tpope/vim-commentary'
 
-  let g:NERDSpaceDelims = 1
+  " let g:NERDSpaceDelims = 1
 " }}}
 " Plugin: TaskList {{{
   " Create a list of TODO/FIXME
