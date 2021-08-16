@@ -480,7 +480,7 @@ set spelllang=en_us,cjk
 " }}}
 " Global key ReMappings                                                    {{{
 " <leader>c to clear search highlighting
-" map <silent> <leader>c :let @/=""<CR>
+map <silent> <leader>c :let @/=""<CR>
 
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
