@@ -360,6 +360,7 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
+  Plug 'cjrh/vim-conda', { 'for': 'python' }
 
   let g:SimpylFold_docstring_preview=1
 " }}}
