@@ -8,6 +8,8 @@ setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
 
+autocmd BufWritePre *.py execute ':Black'
+
 let python_highlight_all=1
 
 nnoremap <buffer> K :YcmCompleter GetDoc<CR>

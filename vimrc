@@ -92,7 +92,6 @@ Plug 'junegunn/vim-peekaboo'
 " Plugin: Deep search with ack.vim {{{
   Plug 'mileszs/ack.vim'
 
-
   " Use rg, if it exists
   if executable('rg')
     let g:ackprg = 'rg --vimgrep --smart-case'
@@ -189,10 +188,22 @@ Plug 'junegunn/vim-peekaboo'
   nnoremap <silent> gs :Git<CR>
   nnoremap <silent> gk :Git push<CR>
   nnoremap <silent> gj :Git pull<CR>
-  " nnoremap <silent> gd :Gdiff<CR>  " Used in coc-definition
+  nnoremap <silent> gd :Gdiff<CR>  " Used in coc-definition
   nnoremap <silent> gb :Git blame<CR>
   " NOTE(jongbin): Only use diffput --- less confusing
   nnoremap <silent> dp :diffput<CR>
+" }}}
+" Plugin: Link to github {{{
+  Plug 'ruanyl/vim-gh-line'
+
+  " Default key mapping for a blob view: <leader>gh
+  " Default key mapping for a blame view: <leader>gb
+  " Default key mapping for repo view: <leader>go
+
+  " let g:gh_line_map_default = 0
+  let g:gh_line_blame_map_default = 0
+  " let g:gh_line_map = '<leader>gh'
+  " let g:gh_line_blame_map = '<leader>gb'
 " }}}
 " Plugin: signify (visualize diffs in the gutter) {{{
   Plug 'mhinz/vim-signify'
@@ -337,7 +348,7 @@ Plug 'junegunn/vim-peekaboo'
 " Plugin: Completion engine {{{
   Plug 'ervandew/supertab'
   Plug 'Valloric/YouCompleteMe', {
-    \ 'do': 'python3 install.py --clang-completer --gocode-completer --rust-completer --java-completer'
+    \ 'do': 'python3 install.py --clang-completer --gocode-completer --rust-completer --java-completer --ts-completer'
     \}
 
   let g:ycm_auto_start_csharp_server = 0
@@ -361,6 +372,8 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'cjrh/vim-conda', { 'for': 'python' }
+  Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+  Plug 'psf/black', { 'branch': 'stable' }
 
   let g:SimpylFold_docstring_preview=1
 " }}}
@@ -408,7 +421,7 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'jongbinjung/stan.vim'
 " }}}
 " Plugin: scala {{{
-  Plug 'ensime/ensime-vim', { 'for': 'scala' }
+  Plug 'andreypopp/ensime', { 'for': 'scala' }
   " Plug 'derekwyatt/vim-scala'
   Plug 'jongbinjung/vim-scala'
 
