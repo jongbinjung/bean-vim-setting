@@ -331,7 +331,7 @@ Plug 'junegunn/vim-peekaboo'
 
   let g:ale_fixers = {
   \  'python': [
-  \    'yapf',
+  \    'black',
   \  ],
   \  'scala': [
   \    'scalafmt',
@@ -375,7 +375,10 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
   Plug 'psf/black', { 'branch': 'stable' }
 
-  let g:SimpylFold_docstring_preview=1
+  let g:black_quiet = 1
+
+  let g:virtualenv_auto_activate = 1
+  let g:SimpylFold_docstring_preview = 1
 " }}}
 " Plugin: R {{{
   Plug 'jalvesaq/R-Vim-runtime'
@@ -452,11 +455,17 @@ Plug 'junegunn/vim-peekaboo'
 " }}}
 " Plugin: markdown {{{
   Plug 'godlygeek/tabular'
-  Plug 'plasticboy/vim-markdown'
+  Plug 'preservim/vim-markdown'
 
+  " Use default folding because vim-markdown is broken
+  let g:vim_markdown_folding_disabled = 1
+  let g:markdown_folding = 1
+
+  let g:vim_markdown_folding_level = 6
   let g:vim_markdown_conceal_code_blocks = 0
   let g:vim_markdown_frontmatter = 1
-  let g:vim_markdown_autowrite = 1
+  let g:vim_markdown_toml_frontmatter = 1
+  " let g:vim_markdown_folding_style_pythonic = 1
 " }}}
 " }}} END: markup/non-language filetypes
 " Distraction-free writing {{{
@@ -500,6 +509,9 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Window commands with ,
 map , <C-w>
+
+" o in visual mode triggers 'o'rdering (sort)
+vmap o :sort<CR>
 " }}}
 " Custom functions {{{
 function! <SID>StripTrailingWhiteSpaces()
