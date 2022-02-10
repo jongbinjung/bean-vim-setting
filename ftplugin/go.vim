@@ -1,3 +1,5 @@
+let maplocalleader="'"
+
 set foldmethod=indent
 
 nnoremap <buffer> K :YcmCompleter GetDoc<CR>
