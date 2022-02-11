@@ -110,6 +110,10 @@ Plug 'junegunn/vim-peekaboo'
 " }}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
+" Plugin: Smart search highlighting {{{
+  Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
+" }}}
 " Plugin: color schemes {{{
   Plug 'lifepillar/vim-solarized8'
   Plug 'cocopon/iceberg.vim'
@@ -188,7 +192,7 @@ Plug 'junegunn/vim-peekaboo'
   nnoremap <silent> gs :Git<CR>
   nnoremap <silent> gk :Git push<CR>
   nnoremap <silent> gj :Git pull<CR>
-  nnoremap <silent> gd :Gdiff<CR>  " Used in coc-definition
+  nnoremap <silent> gd :Git diff<CR>  " Used in coc-definition
   nnoremap <silent> gb :Git blame<CR>
   " NOTE(jongbin): Only use diffput --- less confusing
   nnoremap <silent> dp :diffput<CR>
@@ -353,12 +357,11 @@ Plug 'junegunn/vim-peekaboo'
 
   let g:ycm_auto_start_csharp_server = 0
   let g:ycm_autoclose_preview_window_after_completion = 1
-  let g:ycm_filetype_blacklist = {
-        \ 'gitcommit': 1,
-        \ 'markdown': 1,
-        \ 'peekaboo': 1,
-        \ 'sh': 1
-        \}
+  let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'gitcommit': 1,
+      \ 'fugitive': 1,
+      \ 'peekaboo': 1,
+      \}
   " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
   " (via http://stackoverflow.com/a/22253548/1626737)
   let g:SuperTabDefaultCompletionType    = '<C-n>'
@@ -503,7 +506,7 @@ set spelllang=en_us,cjk
 " }}}
 " Global key ReMappings                                                    {{{
 " <leader>c to clear search highlighting
-map <silent> <leader>c :let @/=""<CR>
+" map <silent> <leader>c :let @/=""<CR>
 
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
