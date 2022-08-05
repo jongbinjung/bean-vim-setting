@@ -1,6 +1,3 @@
-" Always use ViM (not Vi)
-set nocompatible " be iMproved
-
 " <Leader> to <SPACE>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
@@ -39,10 +36,10 @@ call plug#begin(path)
   let g:lt_quickfix_list_toggle_map = '<leader>q'
 " }}}
 " Plugin: Window movements {{{
-Plug 'andymass/vim-tradewinds'
+  Plug 'andymass/vim-tradewinds'
 " }}}
 " Plugin: Register peekaboo {{{
-Plug 'junegunn/vim-peekaboo'
+  Plug 'junegunn/vim-peekaboo'
 " }}}
 " }}} END: Usability enhancements
 " File/text navigation {{{
@@ -63,6 +60,10 @@ Plug 'junegunn/vim-peekaboo'
 " }}}
 " Plugin: vim-snipe (replace easymotion) {{{
   Plug 'yangmillstheory/vim-snipe'
+
+  let g:snipe_highlight_gui_color      = '#ff0000'
+  let g:snipe_highlight_cterm256_color = 'blue'
+  let g:snipe_highlight_cterm_color    = 'red'
 
   map <leader><leader>F <Plug>(snipe-F)
   map <leader><leader>f <Plug>(snipe-f)
@@ -106,7 +107,8 @@ Plug 'junegunn/vim-peekaboo'
   " Any empty ack search will search for the work the cursor is on
   let g:ack_use_cword_for_empty_search = 1
 
-  nnoremap <Leader>/ :Ack!<Space>
+  " nnoremap <Leader>/ :Ack!<Space>
+  nnoremap <Leader>/ :Rg<Space>
 " }}}
 " }}} END: File/text navigation
 " Visual enhancements {{{
@@ -118,6 +120,7 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'lifepillar/vim-solarized8'
   Plug 'cocopon/iceberg.vim'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'junegunn/seoul256.vim'
 " }}}
 " Plugin: Dim inactive windows {{{
   Plug 'blueyed/vim-diminactive'
@@ -192,7 +195,7 @@ Plug 'junegunn/vim-peekaboo'
   nnoremap <silent> gs :Git<CR>
   nnoremap <silent> gk :Git push<CR>
   nnoremap <silent> gj :Git pull<CR>
-  nnoremap <silent> gd :Git diff<CR>  " Used in coc-definition
+  nnoremap <silent> gd :Git diff<CR>
   nnoremap <silent> gb :Git blame<CR>
   " NOTE(jongbin): Only use diffput --- less confusing
   nnoremap <silent> dp :diffput<CR>
@@ -244,7 +247,7 @@ Plug 'junegunn/vim-peekaboo'
   map <silent><F5> :Vista!!<CR>
 
   " Don't be so aggresive about generating tags; I'll tell you when I need em
-  let g:gutentags_generate_on_missing = 0
+  let g:gutentags_generate_on_missing=0
   let g:gutentags_generate_on_new=0
   let g:gutentags_cache_dir=$HOME. '/.tags/'
 " }}}
@@ -283,7 +286,7 @@ Plug 'junegunn/vim-peekaboo'
 " }}}
 " Plugin: REPL environment {{{
   " send commands to a tmux pane
-  Plug 'jongbinjung/vim-slime'
+  Plug 'jpalardy/vim-slime'
 
   let g:slime_target = "tmux"
   let g:slime_paste_file = '/tmp/.' . $USER . '_slime_paste'
@@ -294,7 +297,7 @@ Plug 'junegunn/vim-peekaboo'
           \ }
   endif
 
-  let g:slime_python_ipython = 1
+  " let g:slime_python_ipython = 1
 " }}}
 " Plugin: Comment managemetn {{{
   " Plug 'scrooloose/nerdcommenter'
@@ -376,7 +379,7 @@ Plug 'junegunn/vim-peekaboo'
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'cjrh/vim-conda', { 'for': 'python' }
   Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-  Plug 'psf/black', { 'branch': 'stable' }
+  Plug 'psf/black', { 'tag': 'stable' }
 
   let g:black_quiet = 1
 
@@ -545,8 +548,10 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 " Visual settings {{{
 " solarized | nord | iceberg
 set background=dark
-colorscheme solarized8
-let g:airline_theme='solarized'
+" colorscheme solarized8
+" let g:airline_theme='solarized'
+colorscheme seoul256
+let g:airline_theme='seoul256'
 
 set number
 set relativenumber

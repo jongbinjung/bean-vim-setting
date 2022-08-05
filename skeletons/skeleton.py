@@ -6,12 +6,12 @@ Created: `date +%F`
 Author: ${3:`id -u -n`}
 """
 
-import ${4:package_name}
+${4:import ${5:package_name}}
 
 
 def main():
-    """${5:Main function}"""
-    ${0:# Write code here}
+    """Main function"""
+    $0
 
 
 if __name__ == "__main__":

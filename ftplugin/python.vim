@@ -8,7 +8,10 @@ setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
 
-autocmd BufWritePre *.py execute ':Black'
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
 
 let python_highlight_all=1
 
@@ -20,6 +23,8 @@ nnoremap <buffer> <LocalLeader>rr :YcmCompleter RefactorRename
 nnoremap <buffer> <LocalLeader>i :!isort %<CR><CR>
 
 let g:slime_no_mappings = 1
+let b:slime_bracketed_paste = 1
+
 xmap <buffer> <Space> <Plug>SlimeRegionSend
 nmap <buffer> <Space> <Plug>SlimeLineSend<Down>
 nmap <buffer> <LocalLeader>pp <Plug>SlimeParagraphSend<Down>
