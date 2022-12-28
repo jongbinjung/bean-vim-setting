@@ -24,7 +24,6 @@ endsnippet
 
 snippet sec "Create section folds" b
 # ${1:Section description} `!p
-snip.rv = "-" * max((80 - len(t[1]) - 3), 4)
-` $0
+snip.rv = "-" * max((80 - len(t[1]) - 3 - snip.snippet_start[1]), 4)
+`$0
 endsnippet
-

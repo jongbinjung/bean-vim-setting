@@ -1,5 +1,15 @@
 let maplocalleader="'"
 
+" Attempt to set virtualenv directory to $WORKON_HOME, assume current directory contains virtualenv
+if isdirectory($WORKON_HOME)
+  let g:virtualenv_directory = $WORKON_HOME
+else
+  let g:virtualenv_directory = '.'
+  if isdirectory('venv')
+    let g:virtualenv_name = 'venv'
+  endif
+endif
+
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
