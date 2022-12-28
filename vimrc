@@ -541,6 +541,9 @@ endfunction
 " Remove trailing whitespaces before BufWrite
 autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 
+" Any files that have sql in the extention is considered sql (e.g., sql.gotmpl)
+autocmd BufRead,BufNewFile *.sql.* set filetype=sql
+
 " Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
 " autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
 " autocmd InsertEnter,WinLeave * let g:oldfoldmethod=&l:foldmethod | setlocal foldmethod=manual
