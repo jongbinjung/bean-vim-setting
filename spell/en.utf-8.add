@@ -98,3 +98,8 @@ tradeoff
 undirected
 unobservable
 virtualenvwrapper
+GCP
+pyspark
+BigQuery
+dataproc
+GCS
