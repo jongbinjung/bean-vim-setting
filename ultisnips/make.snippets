@@ -11,10 +11,16 @@ snippet help "Help recipe" b
 .PHONY: help
 ## Display this help message
 help:
-	@awk '/^##.*$$/,/^[~\/\.a-zA-Z_-]+:/' $(MAKEFILE_LIST) | \
-	awk '!(NR%2){print $$0p}{p=$$0}' |  \
-	awk 'BEGIN {FS = ":.*?##"}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' | \
+	@awk '/^## .*$$/,/^[~\/\.%a-zA-Z_-]+:/' $(MAKEFILE_LIST) | \
+	awk '!(NR%2){print $\$0p}{p=$\$0}' |  \
+	awk 'BEGIN {FS = ":.*?##"}; {printf "\033[36m%-20s\033[0m %s\n", $\$1, $\$2}' | \
 	sort
+endsnippet
+
+snippet sec "Create section markers" b
+#################################################################################
+# ${1:Section description}
+#################################################################################
 endsnippet
 
 #################################################################################

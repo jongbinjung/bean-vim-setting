@@ -8,6 +8,9 @@ else
   if isdirectory('venv')
     let g:virtualenv_name = 'venv'
   endif
+  if isdirectory('.venv')
+    let g:virtualenv_name = '.venv'
+  endif
 endif
 
 setlocal tabstop=4
@@ -17,6 +20,8 @@ setlocal textwidth=79
 setlocal expandtab
 setlocal autoindent
 setlocal fileformat=unix
+" Let Black take care of wrapping; don't disturb my typing!
+setlocal formatoptions-=t
 
 augroup black_on_save
   autocmd!
@@ -31,11 +36,12 @@ nnoremap <buffer> <LocalLeader>gd :YcmCompleter GoToDefinition<CR>
 nnoremap <buffer> <LocalLeader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <buffer> <LocalLeader>rr :YcmCompleter RefactorRename
 nnoremap <buffer> <LocalLeader>i :!isort %<CR><CR>
+nnoremap <buffer> <LocalLeader>f :ALEFix<CR>
 
 let g:slime_no_mappings = 1
 let b:slime_bracketed_paste = 1
 
 xmap <buffer> <Space> <Plug>SlimeRegionSend
 nmap <buffer> <Space> <Plug>SlimeLineSend<Down>
-nmap <buffer> <LocalLeader>pp <Plug>SlimeParagraphSend<Down>
+nmap <buffer> <LocalLeader>pp <Plug>SlimeParagraphSend
 nmap <buffer> <LocalLeader>p <Plug>SlimeMotionSend

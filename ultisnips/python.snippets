@@ -2,6 +2,29 @@ snippet todoc "Todo comment" b
 # TODO (`echo $USER`): $0
 endsnippet
 
+snippet ipl "Import polars" b
+import polars as pl $0
+endsnippet
+
+snippet ipd "Import pandas" b
+import pandas as pd $0
+endsnippet
+
+snippet inp "Import numpy" b
+import numpy as np $0
+endsnippet
+
+snippet ipn "Import plotnine" b
+import plotnine as pn $0
+endsnippet
+
+snippet if "from x import y" b
+from $1 import (
+	$2
+)
+$0
+endsnippet
+
 snippet parseargs "Create a parse_args() function with argparse" b
 def parse_args():
     """Parse command-line arguments and return arparse.Namespace"""
@@ -25,5 +48,11 @@ endsnippet
 snippet sec "Create section folds" b
 # ${1:Section description} `!p
 snip.rv = "-" * max((80 - len(t[1]) - 3 - snip.snippet_start[1]), 4)
+`$0
+endsnippet
+
+snippet ssec "Create subsection folds" b
+## ${1:Section description} `!p
+snip.rv = "-" * max((80 - len(t[1]) - 4 - snip.snippet_start[1]), 4)
 `$0
 endsnippet

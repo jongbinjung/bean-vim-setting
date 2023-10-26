@@ -193,7 +193,7 @@ call plug#begin(path)
   Plug 'tpope/vim-fugitive'
 
   nnoremap <silent> gs :Git<CR>
-  nnoremap <silent> gk :Git push<CR>
+  " nnoremap <silent> gk :Git push<CR>
   nnoremap <silent> gj :Git pull<CR>
   nnoremap <silent> gd :Git diff<CR>
   nnoremap <silent> gb :Git blame<CR>
@@ -299,7 +299,7 @@ call plug#begin(path)
 
   " let g:slime_python_ipython = 1
 " }}}
-" Plugin: Comment managemetn {{{
+" Plugin: Comment management {{{
   " Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-commentary'
 
@@ -328,7 +328,7 @@ call plug#begin(path)
 
   let g:ale_linters = {
   \  'python': [
-  \    'pylint',
+  \    'ruff',
   \  ],
   \  'scala': [
   \    'scalastyle',
@@ -339,6 +339,7 @@ call plug#begin(path)
   let g:ale_fixers = {
   \  'python': [
   \    'black',
+  \    'ruff',
   \  ],
   \  'scala': [
   \    'scalafmt',
@@ -371,10 +372,21 @@ call plug#begin(path)
   let g:SuperTabCrMapping                = 0
   let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']"
+
+  " Additional LSPs
+  let g:ycm_lsp_dir=$HOME . '/repos/lsp-examples'
+  let g:ycm_language_server = [
+    \   {
+    \     'name': 'ruby',
+    \     'cmdline': [ expand( g:ycm_lsp_dir . '/ruby/bin/solargraph' ), 'stdio' ],
+    \     'filetypes': [ 'ruby' ],
+    \   },
+    \ ]
+
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Python {{{
-  Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+  Plug 'jongbinjung/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'cjrh/vim-conda', { 'for': 'python' }
