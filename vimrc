@@ -334,6 +334,9 @@ call plug#begin(path)
   \    'scalastyle',
   \    'scalafix',
   \  ],
+  \  'sql': [
+  \    'sqlfluff',
+  \  ],
   \}
 
   let g:ale_fixers = {
@@ -343,6 +346,9 @@ call plug#begin(path)
   \  ],
   \  'scala': [
   \    'scalafmt',
+  \  ],
+  \  'sql': [
+  \    'sqlfluff',
   \  ],
   \}
 
@@ -555,6 +561,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhiteSpaces()
 
 " Any files that have sql in the extention is considered sql (e.g., sql.gotmpl)
 autocmd BufRead,BufNewFile *.sql.* set filetype=sql
+autocmd BufRead,BufNewFile *.sf.sql set filetype=snowflake.sql
 
 " Keep folds as-is when editing (INSERT mode) and changing buffer views (Win)
 " autocmd InsertLeave,WinEnter * let &l:foldmethod=g:oldfoldmethod
