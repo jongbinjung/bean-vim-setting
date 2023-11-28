@@ -5,11 +5,6 @@ let mapleader=" "
 " Start vim-plug configs and plugins {{{
 let path=$HOME. '/.vim/plugs/'
 
-" Force use of python3 --- which makes some plugins faster? (YCM!!!)
-if has('python3')
-  silent! python3 1
-endif
-
 " Auto-install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -275,8 +270,9 @@ call plug#begin(path)
 
   " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
   " (via http://stackoverflow.com/a/22253548/1626737)
-  let g:UltiSnipsExpandTrigger       = '<C-j>'
-  let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
+  let g:UltiSnipsExpandOrJumpTrigger = '<C-j>'
+  " let g:UltiSnipsExpandTrigger       = '<C-j>'
+  " let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
   let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 " }}}
 " Plugin: skeletons {{{
@@ -328,6 +324,7 @@ call plug#begin(path)
 
   let g:ale_linters = {
   \  'python': [
+  \    'jedils',
   \    'ruff',
   \  ],
   \  'scala': [
@@ -358,6 +355,12 @@ call plug#begin(path)
   " Ignore
   "   SC2002: Useless cat
   let g:ale_sh_shellcheck_exclusions = 'SC2002'
+
+  " let g:ale_completion_enabled = 1
+  " let g:ale_set_balloons = 1
+  " let g:ale_hover_to_floating_preview = 1
+
+  " set omnifunc=ale#completion#OmniFunc
 " }}}
 " Plugin: Completion engine {{{
   Plug 'ervandew/supertab'
@@ -379,18 +382,11 @@ call plug#begin(path)
   let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']"
 
-  " Additional LSPs
-  let g:ycm_lsp_dir=$HOME . '/repos/lsp-examples'
-  let g:ycm_language_server = [
-    \   {
-    \     'name': 'ruby',
-    \     'cmdline': [ expand( g:ycm_lsp_dir . '/ruby/bin/solargraph' ), 'stdio' ],
-    \     'filetypes': [ 'ruby' ],
-    \   },
-    \ ]
-
 " }}}
 " }}} END: basic IDE capabilities
+" Plugin: Jinja2 {{{
+  Plug 'Glench/Vim-Jinja2-Syntax'
+" }}}
 " Plugin: Python {{{
   Plug 'jongbinjung/SimpylFold', { 'for': 'python' }
   Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }

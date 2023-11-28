@@ -35,6 +35,10 @@ nnoremap <buffer> <LocalLeader>gt :YcmCompleter GoTo<CR>
 nnoremap <buffer> <LocalLeader>gd :YcmCompleter GoToDefinition<CR>
 nnoremap <buffer> <LocalLeader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <buffer> <LocalLeader>rr :YcmCompleter RefactorRename
+" nnoremap <buffer> K <Plug>(ale_hover)
+" nnoremap <buffer> <LocalLeader>gd <Plug>(ale_go_to_definition)
+" nnoremap <buffer> <LocalLeader>gr :ALEFindReferences -quickfix<CR>
+" nnoremap <buffer> <LocalLeader>rr :ALERename
 nnoremap <buffer> <LocalLeader>i :!isort %<CR><CR>
 nnoremap <buffer> <LocalLeader>f :ALEFix<CR>
 

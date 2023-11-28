@@ -28,7 +28,17 @@ endsnippet
 #################################################################################
 
 snippet pyvenv "Set of variables and recipes for setting up python venv" b
-${1:VENV_DIR}=venv
+${1:VENV_DIR}?=venv
+
+.PHONY: sync
+## Sync dev env
+sync: \
+	\$($1)/bin/activate \
+	\$($1)/bin/pip-sync \
+	requirements-dev.txt
+	@echo Syncing python dev environment
+	. \$($1)/bin/activate \
+		&& pip-sync requirements.txt requirements-dev.txt
 
 .PHONY: venv
 ## Initialize the virtual environment
@@ -36,7 +46,7 @@ venv: \$($1)/bin/activate \$($1)/bin/pip-sync
 
 %/bin/pip-sync %/bin/pip-compile: %/bin/activate
 	. \$*/bin/activate \\
-		&& pip install "pip-tools>=6<7" "pip<22"
+		&& pip install "pip-tools>=6<7" "pip<24"
 
 %/bin/activate:
 	python3 -m venv \$*
