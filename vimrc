@@ -323,6 +323,9 @@ call plug#begin(path)
   let g:ale_open_list = 0
 
   let g:ale_linters = {
+  \  'markdown': [
+  \    'marksman',
+  \  ],
   \  'python': [
   \    'jedils',
   \    'ruff',
@@ -338,7 +341,6 @@ call plug#begin(path)
 
   let g:ale_fixers = {
   \  'python': [
-  \    'black',
   \    'ruff',
   \  ],
   \  'scala': [
@@ -356,7 +358,8 @@ call plug#begin(path)
   "   SC2002: Useless cat
   let g:ale_sh_shellcheck_exclusions = 'SC2002'
 
-  " let g:ale_completion_enabled = 1
+  " Enabled globally; ftplugin should disable at buffer-level if using YCM
+  let g:ale_completion_enabled = 1
   " let g:ale_set_balloons = 1
   " let g:ale_hover_to_floating_preview = 1
 
@@ -371,8 +374,9 @@ call plug#begin(path)
   let g:ycm_auto_start_csharp_server = 0
   let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'gitcommit': 1,
       \ 'fugitive': 1,
+      \ 'gitcommit': 1,
+      \ 'markdown': 1,
       \ 'peekaboo': 1,
       \}
   " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
@@ -488,7 +492,7 @@ call plug#begin(path)
   " let g:vim_markdown_folding_style_pythonic = 1
 " }}}
 " }}} END: markup/non-language filetypes
-" Distraction-free writing {{{
+" Vanity/misc. {{{
 " Plugin: limelight {{{
   Plug 'junegunn/limelight.vim'
 
@@ -503,6 +507,9 @@ call plug#begin(path)
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
   map <silent> <F3> :Goyo<CR>
+" }}}
+" Plugin: Jira in vim (vira) {{{
+  " Plug 'n0v1c3/vira', { 'do': './install.sh' }
 " }}}
 " }}}
 
