@@ -253,9 +253,8 @@ call plug#begin(path)
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " }}}
 " Plugin: Auto Pairs (Pair parentheses) {{{
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'LunarWatcher/auto-pairs'
 
-  let g:AutoPairsFlyMode = 0
 " }}}
 " Plugin: Snippets (ultisnips) {{{
   Plug 'SirVer/ultisnips'
@@ -342,12 +341,16 @@ call plug#begin(path)
   let g:ale_fixers = {
   \  'python': [
   \    'ruff',
+  \    'ruff_format',
   \  ],
   \  'scala': [
   \    'scalafmt',
   \  ],
   \  'sql': [
   \    'sqlfluff',
+  \  ],
+  \  'toml': [
+  \    'dprint',
   \  ],
   \}
 
@@ -358,11 +361,11 @@ call plug#begin(path)
   "   SC2002: Useless cat
   let g:ale_sh_shellcheck_exclusions = 'SC2002'
 
-  " Enabled globally; ftplugin should disable at buffer-level if using YCM
-  let g:ale_completion_enabled = 1
+  " Global config; ftplugin should disable at buffer-level if using YCM
+  " Deciding to stick with YCM for now ...
+  let g:ale_completion_enabled = 0
   " let g:ale_set_balloons = 1
   " let g:ale_hover_to_floating_preview = 1
-
   " set omnifunc=ale#completion#OmniFunc
 " }}}
 " Plugin: Completion engine {{{
@@ -386,6 +389,11 @@ call plug#begin(path)
   let g:ycm_key_list_select_completion   = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']"
 
+  " Experimental stuff
+  imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
+  let g:ycm_enable_inlay_hints = 1
+  let g:ycm_complete_in_comments = 1
+
 " }}}
 " }}} END: basic IDE capabilities
 " Plugin: Jinja2 {{{
@@ -397,9 +405,8 @@ call plug#begin(path)
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'cjrh/vim-conda', { 'for': 'python' }
   Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-  Plug 'psf/black', { 'tag': 'stable' }
-
-  let g:black_quiet = 1
+  " Plug 'psf/black', { 'tag': 'stable' }
+  " let g:black_quiet = 1
 
   let g:virtualenv_auto_activate = 1
   let g:SimpylFold_docstring_preview = 1
@@ -469,6 +476,15 @@ call plug#begin(path)
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'
 " }}}
+" Plugin: GH Copilot {{{
+  Plug 'github/copilot.vim'
+  imap <silent><script><expr> <C-l> copilot#Accept('\<CR>')
+  let g:copilot_no_tab_map = v:true
+  " imap <M-]> <Plug>(copilot-next)
+  " imap <M-[> <Plug>(copilot-next)
+  imap <C-;> <Plug>(copilot-suggest)
+  imap <C-w> <Plug>(copilot-accept-word)
+" }}}
 " }}} END: IDE plugins
 " markup/non-language filetypes {{{
 " Plugin: csv.vim {{{
@@ -479,6 +495,7 @@ call plug#begin(path)
 " }}}
 " Plugin: markdown {{{
   Plug 'godlygeek/tabular'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'preservim/vim-markdown'
 
   " Use default folding because vim-markdown is broken
