@@ -1,3 +1,9 @@
+global !p
+def get_textwidth() -> int:
+	"""Get the local textwidth setting"""
+	return int(vim.current.buffer.options["textwidth"])
+endglobal
+
 snippet kv "Identity mapping of key-value"
 "`!p
 snip.rv = t[1]`": ${1},$0
@@ -52,12 +58,12 @@ endsnippet
 
 snippet sec "Create section folds" b
 # ${1:Section description} `!p
-snip.rv = "-" * max((80 - len(t[1]) - 3 - snip.snippet_start[1]), 4)
+snip.rv = "-" * max((get_textwidth() - len(t[1]) - 3 - snip.snippet_start[1]), 4)
 `$0
 endsnippet
 
 snippet ssec "Create subsection folds" b
 ## ${1:Section description} `!p
-snip.rv = "-" * max((80 - len(t[1]) - 4 - snip.snippet_start[1]), 4)
+snip.rv = "-" * max((get_textwidth() - len(t[1]) - 4 - snip.snippet_start[1]), 4)
 `$0
 endsnippet
