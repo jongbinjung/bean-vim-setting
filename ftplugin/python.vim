@@ -27,6 +27,7 @@ setlocal textwidth=119
 setlocal fileformat=unix
 
 " Let formatter take care of wrapping; don't disturb my typing!
+setlocal nowrap
 setlocal formatoptions-=t
 
 let b:ale_python_ruff_format_change_directory=1
