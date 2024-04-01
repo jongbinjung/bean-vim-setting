@@ -46,7 +46,7 @@ venv: \$($1)/bin/activate \$($1)/bin/pip-sync
 
 %/bin/pip-sync %/bin/pip-compile: %/bin/activate
 	. \$*/bin/activate \\
-		&& pip install "pip-tools>=6<7" "pip<24"
+		&& pip install "pip-tools>=7<8" "pip>=23,<24"
 
 %/bin/activate:
 	python3 -m venv \$*
@@ -62,4 +62,59 @@ ${2:requirements-${3:dev}.txt: requirements-$5.txt}
 ${4:requirements-${5:test}.txt: requirements.txt}
 
 $0
+endsnippet
+
+snippet pyprojectenv "Set of variables and recipes for setting up python venv that uses pyproject.toml" b
+PYENV?=dev
+TOOLS_DIR?=.toolsenv
+${1:VENV_DIR}?=.venv
+
+# Intermediate dependencies that we want to persist (otherwise make might remove)
+.PRECIOUS: \
+	\$($1)/bin/activate \
+	\$($1)/bin/pip-compile \
+	\$($1)/bin/pip-sync
+
+#################################################################################
+# Python env targets
+#################################################################################
+
+.PHONY: clean-venv
+## Remove the virtualenv so we can start from scratch
+clean-venv:
+	rm -rf \$($1)
+
+.PHONY: venv
+## Build and sync python venv; use PYENV variable to specify prod or dev
+venv: venv-\$(PYENV)
+
+.PHONY: venv-dev
+venv-dev: \$($1)/bin/pip-sync requirements-dev.txt
+	@echo Syncing python environment with dev requirements
+	\$($1)/bin/pip-sync requirements-dev.txt
+
+.PHONY: venv-prod
+venv-prod: \$($1)/bin/pip-sync requirements.txt
+	@echo Syncing python environment for prod; without dev requirements
+	\$($1)/bin/pip-sync requirements.txt
+
+requirements-dev.txt: requirements.txt
+	\$($1)/bin/pip-compile -o requirements-dev.txt pyproject.toml --extra dev
+
+requirements.txt: pyproject.toml \$($1)/bin/pip-compile
+	\$($1)/bin/pip-compile -o requirements.txt pyproject.toml
+
+%/bin/pip-sync %/bin/pip-compile: %/bin/activate
+	source \$*/bin/activate \\
+		&& pip install "pip-tools>=7<8" "pip>=23,<24"
+	touch $@
+
+\$(TOOLS_DIR)/bin/tox: \$(TOOLS_DIR)/bin/activate
+	source \$(TOOLS_DIR)/bin/activate \
+		&& pip install "tox>=4,<5"
+	touch $@
+
+%/bin/activate:
+	python3 -m venv \$*
+
 endsnippet
