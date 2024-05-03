@@ -281,7 +281,7 @@ call plug#begin(path)
 " }}}
 " Plugin: REPL environment {{{
   " send commands to a tmux pane
-  Plug 'jpalardy/vim-slime'
+  Plug 'jpalardy/vim-slime', { 'commit': '87988b173b' }
 
   let g:slime_target = "tmux"
   let g:slime_paste_file = '/tmp/.' . $USER . '_slime_paste'
