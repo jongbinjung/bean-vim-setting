@@ -56,9 +56,9 @@ call plug#begin(path)
 " Plugin: vim-snipe (replace easymotion) {{{
   Plug 'yangmillstheory/vim-snipe'
 
-  let g:snipe_highlight_gui_color      = '#ff0000'
-  let g:snipe_highlight_cterm256_color = 'blue'
-  let g:snipe_highlight_cterm_color    = 'red'
+  let g:snipe_highlight_gui_color = '#fabd2f'
+  let g:snipe_highlight_cterm256_color = '200'
+  let g:snipe_highlight_cterm_color = '7'
 
   map <leader><leader>F <Plug>(snipe-F)
   map <leader><leader>f <Plug>(snipe-f)
