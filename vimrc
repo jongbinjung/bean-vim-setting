@@ -281,7 +281,7 @@ call plug#begin(path)
 " }}}
 " Plugin: REPL environment {{{
   " send commands to a tmux pane
-  Plug 'jpalardy/vim-slime', { 'commit': '87988b173b' }
+  Plug 'jpalardy/vim-slime' " , { 'commit': '87988b173b' }
 
   let g:slime_target = "tmux"
   let g:slime_paste_file = '/tmp/.' . $USER . '_slime_paste'
@@ -321,12 +321,15 @@ call plug#begin(path)
   let g:ale_set_quickfix = 0
   let g:ale_open_list = 0
 
+
   let g:ale_linters = {
   \  'markdown': [
   \    'marksman',
   \  ],
+  \  'java': ['javalsp'],
   \  'python': [
   \    'jedils',
+  \    'pyright',
   \    'ruff',
   \  ],
   \  'scala': [
@@ -339,6 +342,9 @@ call plug#begin(path)
   \}
 
   let g:ale_fixers = {
+  \  'java': [
+  \    'google_java_format',
+  \  ],
   \  'python': [
   \    'ruff',
   \    'ruff_format',
@@ -476,14 +482,22 @@ call plug#begin(path)
 " Plugin: rust {{{
   Plug 'rust-lang/rust.vim'
 " }}}
-" Plugin: GH Copilot {{{
+" Plugin: GH things and Copilot {{{
+  Plug 'rhysd/vim-syntax-codeowners'
   Plug 'github/copilot.vim'
+  Plug 'DanBradbury/copilot-chat.vim'
   imap <silent><script><expr> <C-l> copilot#Accept('\<CR>')
   let g:copilot_no_tab_map = v:true
   " imap <M-]> <Plug>(copilot-next)
   " imap <M-[> <Plug>(copilot-next)
   imap <C-;> <Plug>(copilot-suggest)
   imap <C-w> <Plug>(copilot-accept-word)
+
+  " Open a new Cpilot Chat window
+  nnoremap <leader>cc :CopilotChatOpen<CR>
+
+  " Add visual selection to copilot window
+  vmap <leader>a <Plug>CopilotChatAddSelection
 " }}}
 " }}} END: IDE plugins
 " markup/non-language filetypes {{{
@@ -521,6 +535,9 @@ call plug#begin(path)
 " Plugin: Goyo {{{
   Plug 'junegunn/goyo.vim'
 
+   let g:goyo_width=120
+   let g:goyo_height="95%"
+
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
   map <silent> <F3> :Goyo<CR>
@@ -550,6 +567,9 @@ set spelllang=en_us,cjk
 " map <silent> <leader>c :let @/=""<CR>
 
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" tt to maximize current window by splitting it into a new tab
+noremap tt :tab split<CR>
 
 " Window commands with ,
 map , <C-w>
