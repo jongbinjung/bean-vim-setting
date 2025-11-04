@@ -103,3 +103,6 @@ pyspark
 BigQuery
 dataproc
 GCS
+Medely
+versioning
+versioned
