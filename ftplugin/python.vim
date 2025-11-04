@@ -30,27 +30,29 @@ setlocal fileformat=unix
 setlocal nowrap
 setlocal formatoptions-=t
 
-let b:ale_python_ruff_format_change_directory=1
 let b:ale_fix_on_save=1
+let b:ale_python_ruff_format_change_directory=1
+let g:ale_virtualtext_cursor = 1
 let python_highlight_all=1
 
 " Turn off ALE completion, because I'm more used to YCM, and too old to relearn
 let b:ale_completion_enabled = 0
 
-nnoremap <buffer> <LocalLeader>f :ALEFix<CR>
 nnoremap <buffer> <LocalLeader>gd :YcmCompleter GoToDefinition<CR>
 nnoremap <buffer> <LocalLeader>gD :YcmCompleter GoToDeclaration<CR>
 nnoremap <buffer> <LocalLeader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <buffer> <LocalLeader>gt :YcmCompleter GoTo<CR>
-nnoremap <buffer> <LocalLeader>i :!isort %<CR><CR>
 nnoremap <buffer> <LocalLeader>ref :YcmCompleter RefactorExtractFunction<SPACE>
 nnoremap <buffer> <LocalLeader>rev :YcmCompleter RefactorExtractVariable<SPACE>
 nnoremap <buffer> <LocalLeader>ri :YcmCompleter RefactorInline<CR>
 nnoremap <buffer> <LocalLeader>rr :YcmCompleter RefactorRename<SPACE>
 nnoremap <buffer> K :YcmCompleter GetDoc<CR>
+" nnoremap <buffer> <LocalLeader>i :!isort %<CR><CR>
 
+" Run current file with python, in new async process ([p]ython [r]un)
+nnoremap <buffer> <LocalLeader>pr :Spawn! uv run %<CR>
 " Run current file with pytest, in new async process
-nnoremap <buffer> <LocalLeader>t :Spawn! python -m pytest %<CR>
+nnoremap <buffer> <LocalLeader>t :Spawn! uv run python -m pytest %<CR>
 
 nmap <LocalLeader><ESC> <plug>(YCMHover)
 
