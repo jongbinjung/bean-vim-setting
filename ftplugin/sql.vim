@@ -8,6 +8,11 @@ setlocal nowrap
 setlocal shiftwidth=4
 setlocal softtabstop=4
 setlocal tabstop=4
+
+setlocal foldmethod=indent
+
+" Line length
+setlocal colorcolumn=120
 setlocal textwidth=120
 
 " if !exists("b:ale_sql_sqlfluff_options")
