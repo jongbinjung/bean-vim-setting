@@ -377,7 +377,7 @@ call plug#begin(path)
 " Plugin: Completion engine {{{
   Plug 'ervandew/supertab'
   Plug 'Valloric/YouCompleteMe', {
-    \ 'do': 'uv run python install.py --clang-completer --gocode-completer --rust-completer --java-completer --ts-completer'
+    \ 'do': 'uv run --python 3.14 python install.py --clang-completer --gocode-completer --rust-completer --java-completer --ts-completer'
     \}
 
   let g:ycm_auto_start_csharp_server = 0
