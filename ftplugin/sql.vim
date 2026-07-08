@@ -18,9 +18,10 @@ setlocal textwidth=120
 " Auto-detect sqlfluff dialect from filename.
 " e.g. foo.sf.sql -> snowflake, foo.presto.sql -> presto
 let s:sql_dialect_aliases = {
-      \ 'sf': 'snowflake',
-      \ 'pg': 'postgres',
       \ 'bq': 'bigquery',
+      \ 'pg': 'postgres',
+      \ 'presto': 'trino',
+      \ 'sf': 'snowflake',
       \ 'spark': 'sparksql',
       \ }
 
