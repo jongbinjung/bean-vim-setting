@@ -471,12 +471,12 @@ call plug#begin(path)
 " Plugin: vimlatex {{{
   Plug 'lervag/vimtex'
 
-  " let g:vimtex_view_method = 'zathura'
-  let g:vimtex_view_method = 'mupdf'
-  let g:vimtex_quickfix_latexlog = {
-        \ 'overfull' : 0,
-        \ 'underfull' : 0,
-        \}
+  let g:vimtex_view_method = 'zathura'
+  " let g:vimtex_view_method = 'mupdf'
+  " let g:vimtex_quickfix_latexlog = {
+  "       \ 'overfull' : 0,
+  "       \ 'underfull' : 0,
+  "       \}
   let g:tex_flavor = 'latex'
 " }}}
 " Plugin: rust {{{
